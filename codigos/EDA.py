@@ -6,16 +6,14 @@ import seaborn as sns
 
 class EDAProcessor:
 
-    def __init__(
-        self,
-        target,
-        ordinal_columns,
-        exclude_columns=None,
-        verbose=True
-    ):
+    def __init__(self,
+                 target,
+                 ordinal_columns,
+                 exclude_columns=None,
+                 verbose=True):
         self.target = target
         self.ordinal_columns = ordinal_columns
-        self.exclude_columns=exclude_columns
+        self.exclude_columns = exclude_columns
         self.verbose = verbose
 
         self.dict_column = {}
@@ -83,12 +81,18 @@ class EDAProcessor:
         Identify numerical and categorical variables
         """
 
-        numerical_vars = data.select_dtypes(include=['number']).columns.tolist()
-        categorical_vars = data.select_dtypes(exclude=['number']).columns.tolist()
+        numerical_vars = data.select_dtypes(
+            include=['number']).columns.tolist()
+        categorical_vars = data.select_dtypes(
+            exclude=['number']).columns.tolist()
 
         # Add variables explicitly if some numerical values are categorical (e.g., Gender, Marriage)
-        categorical_vars += [col for col in numerical_vars if data[col].nunique() < 10]
-        numerical_vars = [col for col in numerical_vars if col not in categorical_vars]
+        categorical_vars += [
+            col for col in numerical_vars if data[col].nunique() < 10
+        ]
+        numerical_vars = [
+            col for col in numerical_vars if col not in categorical_vars
+        ]
 
         for col in self.column_names:
             if col == self.target:
@@ -104,12 +108,14 @@ class EDAProcessor:
                 else:
                     self.dict_column[col]["dtype"] = "categorical"
 
-        self.categorical_features = [x for x in categorical_vars
-                                     if x not in self.ordinal_columns and x != self.target
-                                     and x not in self.exclude_columns]
-        self.numerical_features = [x for x in numerical_vars
-                                   if x not in self.ordinal_columns and x != self.target
-                                   and x not in self.exclude_columns]
+        self.categorical_features = [
+            x for x in categorical_vars if x not in self.ordinal_columns
+            and x != self.target and x not in self.exclude_columns
+        ]
+        self.numerical_features = [
+            x for x in numerical_vars if x not in self.ordinal_columns
+            and x != self.target and x not in self.exclude_columns
+        ]
 
     def _calculate_missing_and_duplicates(self, data):
         """
@@ -118,7 +124,8 @@ class EDAProcessor:
         for col in self.column_names:
             missing_count = data[col].isnull().sum()
             self.dict_column[col]["n_missing"] = missing_count
-            self.dict_column[col]["p_missing"] = (missing_count / self.n_samples) * 100
+            self.dict_column[col]["p_missing"] = (missing_count /
+                                                  self.n_samples) * 100
             self.dict_column[col]["n_unique"] = data[col].nunique()
 
         # Check for duplicate rows and update the dict for all columns
@@ -134,12 +141,17 @@ class EDAProcessor:
 
     def distribution_variable(self, data, column, n_bins=None, bins=None):
 
+        if column not in data.columns:
+            raise ValueError("`column` must be a valid column name.")
+
         if n_bins is not None:
             min_value = data[column].min()
             max_value = data[column].max()
-            bins = list(np.linspace(min_value, max_value + 1, n_bins + 1).astype(int))
+            bins = list(
+                np.linspace(min_value, max_value + 1, n_bins + 1).astype(int))
 
-        return pd.cut(data[column], bins=bins, right=False).value_counts().sort_index()
+        return pd.cut(data[column], bins=bins,
+                      right=False).value_counts().sort_index()
 
     def plot_numerical_variables(self, data, n_rows, n_cols):
 
@@ -151,9 +163,15 @@ class EDAProcessor:
 
         for i, var in enumerate(self.numerical_features):
             # Histograma
-            sns.histplot(data[var], bins=30, kde=True, ax=axes[i], color='skyblue')
+            sns.histplot(data[var],
+                         bins=30,
+                         kde=True,
+                         ax=axes[i],
+                         color='skyblue')
             # Añadir título
-            axes[i].set_title(f'{var} Distribution', fontsize=14, weight='bold')
+            axes[i].set_title(f'{var} Distribution',
+                              fontsize=14,
+                              weight='bold')
             # Añádir título al eje X
             axes[i].set_xlabel(f'{var}')
             # Añadir título al eje y
@@ -171,7 +189,9 @@ class EDAProcessor:
 
         for i, var in enumerate(self.categorical_features):
             sns.countplot(data, x=var, ax=axes[i], color='skyblue')
-            axes[i].set_title(f'{var} Distribution', fontsize=14, weight='bold')
+            axes[i].set_title(f'{var} Distribution',
+                              fontsize=14,
+                              weight='bold')
             axes[i].set_xlabel(f'{var}')
             axes[i].set_ylabel('Count')
 
@@ -181,7 +201,10 @@ class EDAProcessor:
     def plot_target(self, data):
 
         plt.figure(figsize=(10, 6))
-        sns.countplot(data=data, x=self.target, hue=self.target, palette="pastel")
+        sns.countplot(data=data,
+                      x=self.target,
+                      hue=self.target,
+                      palette="pastel")
         plt.title('Distribution of Default')
         plt.xlabel('Default')
         plt.ylabel('Count')
@@ -189,9 +212,15 @@ class EDAProcessor:
     def plot_correlations(self):
 
         sns.set(style="whitegrid")
-        heatmap = sns.heatmap(self.df_corr, annot=True, cmap='coolwarm', linewidths=0.5, fmt=".2f",
+        heatmap = sns.heatmap(self.df_corr,
+                              annot=True,
+                              cmap='coolwarm',
+                              linewidths=0.5,
+                              fmt=".2f",
                               annot_kws={"size": 10})
-        plt.title('Mapa de Calor de la Matriz de Correlación', fontsize=16, weight='bold')
+        plt.title('Mapa de Calor de la Matriz de Correlación',
+                  fontsize=16,
+                  weight='bold')
 
         # Alineación de las etiquetas del eje x
         plt.xticks(fontsize=12, rotation=45, ha='right')
@@ -207,7 +236,12 @@ class EDAProcessor:
         axes = axes.flatten()
 
         for i, var in enumerate(self.numerical_features):
-            sns.boxplot(data=data, x=self.target, y=var, ax=axes[i], color="skyblue", fill=False)
+            sns.boxplot(data=data,
+                        x=self.target,
+                        y=var,
+                        ax=axes[i],
+                        color="skyblue",
+                        fill=False)
             axes[i].set_title(f'{var.replace("_", " ")} vs Obesity Level')
             axes[i].set_xlabel('Default')
             axes[i].set_ylabel(var.replace("_", " "))
@@ -219,27 +253,43 @@ class EDAProcessor:
     def plot_histogram_vs_target(self, data, n_rows, n_cols):
 
         fig, axes = plt.subplots(n_rows, n_cols, figsize=(20, 20))
-        axes = axes.flatten()  # Aplanar el array de ejes para un manejo más fácil en el bucle
+        axes = axes.flatten(
+        )  # Aplanar el array de ejes para un manejo más fácil en el bucle
 
         # Crear un gráfico para cada variable categórica
         for i, attribute in enumerate(self.categorical_features):
-            sns.countplot(x=attribute, hue=self.target, data=data, palette='Blues_d',
-                          order=data[attribute].value_counts().index, ax=axes[i])
+            sns.countplot(x=attribute,
+                          hue=self.target,
+                          data=data,
+                          palette='Blues_d',
+                          order=data[attribute].value_counts().index,
+                          ax=axes[i])
             axes[i].set_title(f'Distribución de {attribute} por Default')
             axes[i].set_xlabel(attribute)
             axes[i].set_ylabel('Frecuencia')
-            axes[i].get_legend().remove()  # Remover la leyenda de cada subgráfico
+            axes[i].get_legend().remove(
+            )  # Remover la leyenda de cada subgráfico
             # Añadir etiquetas de conteo
             for p in axes[i].patches:
                 height = p.get_height()
                 if pd.notna(height):  # Verificar si la barra no está vacía
-                    axes[i].annotate(f'{int(height)}', (p.get_x() + p.get_width() / 2., height),
-                                     ha='center', va='center', xytext=(0, -6), textcoords='offset points',
-                                     color='white', fontsize=9)
+                    axes[i].annotate(f'{int(height)}',
+                                     (p.get_x() + p.get_width() / 2., height),
+                                     ha='center',
+                                     va='center',
+                                     xytext=(0, -6),
+                                     textcoords='offset points',
+                                     color='white',
+                                     fontsize=9)
 
         # Crear una leyenda única para toda la figura
         handles, labels = axes[0].get_legend_handles_labels()
-        fig.legend(handles, labels, title='Default', loc='upper center', bbox_to_anchor=(0.5, 1.05), ncol=4)
+        fig.legend(handles,
+                   labels,
+                   title='Default',
+                   loc='upper center',
+                   bbox_to_anchor=(0.5, 1.05),
+                   ncol=4)
 
         # Ajustar el layout y mostrar el gráfico
         plt.tight_layout(rect=[0, 0, 1, 0.95])
