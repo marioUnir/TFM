@@ -4,13 +4,14 @@ print("1")
 
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 from codigos.EDA import EDAProcessor
 
 # Load the dataset
 data = pd.read_csv('data/UCI_Credit_Card.csv')
 print(data.head())
-print(type(data))
+print("Dimensiones del dataset", data.shape)
 
 # Preprocessing columns
 # Cambiamos el nombre de las columnas por uno más descriptivo
@@ -44,6 +45,11 @@ descriptive_columns = {
 }
 
 data.rename(columns=descriptive_columns, inplace=True)
+print(data.columns)
+
+print(data.dtypes)
+
+print(data.isna().sum())
 
 # Convert categorical variables with their appropriate labels based on the provided descriptions
 data['Gender'] = data['Gender'].map({1: 'Male', 2: 'Female'})
@@ -82,7 +88,7 @@ repayment_status_mapping = {
 # Applying this mapping to all repayment status columns
 repayment_columns = [x for x in data.columns if 'RepaymentStatus' in x]
 for col in repayment_columns:
-  data[col] = data[col].map(repayment_status_mapping)
+    data[col] = data[col].map(repayment_status_mapping)
 
 # Parameters
 target = "Default"
@@ -92,10 +98,21 @@ eda = EDAProcessor(target=target,
                    exclude_columns=["Id"])
 eda.run(data)
 
-print(data.dtypes)
+import seaborn as sns
+plt.figure(figsize=(10, 6))
+sns.countplot(data=data,
+              x=data["Default"],
+              hue=data["Default"],
+              palette="pastel")
+plt.title('Distribution of Default')
+plt.xlabel('Default')
+plt.ylabel('Count')
 
-print(eda.distribution_variable(data, "Age", n_bins=10))
-print(eda.distribution_variable(data, "CreditLimit", n_bins=10))
 
-# eda.plot_numerical_variables(data, n_rows=2, n_cols=2)
+# print(eda.plot_target(data))
+# print(eda.distribution_variable(data, "Age", n_bins=10))
+# print(eda.distribution_variable(data, "CreditLimit", n_bins=10))
+
+# eda.plot_numerical_variables(data, n_rows=7, n_cols=2)
 # eda.plot_target(data)
+# plt.show()
