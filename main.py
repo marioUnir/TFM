@@ -98,21 +98,10 @@ eda = EDAProcessor(target=target,
                    exclude_columns=["Id"])
 eda.run(data)
 
-import seaborn as sns
-plt.figure(figsize=(10, 6))
-sns.countplot(data=data,
-              x=data["Default"],
-              hue=data["Default"],
-              palette="pastel")
-plt.title('Distribution of Default')
-plt.xlabel('Default')
-plt.ylabel('Count')
+print(eda.plot_target(data))
+print(eda.distribution_variable(data, "Age", n_bins=10))
+print(eda.distribution_variable(data, "CreditLimit", n_bins=10))
 
-
-# print(eda.plot_target(data))
-# print(eda.distribution_variable(data, "Age", n_bins=10))
-# print(eda.distribution_variable(data, "CreditLimit", n_bins=10))
-
-# eda.plot_numerical_variables(data, n_rows=7, n_cols=2)
-# eda.plot_target(data)
-# plt.show()
+eda.plot_numerical_variables(data, n_rows=7, n_cols=2)
+eda.plot_target(data)
+plt.show()
