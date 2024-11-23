@@ -419,3 +419,24 @@ class EDAProcessor:
         # Ajustar el layout y mostrar el gráfico
         plt.tight_layout(rect=[0, 0, 1, 0.95])
         plt.show()
+
+    def get_results(self):
+        """
+        Retrieve the summary of the exploratory data analysis (EDA).
+
+        This method returns a DataFrame that contains metadata for each column
+        in the dataset, including information such as:
+            - Data type
+            - Number of missing values
+            - Percentage of missing values
+            - Number of unique values
+            - Whether the column has duplicate rows
+
+        Returns
+        -------
+        pandas.DataFrame
+            A DataFrame where each row corresponds to a column in the dataset,
+            and the metadata for each column is stored in the respective row.
+        """
+
+        return pd.DataFrame(self.dict_column).T
