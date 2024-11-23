@@ -6,11 +6,14 @@ import seaborn as sns
 
 class EDAProcessor:
 
-    def __init__(self,
-                 target,
-                 ordinal_columns,
-                 exclude_columns=None,
-                 verbose=True):
+    def __init__(
+            self,
+            target,
+            ordinal_columns,
+            exclude_columns=None,
+            verbose=True
+    ):
+
         self.target = target
         self.ordinal_columns = ordinal_columns
         self.exclude_columns = exclude_columns
