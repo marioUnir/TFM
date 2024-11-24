@@ -235,7 +235,7 @@ class EDAProcessor:
             plt.title(f'{cat_vars[0]} Distribution', fontsize=14, weight='bold')
             plt.xlabel(f'{cat_vars[0]}')
             plt.ylabel('Count')
-            plt.xticks(rotation=45)
+            plt.xticks(rotation=90)
         else:
             n = 2
             vls = np.arange(0, num_graphs + num_graphs % 2, 1)
@@ -251,7 +251,7 @@ class EDAProcessor:
                 axes[i].set_ylabel('Count')
 
                 # Rotar las etiquetas del eje x
-                axes[i].tick_params(axis='x', rotation=45)  # O prueba con rotation=90 si es necesario
+                axes[i].tick_params(axis='x', rotation=90)
 
             # Eliminar subplot en caso de que haya un número impar de subplots
             if num_graphs % 2 != 0:
@@ -360,7 +360,7 @@ class EDAProcessor:
             plt.title(f'Distribución de {cat_vars[0]} por Default')
             plt.xlabel(cat_vars[0])
             plt.ylabel('Frecuencia')
-            plt.xticks(rotation=45)
+            plt.xticks(rotation=90)
             for p in plt.gca().patches:
                 height = p.get_height()
                 if pd.notna(height):
@@ -387,9 +387,9 @@ class EDAProcessor:
                 axes[i].set_title(f'Distribución de {attribute} por Default')
                 axes[i].set_xlabel(attribute)
                 axes[i].set_ylabel('Frecuencia')
-                axes[i].tick_params(axis='x', rotation=45)
-                axes[i].get_legend().remove(
-                )  # Remover la leyenda de cada subgráfico
+                axes[i].tick_params(axis='x', rotation=90)
+                # Eliminar la leyenda de cada subgráfico
+                axes[i].get_legend().remove()
                 # Añadir etiquetas de conteo
                 for p in axes[i].patches:
                     height = p.get_height()
