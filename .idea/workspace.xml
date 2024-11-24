@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="abcea867-9aae-47b7-8969-32a718c485d2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EDA.py" beforeDir="false" afterPath="$PROJECT_DIR$/EDA.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Outliers.py" beforeDir="false" afterPath="$PROJECT_DIR$/Outliers.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

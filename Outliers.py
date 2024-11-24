@@ -9,31 +9,67 @@ from sklearn.mixture import GaussianMixture
 
 class OutliersDetection:
     """
-    Parameters
+    Clase para la detección de valores atípicos (outliers) en variables numéricas y categóricas.
+
+    Parámetros
     ----------
     method : str
-        Method to detect outliers.
+        Método para detectar valores atípicos. Puede ser uno de los siguientes:
+        - "IQR": Rango intercuartílico
+        - "std": Desviación estándar
+        - "IForest": Isolation Forest
+        - "LOF": Local Outlier Factor
+        - "GMM": Gaussian Mixture Model
+        - "all": Aplica todos los métodos disponibles
 
-    k : float (default=1.5)
-        Multiplication value to the IQR that set the outliers labelling
-        limits:
+    k : float, opcional (default=1.5)
+        Valor multiplicador del rango intercuartílico (IQR) o desviación estándar para definir los límites
+        de detección de outliers:
 
-        If method is IQR, then
-
+        Si `method` es "IQR", los límites son:
         .. math::
 
             \\text{lower_limit} = Q_1 - k * (Q_3 - Q_1)\\\\
             \\text{upper_limit} = Q_3 + k * (Q_3 - Q_1)
 
-        If method is std, then
-
+        Si `method` es "std", los límites son:
         .. math::
 
-            \\text{lower_limit} = mean - k * std\\\\
-            \\text{upper_limit} = mean + k * std
+            \\text{lower_limit} = media - k * desviación\\\\
+            \\text{upper_limit} = media + k * desviación
 
-    threshold : float (default=0.05)
-        Threshold to identify outliers in categorical features
+    threshold : float, opcional (default=0.05)
+        Umbral para identificar valores atípicos en variables categóricas, basado en la frecuencia relativa.
+
+    seed : int, opcional (default=42)
+        Semilla para los métodos que requieren aleatoriedad.
+
+    estimator : object, opcional (default=None)
+        Estimador personalizado. Puede ser una instancia de `IsolationForest`, `LocalOutlierFactor`
+        o `GaussianMixture`.
+
+    contamination : float, opcional (default=0.05)
+        Proporción de datos considerados como valores atípicos para los métodos basados en estimadores.
+
+    n_neighbors : int, opcional (default=20)
+        Número de vecinos para el método Local Outlier Factor.
+
+    n_components : int, opcional (default=2)
+        Número de componentes en el modelo Gaussian Mixture.
+
+    Atributos
+    ---------
+    numerical_features : list
+        Lista de nombres de variables numéricas en el conjunto de datos.
+
+    categorical_features : list
+        Lista de nombres de variables categóricas en el conjunto de datos.
+
+    dict_column : dict
+        Diccionario con los resultados de la detección de outliers en variables numéricas.
+
+    dict_column_cat : dict
+        Diccionario con los resultados de la detección de outliers en variables categóricas.
     """
 
     def __init__(
@@ -47,7 +83,7 @@ class OutliersDetection:
             n_neighbors=20,
             n_components=2
     ):
-
+        # Inicialización de parámetros clave
         self.method = method
         self.k = k
         self.threshold = threshold
@@ -57,23 +93,27 @@ class OutliersDetection:
         self.n_neighbors = n_neighbors
         self.n_components = n_components
 
-        # Initialize
+        # Inicializa atributos para almacenar resultados
         self.numerical_features = None
         self.categorical_features = None
         self.dict_column = {}
         self.dict_column_cat = {}
 
+        # Verifica que los parámetros sean válidos
         self._check_parameters()
 
     def _check_parameters(self):
-
+        """
+        Verifica que los parámetros iniciales sean válidos.
+        """
         if self.method not in ["IQR", "std", "IForest", "LOF", "GMM", "all"]:
-            raise ValueError("`method` should be 'IQR', 'std', 'IForest', 'LOF', 'GMM' or 'all'.")
+            raise ValueError("`method` debe ser 'IQR', 'std', 'IForest', 'LOF', 'GMM' o 'all'.")
 
         if not isinstance(self.k, (float, int)) and self.method in ["IQR", "std"]:
-            raise TypeError("`k` must be a number for 'IQR' or 'std'.")
+            raise TypeError("`k` debe ser un número si se utiliza el método 'IQR' o 'std'.")
 
         if self.estimator is not None:
+            # Comprueba que el estimador sea válido
             if isinstance(self.estimator, IsolationForest):
                 self.method = "IForest"
             elif isinstance(self.estimator, LocalOutlierFactor):
@@ -81,37 +121,53 @@ class OutliersDetection:
             elif isinstance(self.estimator, GaussianMixture):
                 self.method = "GMM"
             else:
-                raise ValueError("`estimator` should be a IsolationForest, LocalOutlierFactor or GaussianMixture "
-                                 "estimator of sklearn")
+                raise ValueError("`estimator` debe ser una instancia de IsolationForest, LocalOutlierFactor o GaussianMixture.")
 
     def run(self, data):
+        """
+        Ejecuta el análisis de detección de valores atípicos.
 
+        Parámetros
+        ----------
+        data : pandas.DataFrame
+            Conjunto de datos sobre el que se detectarán valores atípicos.
+        """
         if not isinstance(data, pd.DataFrame):
-            raise TypeError("data must be a pandas dataframe.")
+            raise TypeError("`data` debe ser un DataFrame de pandas.")
 
+        # Identifica las variables numéricas y categóricas
         self.numerical_features, self.categorical_features = self._get_numerical_categorical_features(data)
 
+        # Ejecuta la detección de valores atípicos
         self._detect_outliers(data)
 
     def _get_numerical_categorical_features(self, data):
+        """
+        Identifica variables numéricas y categóricas en el conjunto de datos.
 
-        numerical_vars = data.select_dtypes(
-            include=['number']).columns.tolist()
-        categorical_vars = data.select_dtypes(
-            exclude=['number']).columns.tolist()
+        Parámetros
+        ----------
+        data : pandas.DataFrame
+            Conjunto de datos.
 
-        # Add variables explicitly if some numerical values are categorical (e.g., Gender, Marriage)
-        categorical_vars += [
-            col for col in numerical_vars if data[col].nunique() < 10
-        ]
-        numerical_vars = [
-            col for col in numerical_vars if col not in categorical_vars
-        ]
+        Retorna
+        -------
+        tuple
+            Listas de variables numéricas y categóricas.
+        """
+        numerical_vars = data.select_dtypes(include=['number']).columns.tolist()
+        categorical_vars = data.select_dtypes(exclude=['number']).columns.tolist()
+
+        # Incluye variables numéricas que tienen menos de 10 valores únicos como categóricas
+        categorical_vars += [col for col in numerical_vars if data[col].nunique() < 10]
+        numerical_vars = [col for col in numerical_vars if col not in categorical_vars]
 
         return numerical_vars, categorical_vars
 
     def _initialize_estimator(self):
-
+        """
+        Inicializa el estimador para métodos que lo requieran.
+        """
         if self.estimator is None:
             if self.method == "IForest":
                 self.estimator = IsolationForest(contamination=self.contamination, random_state=self.seed)
@@ -122,29 +178,42 @@ class OutliersDetection:
 
     def _detect_outliers(self, data):
         """
-        Detect outliers based on the selected method.
+        Detecta valores atípicos según el método seleccionado.
+
+        Parámetros
+        ----------
+        data : pandas.DataFrame
+            Conjunto de datos en el que se detectarán valores atípicos.
         """
+        print("** Variables Numéricas **")
+        self._detect_outliers_numerical(data)  # Detección en variables numéricas
 
-        print("** Numerical Features **")
-        self._detect_outliers_numerical(data)
-
-        print("** Categorical Features **")
-        self._detect_outliers_categorical(data)
+        print("** Variables Categóricas **")
+        self._detect_outliers_categorical(data)  # Detección en variables categóricas
 
     def _detect_outliers_numerical(self, data):
+        """
+        Detecta valores atípicos en variables numéricas según el método.
+
+        Parámetros
+        ----------
+        data : pandas.DataFrame
+            Conjunto de datos en el que se detectarán valores atípicos.
+        """
         if self.method == "all":
+            # Ejecuta todos los métodos y almacena resultados
             self.dict_column = {}
             all_methods = ["IQR", "std", "IForest", "LOF", "GMM"]
             for method in all_methods:
-                print(f"Running {method} method...")
+                print(f"Ejecutando método {method}...")
                 self.method = method
-                self._initialize_estimator()  # Reinitialize estimator if needed
+                self._initialize_estimator()  # Inicializa el estimador si es necesario
                 self.dict_column[self.method] = {}
                 if method in ["IForest", "LOF", "GMM"]:
                     self._detect_outliers_iforest_lof(data) if method != "GMM" else self._detect_outliers_gmm(data)
                 else:
                     getattr(self, f"_detect_outliers_{method.lower()}")(data)
-            self.method = "all"  # Reset method to 'all'
+            self.method = "all"  # Resetea el método a 'all'
         else:
             self.dict_column[self.method] = {}
             if self.method in ["IForest", "LOF", "GMM"]:
@@ -158,20 +227,29 @@ class OutliersDetection:
 
     def _detect_outliers_iqr(self, data):
         """
-        Detect outliers using the Interquartile Range (IQR) method.
+        Detecta valores atípicos usando el método del rango intercuartílico (IQR).
+
+        Parámetros
+        ----------
+        data : pandas.DataFrame
+            Conjunto de datos en el que se detectarán valores atípicos.
         """
         for var in self.numerical_features:
+            # Calcula el rango intercuartílico
             Q1 = data[var].quantile(0.25)
             Q3 = data[var].quantile(0.75)
             IQR = Q3 - Q1
 
+            # Calcula los límites
             lb = Q1 - self.k * IQR
             ub = Q3 + self.k * IQR
 
+            # Identifica los outliers
             outliers = data[(data[var] < lb) | (data[var] > ub)].index.tolist()
             outliers_count = len(outliers)
             outliers_perc = (outliers_count / len(data)) * 100
 
+            # Guarda resultados
             self.dict_column[self.method][var] = {
                 "Q1": Q1,
                 "Q3": Q3,
@@ -184,19 +262,28 @@ class OutliersDetection:
 
     def _detect_outliers_std(self, data):
         """
-        Detect outliers using the standard deviation method.
+        Detecta valores atípicos usando el método de desviación estándar.
+
+        Parámetros
+        ----------
+        data : pandas.DataFrame
+            Conjunto de datos en el que se detectarán valores atípicos.
         """
         for var in self.numerical_features:
+            # Calcula la media y la desviación estándar
             mean = data[var].mean()
             std_dev = data[var].std()
 
+            # Calcula los límites
             lb = mean - self.k * std_dev
             ub = mean + self.k * std_dev
 
+            # Identifica los outliers
             outliers = data[(data[var] < lb) | (data[var] > ub)].index.tolist()
             outliers_count = len(outliers)
             outliers_perc = (outliers_count / len(data)) * 100
 
+            # Guarda resultados en el diccionario
             self.dict_column[self.method][var] = {
                 "mean": mean,
                 "std_dev": std_dev,
@@ -207,30 +294,54 @@ class OutliersDetection:
             }
 
     def _detect_outliers_iforest_lof(self, data):
+        """
+        Detecta valores atípicos utilizando Isolation Forest o Local Outlier Factor.
 
+        Parámetros
+        ----------
+        data : pandas.DataFrame
+            Conjunto de datos en el que se detectarán valores atípicos.
+        """
         for var in self.numerical_features:
+            # Prepara los datos como un array 2D (necesario para los modelos)
             data_reshaped = data[var].values.reshape(-1, 1)
+
+            # Genera las predicciones (-1 indica outliers)
             labels = self.estimator.fit_predict(data_reshaped)
             outliers = np.where(labels == -1)[0]
             outliers_count = len(outliers)
             outliers_perc = (outliers_count / len(data)) * 100
 
+            # Guarda los resultados
             self.dict_column[self.method][var] = {
                 "n_outliers": outliers_count,
                 "p_outliers": outliers_perc,
             }
 
     def _detect_outliers_gmm(self, data):
+        """
+        Detecta valores atípicos utilizando Gaussian Mixture Model.
 
+        Parámetros
+        ----------
+        data : pandas.DataFrame
+            Conjunto de datos en el que se detectarán valores atípicos.
+        """
         for var in self.numerical_features:
+            # Prepara los datos como un array 2D (necesario para los modelos)
             data_reshaped = data[var].values.reshape(-1, 1)
+
+            # Ajusta el modelo y calcula las puntuaciones
             self.estimator.fit(data_reshaped)
             scores = self.estimator.score_samples(data_reshaped)
+
+            # Calcula un umbral basado en el percentil inferior (5% por defecto)
             threshold = np.percentile(scores, 5)
             outliers = np.where(scores < threshold)[0]
             outliers_count = len(outliers)
             outliers_perc = (outliers_count / len(data)) * 100
 
+            # Guarda los resultados
             self.dict_column[self.method][var] = {
                 "n_outliers": outliers_count,
                 "p_outliers": outliers_perc,
@@ -238,25 +349,26 @@ class OutliersDetection:
 
     def _detect_outliers_categorical(self, data):
         """
-        Identify outliers in a categorical variable based on frequency.
+        Identifica valores atípicos en variables categóricas basados en su frecuencia relativa.
 
-        Parameters
+        Parámetros
         ----------
         data : pandas.DataFrame
-            The input data.
-
-        Returns
-        -------
-        list
-            List of outlier categories.
+            Conjunto de datos en el que se detectarán valores atípicos.
         """
-
         for var in self.categorical_features:
+            # Calcula la frecuencia relativa de cada categoría
             value_counts = data[var].value_counts(normalize=True)
-            series = value_counts[value_counts < 0.05]
+
+            # Filtra categorías con frecuencias menores al umbral
+            series = value_counts[value_counts < self.threshold]
             categories = list(series.index)
+
+            # Cuenta los valores atípicos en estas categorías
             n_outliers = len(data[data[var].isin(categories)]) if categories else 0
             p_outliers = (n_outliers / len(data)) * 100
+
+            # Guarda resultados en el diccionario
             self.dict_column_cat[var] = {
                 "n_outliers": n_outliers,
                 "p_outliers": p_outliers,
@@ -265,39 +377,54 @@ class OutliersDetection:
 
     def get_outliers(self, variable):
         """
-        Get the list of outliers for a specific variable.
+        Obtiene la lista de índices de valores atípicos para una variable específica.
 
-        Parameters
+        Parámetros
         ----------
         variable : str
-            The name of the variable.
+            Nombre de la variable de la cual se quieren obtener los índices de valores atípicos.
 
-        Returns
+        Retorna
         -------
         list
-            List of indices of the outliers.
+            Lista de índices de los valores atípicos.
+
+        Lanza
+        -----
+        ValueError
+            Si la variable no ha sido analizada previamente.
         """
+        # Verifica si la variable fue analizada
         if variable not in self.dict_column:
-            raise ValueError(f"Variable {variable} not analyzed.")
-        return self.dict_column[variable]["outliers"]
+            raise ValueError(f"La variable {variable} no ha sido analizada.")
+
+        # Devuelve los índices de los outliers detectados
+        return self.dict_column[variable].get("outliers", [])
 
     def get_results(self, method=None):
         """
-        Provide a summary of outliers for all numerical variables.
+        Devuelve un resumen de los valores atípicos detectados para variables numéricas.
 
-        Returns
+        Parámetros
+        ----------
+        method : str, opcional
+            Método específico para el cual se quieren los resultados.
+            Si no se especifica, se devolverán resultados de todos los métodos.
+
+        Retorna
         -------
         pandas.DataFrame
-            Summary of outlier detection for each numerical variable.
+            Resumen de los valores atípicos detectados por variable y método.
         """
-
         if method is not None:
             if method not in self.dict_column:
-                raise ValueError(f"Method {method} has not been applied.")
+                raise ValueError(f"El método {method} no ha sido aplicado.")
 
         if self.method != "all":
+            # Retorna resultados para el método actual
             results = self.dict_column[self.method]
         else:
+            # Combina resultados de todos los métodos
             if method is None:
                 results = {}
                 for method, variables in self.dict_column.items():
@@ -306,7 +433,7 @@ class OutliersDetection:
                             results[var] = {}
                         results[var][f"{method} n_outliers"] = metrics.get("n_outliers", np.nan)
                         results[var][f"{method} p_outliers"] = metrics.get("p_outliers", np.nan)
-                return  pd.DataFrame.from_dict(results, orient="index")
+                return pd.DataFrame.from_dict(results, orient="index")
             else:
                 results = self.dict_column[method]
 
@@ -314,51 +441,68 @@ class OutliersDetection:
 
     def get_results_cat_vars(self):
         """
-        Provide a summary of outliers for all categorical variables.
+        Devuelve un resumen de los valores atípicos detectados en variables categóricas.
 
-        Returns
+        Retorna
         -------
         pandas.DataFrame
-            Summary of outlier detection for each catgorical variable.
+            Resumen de los valores atípicos detectados para cada variable categórica.
         """
-
+        # Convierte el diccionario de resultados a un DataFrame
         results_cat = pd.DataFrame(self.dict_column_cat).T
-
         return results_cat
 
     def transform(self, data, method, metric="median"):
         """
-        Impute outliers with the median or mean value for each variable based on the selected method.
+        Sustituye los valores atípicos detectados con la mediana o la media.
 
-        Parameters
+        Parámetros
         ----------
         data : pandas.DataFrame
-            The input data.
+            Conjunto de datos original.
 
         method : str
-            The method to use for identifying outliers. It must be one of the applied methods.
+            Método utilizado para identificar los valores atípicos.
 
-        metric : str or dict
-            It could be median or mean, and it will apply for all variables. If it's a dictionary, it will apply
-            the selected metric for each variable.
+        metric : str o dict, opcional
+            Puede ser "median" o "mean" para aplicar el mismo valor a todas las variables,
+            o un diccionario para aplicar una métrica diferente a cada variable.
 
-        Returns
+        Retorna
         -------
         pandas.DataFrame
-            A new DataFrame with outliers replaced by the median.
+            Nuevo DataFrame con los valores atípicos sustituidos.
         """
-
         if method not in self.dict_column:
-            raise ValueError(f"Method {method} has not been applied. "
-                             f"Available methods: {list(self.dict_column.keys())}")
+            raise ValueError(f"El método {method} no ha sido aplicado. "
+                             f"Métodos disponibles: {list(self.dict_column.keys())}")
 
         if isinstance(metric, str):
             if metric not in ["median", "mean"]:
-                raise ValueError("`metric` should be 'median' or 'mean'.")
+                raise ValueError("`metric` debe ser 'median' o 'mean'.")
         elif not isinstance(metric, dict):
-            raise TypeError("`metric` should be string or dictionary.")
+            raise TypeError("`metric` debe ser un string o un diccionario.")
 
         def get_metric(data_transformed, metric, var):
+            """
+            Calcula la mediana o media para la variable especificada.
+
+            Parámetros
+            ----------
+            data_transformed : pandas.DataFrame
+                DataFrame transformado.
+
+            metric : str o dict
+                Métrica a utilizar.
+
+            var : str
+                Nombre de la variable.
+
+            Retorna
+            -------
+            float
+                Valor de la métrica.
+            """
             if isinstance(metric, str):
                 if metric == "median":
                     _metric = data_transformed[var].median()
@@ -370,25 +514,25 @@ class OutliersDetection:
                 elif metric[var] == "mean":
                     _metric = data_transformed[var].mean()
                 else:
-                    raise ValueError(f"`metric` is not valid for variable var, {var}")
+                    raise ValueError(f"`metric` no es válido para la variable {var}")
             return _metric
 
+        # Copia el DataFrame original
         data_transformed = data.copy()
 
+        # Reemplaza los valores atípicos
         for var, metrics in self.dict_column[method].items():
             if "lb" in metrics and "ub" in metrics:
-                # For methods like IQR and std
+                # Para métodos como IQR y std
                 lb = metrics["lb"]
                 ub = metrics["ub"]
                 _metric = get_metric(data_transformed, metric, var)
-                # Replace outliers with the median or mean
                 data_transformed[var] = data_transformed[var].apply(lambda x: _metric if x < lb or x > ub else x)
             elif "n_outliers" in metrics:
-                # For methods like IForest, LOF, GMM
+                # Para métodos como IForest, LOF, GMM
                 labels = self.estimator.fit_predict(data[var].values.reshape(-1, 1))
                 outlier_indices = np.where(labels == -1)[0]
                 _metric = get_metric(data_transformed, metric, var)
-                # Replace outliers with the median or mean
                 data_transformed.loc[outlier_indices, var] = _metric
 
         return data_transformed
@@ -397,22 +541,26 @@ class OutliersDetection:
         """
         Combina categorías poco frecuentes en una categoría existente o nueva.
 
-        Parameters
+        Parámetros
         ----------
         data : pandas.DataFrame
-            Dataset original.
+            Conjunto de datos original.
+
         var : str
             Nombre de la variable categórica.
-        rare_categories : list
-            Lista de categorías a combinar.
-        new_category : str
-            Nombre de la categoría combinada.
 
-        Returns
+        rare_categories : list
+            Lista de categorías que se combinarán.
+
+        new_category : str
+            Nombre de la nueva categoría que representará las categorías combinadas.
+
+        Retorna
         -------
         pandas.DataFrame
-            DataFrame con las categorías combinadas.
+            DataFrame modificado con las categorías combinadas.
         """
+        # Reemplaza las categorías poco frecuentes por la nueva categoría
         data[var] = data[var].apply(lambda x: new_category if x in rare_categories else x)
-
         return data
+
