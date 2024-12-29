@@ -30,7 +30,7 @@ class EDAProcessor:
 
     def _initialize_dict_column(self):
         """
-        Initialize the dictionary to store metadata for each column.
+        Inicializa el diccionario para almacenar metadatos de cada columna.
         """
 
         dict_column_info = {
@@ -47,19 +47,22 @@ class EDAProcessor:
 
     def run(self, data):
         """
-        Run preprocessing.
+        Ejecuta el preprocesamiento.
 
-        Preprocessing performs three steps: categorizes each column data, and
-        finds duplicates and nulls.
+        El preprocesamiento realiza tres pasos: 
+        
+        - categoriza los datos de cada columna, 
+        - encuentra duplicados
+        - valores nulos.
 
         Parameters
         ----------
         data : pandas.DataFrame
-            Raw dataset.
+            Datos en bruto
         """
 
         if not isinstance(data, pd.DataFrame):
-            raise TypeError("data must be a pandas dataframe.")
+            raise TypeError("`data` debe ser un DataFrame de Pandas.")
 
         self.n_samples = len(data)
         self.n_columns = len(data.columns)
@@ -68,23 +71,23 @@ class EDAProcessor:
         self._initialize_dict_column()
 
         if self.verbose:
-            print("Starting EDA...\n")
+            print("Empezando EDA...\n")
 
-        # Step 1: Identify numerical and categorical variables
+        # Paso 1: Identifica variables numéricas y categóricas
         self._get_variable_types(data)
 
-        # Step 2: Calculate missing values and duplicates
+        # Paso 2: Encuentra missings y duplicados
         self._calculate_missing_and_duplicates(data)
 
-        # Step 3: Correlations
+        # Paso 3: Correlaciones
         self._calculate_correlations(data)
 
         if self.verbose:
-            print("EDA completed ...\n")
+            print("EDA completado ...\n")
 
     def _get_variable_types(self, data):
         """
-        Identify numerical and categorical variables
+        Identifica variables numéricas y categóricas
         """
 
         numerical_vars = data.select_dtypes(
@@ -92,7 +95,8 @@ class EDAProcessor:
         categorical_vars = data.select_dtypes(
             exclude=['number']).columns.tolist()
 
-        # Add variables explicitly if some numerical values are categorical (e.g., Gender, Marriage)
+        # Agrega variables explícitamente si algunos valores numéricos son categóricos 
+        # (por ejemplo, Género, Matrimonio).
         categorical_vars += [
             col for col in numerical_vars if data[col].nunique() < 10
         ]
@@ -125,7 +129,8 @@ class EDAProcessor:
 
     def _calculate_missing_and_duplicates(self, data):
         """
-        Calculate missing values and duplicates for each column and store in dict_column.
+        Calcula los valores faltantes y duplicados para cada columna y 
+        se almacenan en dict_column.
         """
         for col in self.column_names:
             missing_count = data[col].isnull().sum()
@@ -134,21 +139,21 @@ class EDAProcessor:
                                                   self.n_samples) * 100
             self.dict_column[col]["n_unique"] = data[col].nunique()
 
-        # Check for duplicate rows and update the dict for all columns
+        # Comprueba filas duplicada y actualiza ``dict_column``
         is_duplicate = data.duplicated().any()
         for col in self.column_names:
             self.dict_column[col]["is_duplicate"] = is_duplicate
 
     def _calculate_correlations(self, data):
 
-        # Numerical features
+        # Calcula la correlación para las variables numéricas
         corr = data[self.numerical_features + [self.target]].corr()
         self.df_corr = corr
 
     def distribution_variable(self, data, column, n_bins=None, bins=None):
 
         if column not in data.columns:
-            raise ValueError("`column` must be a valid column name.")
+            raise ValueError("`column` debe ser un nombre válido de columna.")
 
         if n_bins is not None:
             min_value = data[column].min()
@@ -159,7 +164,7 @@ class EDAProcessor:
         return pd.cut(data[column], bins=bins,
                       right=False).value_counts().sort_index()
 
-    def plot_numerical_variables(self, data, num_vars=None):
+    def plot_numerical_variables(self, data, num_vars=None, figsize=None):
 
         if num_vars is None:
             num_vars = self.numerical_features
@@ -169,7 +174,7 @@ class EDAProcessor:
                 if x not in self.numerical_features:
                     bad_input.append(x)
             if len(bad_input) > 0:
-                raise ValueError("The following columns are not numerical features: "
+                raise ValueError("Las siguientes columnas no se consideran numéricas: "
                                  f"{bad_input}")
 
         num_graphs = len(num_vars)
@@ -179,17 +184,25 @@ class EDAProcessor:
 
         # Caso de un solo gráfico
         if num_graphs == 1:
-            plt.figure(figsize=(8, 5))
+
+            if figsize is None:
+                figsize = (8, 5)
+            
+            plt.figure(figsize=figsize)
             sns.histplot(data[num_vars[0]], bins=30, kde=True, color='skyblue')
-            plt.title(f'{num_vars[0]} Distribution', fontsize=14, weight='bold')
+            plt.title(f'Distribución de {num_vars[0]}', fontsize=14, weight='bold')
             plt.xlabel(f'{num_vars[0]}')
-            plt.ylabel('Frequency')
+            plt.ylabel('Frecuencia')
 
         else:
+
+            if figsize is None:
+                figsize = (12, num_graphs * 2.5)
+
             n = 2
             vls = np.arange(0, num_graphs + num_graphs % 2, 1)
             layout = [vls[i: i + n] for i in range(0, num_graphs, n)]
-            fig, axes = plt.subplot_mosaic(layout, figsize=(12, num_graphs * 2.5))
+            fig, axes = plt.subplot_mosaic(layout, figsize=figsize)
 
             for i, var in enumerate(num_vars):
                 # Histograma
@@ -199,13 +212,13 @@ class EDAProcessor:
                              ax=axes[i],
                              color='skyblue')
                 # Añadir título
-                axes[i].set_title(f'{var} Distribution',
+                axes[i].set_title(f'Distribución de {var}',
                                   fontsize=14,
                                   weight='bold')
                 # Añadir título al eje X
                 axes[i].set_xlabel(f'{var}')
                 # Añadir título al eje y
-                axes[i].set_ylabel('Frequency')
+                axes[i].set_ylabel('Frequencia')
 
             # Eliminar subplot en caso de que haya un número impar de subplots
             if num_graphs % 2 != 0:
@@ -224,7 +237,7 @@ class EDAProcessor:
                 if x not in self.categorical_features:
                     bad_input.append(x)
             if len(bad_input) > 0:
-                raise ValueError("The following columns are not categorical features: "
+                raise ValueError("Las siguientes columnas no se consideran categóricas: "
                                  f"{bad_input}")
 
         num_graphs = len(cat_vars)
@@ -232,9 +245,9 @@ class EDAProcessor:
         if num_graphs == 1:
             plt.figure(figsize=(8, 5))
             sns.countplot(data, x=cat_vars[0], color='skyblue')
-            plt.title(f'{cat_vars[0]} Distribution', fontsize=14, weight='bold')
+            plt.title(f'Distribución de {cat_vars[0]}', fontsize=14, weight='bold')
             plt.xlabel(f'{cat_vars[0]}')
-            plt.ylabel('Count')
+            plt.ylabel('Frecuencia')
             plt.xticks(rotation=90)
         else:
             n = 2
@@ -244,11 +257,11 @@ class EDAProcessor:
 
             for i, var in enumerate(cat_vars):
                 sns.countplot(data, x=var, ax=axes[i], color='skyblue')
-                axes[i].set_title(f'{var} Distribution',
+                axes[i].set_title(f'Distribución de {var}',
                                   fontsize=14,
                                   weight='bold')
                 axes[i].set_xlabel(f'{var}')
-                axes[i].set_ylabel('Count')
+                axes[i].set_ylabel('Frecuencia')
 
                 # Rotar las etiquetas del eje x
                 axes[i].tick_params(axis='x', rotation=90)
@@ -267,9 +280,9 @@ class EDAProcessor:
                       x=self.target,
                       hue=self.target,
                       palette="pastel")
-        plt.title('Distribution of Default')
+        plt.title('Distribución del target: Default')
         plt.xlabel('Default')
-        plt.ylabel('Count')
+        plt.ylabel('Frecuencia')
 
     def plot_correlations(self):
 
@@ -301,7 +314,7 @@ class EDAProcessor:
                 if x not in self.numerical_features:
                     bad_input.append(x)
             if len(bad_input) > 0:
-                raise ValueError("The following columns are not numerical features: "
+                raise ValueError("Las siguientes columnas no se consideran numéricas: "
                                  f"{bad_input}")
 
         num_graphs = len(num_vars)
@@ -348,7 +361,7 @@ class EDAProcessor:
                 if x not in self.categorical_features:
                     bad_input.append(x)
             if len(bad_input) > 0:
-                raise ValueError("The following columns are not categorical features: "
+                raise ValueError("Las siguientes columnas no se consideran categóricas: "
                                  f"{bad_input}")
 
         num_graphs = len(cat_vars)
@@ -422,21 +435,21 @@ class EDAProcessor:
 
     def get_results(self):
         """
-        Retrieve the summary of the exploratory data analysis (EDA).
+        Obtén el resumen del análisis exploratorio de datos (EDA).
 
-        This method returns a DataFrame that contains metadata for each column
-        in the dataset, including information such as:
-            - Data type
-            - Number of missing values
-            - Percentage of missing values
-            - Number of unique values
-            - Whether the column has duplicate rows
+        Este método devuelve un DataFrame que contiene metadatos de cada columna en el conjunto de datos, incluyendo información como:
+
+        T- ipo de dato
+        - Número de valores faltantes
+        - Porcentaje de valores faltantes
+        - Número de valores únicos
+        - Si la columna tiene filas duplicadas
 
         Returns
         -------
         pandas.DataFrame
-            A DataFrame where each row corresponds to a column in the dataset,
-            and the metadata for each column is stored in the respective row.
+            Un DataFrame donde cada fila corresponde a una columna en el conjunto de datos, 
+            y los metadatos de cada columna se almacenan en la fila respectiva.
         """
 
         return pd.DataFrame(self.dict_column).T
