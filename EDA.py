@@ -71,7 +71,7 @@ class EDAProcessor:
         self._initialize_dict_column()
 
         if self.verbose:
-            print("Empezando EDA...\n")
+            print("Empezando EDA ...\n")
 
         # Paso 1: Identifica variables numéricas y categóricas
         self._get_variable_types(data)
