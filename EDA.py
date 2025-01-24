@@ -221,8 +221,8 @@ class EDAProcessor:
             n_bins:  int (default=None)
                 Número de intervalos (bins) en los que dividir la columna.
                 Si se proporciona, los intervalos se calcularán automáticamente usando valores equiespaciados.
-            bins : list[float] | list[int] (default=None): Lista de límites de los intervalos definidos manualmente.
-                Si se proporciona, `n_bins` será ignorado.
+            bins : list[float] | list[int] (default=None): 
+                Lista de límites de los intervalos definidos manualmente. Si se proporciona, `n_bins` será ignorado.
 
         Returns
         -------
@@ -268,8 +268,7 @@ class EDAProcessor:
 
         Raises
         ------
-            ValueError: Si alguna de las variables proporcionadas en `num_vars` no se encuentra
-                        en las variables numéricas identificadas.
+            ValueError: Si alguna de las variables proporcionadas en `num_vars` no se encuentra en las variables numéricas identificadas.
         """
 
         if num_vars is None:
@@ -354,8 +353,7 @@ class EDAProcessor:
 
         Raises
         ------
-            ValueError: Si alguna de las variables proporcionadas en `cat_vars` no se encuentra
-                        en las variables categóricas identificadas.
+            ValueError: Si alguna de las variables proporcionadas en `cat_vars` no se encuentra en las variables categóricas identificadas.
         """
 
         if cat_vars is None:
@@ -483,8 +481,7 @@ class EDAProcessor:
 
         Raises
         ------
-            ValueError: Si alguna de las variables proporcionadas en `num_vars` no se encuentra 
-                        en las variables numéricas identificadas.
+            ValueError: Si alguna de las variables proporcionadas en `num_vars` no se encuentra en las variables numéricas identificadas.
         """
 
         if num_vars is None:
@@ -553,8 +550,7 @@ class EDAProcessor:
 
         Raises
         ------
-            ValueError: Si alguna de las variables proporcionadas en `cat_vars` no se encuentra
-                        en las variables categóricas identificadas.
+            ValueError: Si alguna de las variables proporcionadas en `cat_vars` no se encuentra en las variables categóricas identificadas.
         """
 
         if cat_vars is None:
