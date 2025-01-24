@@ -5,6 +5,6 @@ credit-card
    :maxdepth: 4
 
    EDA
-   Modelling
    Outliers
    Preprocessing
+   Modelling
