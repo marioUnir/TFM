@@ -6,6 +6,36 @@ import seaborn as sns
 
 class EDAProcessor:
 
+    """
+    Clase para procesar tareas de análisis exploratorio de datos (EDA).
+
+    Attributes
+    ----------
+        dict_column : dict
+            Diccionario para almacenar metadatos de las columnas.
+        n_samples : int
+            Número de filas en el conjunto de datos.
+        n_columns : int
+            Número de columnas en el conjunto de datos.
+        column_names : list[str]
+            Lista con los nombres de las columnas.
+        categorical_features : list[str]
+            Lista de columnas categóricas.
+        numerical_features : list[str]
+            Lista de columnas numéricas.
+
+    Parameters
+    ----------
+        target : str: 
+            Nombre de la columna objetivo.
+        ordinal_columns : list[str] 
+            Lista de columnas ordinales.
+        exclude_columns : list[str] | None (default=None)
+            Columnas a excluir del análisis.
+        verbose : bool (default=True)
+            Indica si se imprimen mensajes durante el procesamiento.
+    """
+
     def __init__(
             self,
             target,
@@ -31,6 +61,9 @@ class EDAProcessor:
     def _initialize_dict_column(self):
         """
         Inicializa el diccionario para almacenar metadatos de cada columna.
+
+        Cada columna tendrá información como tipo de dato, cantidad y porcentaje de valores
+        faltantes, número de valores únicos y si tiene duplicados.
         """
 
         dict_column_info = {
@@ -47,18 +80,22 @@ class EDAProcessor:
 
     def run(self, data):
         """
-        Ejecuta el preprocesamiento.
+        Ejecuta el análisis exploratorio de datos.
 
-        El preprocesamiento realiza tres pasos: 
+        El EDA realiza tres pasos: 
+
+        1. Identifica el tipo de variable (numérica, categórica, etc.).
+        2. Calcula valores faltantes y duplicados.
+        3. Calcula la matriz de correlación.
         
-        - categoriza los datos de cada columna, 
-        - encuentra duplicados
-        - valores nulos.
-
         Parameters
         ----------
         data : pandas.DataFrame
-            Datos en bruto
+            Conjunto de datos a analizar.
+
+        Raises
+        ------
+            TypeError: Si el argumento `data` no es un DataFrame de pandas.
         """
 
         if not isinstance(data, pd.DataFrame):
@@ -88,6 +125,11 @@ class EDAProcessor:
     def _get_variable_types(self, data):
         """
         Identifica variables numéricas y categóricas
+
+        Parameters
+        ----------
+        data : pandas.DataFrame
+            Conjunto de datos a analizar.
         """
 
         numerical_vars = data.select_dtypes(
@@ -131,6 +173,11 @@ class EDAProcessor:
         """
         Calcula los valores faltantes y duplicados para cada columna y 
         se almacenan en dict_column.
+
+        Parameters
+        ----------
+        data : pandas.DataFrame
+            Conjunto de datos a analizar.
         """
         for col in self.column_names:
             missing_count = data[col].isnull().sum()
@@ -145,12 +192,46 @@ class EDAProcessor:
             self.dict_column[col]["is_duplicate"] = is_duplicate
 
     def _calculate_correlations(self, data):
+        """
+        Calcula la matriz de correlación para las variables numéricas.
+
+        Parameters
+        ----------
+        data : pandas.DataFrame
+            Conjunto de datos a analizar.
+        """
 
         # Calcula la correlación para las variables numéricas
         corr = data[self.numerical_features + [self.target]].corr()
         self.df_corr = corr
 
     def distribution_variable(self, data, column, n_bins=None, bins=None):
+        """
+        Calcula la distribución de una variable dividiéndola en intervalos.
+
+        Este método permite dividir los valores de una columna en intervalos (bins) 
+        y calcular la frecuencia de valores dentro de cada intervalo.
+
+        Parameters
+        ----------
+            data: pd.DataFrame 
+                Conjunto de datos que contiene la columna a analizar.
+            column: str
+                Nombre de la columna para la cual calcular la distribución.
+            n_bins:  int (default=None)
+                Número de intervalos (bins) en los que dividir la columna.
+                Si se proporciona, los intervalos se calcularán automáticamente usando valores equiespaciados.
+            bins : list[float] | list[int] (default=None): Lista de límites de los intervalos definidos manualmente.
+                Si se proporciona, `n_bins` será ignorado.
+
+        Returns
+        -------
+            pd.Series: Serie con la frecuencia de valores en cada intervalo, ordenada por los intervalos.
+
+        Raises
+        ------
+            ValueError: Si el nombre de la columna no está en el conjunto de datos.
+        """
 
         if column not in data.columns:
             raise ValueError("`column` debe ser un nombre válido de columna.")
@@ -165,6 +246,31 @@ class EDAProcessor:
                       right=False).value_counts().sort_index()
 
     def plot_numerical_variables(self, data, num_vars=None, figsize=None):
+        """
+        Genera histogramas para las variables numéricas seleccionadas.
+
+        Este método crea histogramas para analizar la distribución de las variables numéricas
+        en el conjunto de datos. Si se seleccionan múltiples variables, se generarán subgráficos.
+
+        Parameters
+        ----------
+            data: pd.DataFrame
+                Conjunto de datos que contiene las variables a graficar.
+            num_vars: list[str] (default=None)
+                Lista de nombres de columnas numéricas a graficar. 
+                Si no se proporciona, se utilizarán todas las variables numéricas identificadas.
+            figsize: tuple (default=None)
+                Dimensiones de la figura (ancho, alto). Si no se proporciona, se establecerán valores predeterminados.
+
+        Returns
+        -------
+            None: Este método no retorna ningún valor. Genera un gráfico directamente.
+
+        Raises
+        ------
+            ValueError: Si alguna de las variables proporcionadas en `num_vars` no se encuentra
+                        en las variables numéricas identificadas.
+        """
 
         if num_vars is None:
             num_vars = self.numerical_features
@@ -228,6 +334,29 @@ class EDAProcessor:
         plt.show()
 
     def plot_categorical_variables(self, data, cat_vars=None):
+        """
+        Genera gráficos de barras para las variables categóricas seleccionadas.
+
+        Este método crea gráficos de barras para analizar la distribución de las variables categóricas 
+        en el conjunto de datos. Si se seleccionan múltiples variables, se generarán subgráficos.
+
+        Parameters
+        ----------
+            data: pd.DataFrame
+                Conjunto de datos que contiene las variables categóricas a graficar.
+            cat_vars: list[str] (default=None)
+                Lista de nombres de columnas categóricas a graficar. 
+                Si no se proporciona, se utilizarán todas las variables categóricas identificadas.
+
+        Returns
+        -------
+            None: Este método no retorna ningún valor. Genera gráficos directamente.
+
+        Raises
+        ------
+            ValueError: Si alguna de las variables proporcionadas en `cat_vars` no se encuentra
+                        en las variables categóricas identificadas.
+        """
 
         if cat_vars is None:
             cat_vars = self.categorical_features
@@ -274,6 +403,21 @@ class EDAProcessor:
         plt.show()
 
     def plot_target(self, data):
+        """
+        Genera un gráfico de barras para analizar la distribución del target.
+
+        Este método crea un gráfico de barras que muestra la frecuencia de cada categoría 
+        en la columna objetivo (`target`) del conjunto de datos.
+
+        Parameters
+        ----------
+            data: pd.DataFrame
+                Conjunto de datos que contiene la columna objetivo.
+
+        Returns
+        -------
+            None: Este método no retorna ningún valor. Genera un gráfico directamente.
+        """
 
         plt.figure(figsize=(10, 6))
         sns.countplot(data=data,
@@ -285,6 +429,20 @@ class EDAProcessor:
         plt.ylabel('Frecuencia')
 
     def plot_correlations(self):
+        """
+        Genera un mapa de calor para visualizar las correlaciones entre variables numéricas.
+
+        Este método utiliza la matriz de correlación calculada previamente (`self.df_corr`)
+        para crear un mapa de calor, lo que facilita el análisis de relaciones entre variables numéricas.
+
+        Parameters
+        ----------
+            None: Este método no requiere parámetros adicionales.
+
+        Returns
+        -------
+            None: Este método no retorna ningún valor. Genera un gráfico directamente.
+        """
 
         plt.figure(figsize=(14, 10))
 
@@ -305,6 +463,29 @@ class EDAProcessor:
         plt.show()
 
     def plot_numerical_vs_target(self, data, num_vars=None):
+        """
+        Genera gráficos de caja (boxplots) para analizar la relación entre variables numéricas y el target.
+
+        Este método crea un gráfico de caja para cada variable numérica seleccionada, 
+        mostrando la distribución de sus valores con respecto a las categorías de la columna objetivo (`target`).
+
+        Parameters
+        ----------
+            data: pd.DataFrame
+                Conjunto de datos que contiene las variables a analizar.
+            num_vars: list[str] (default=None)
+                Lista de nombres de columnas numéricas a analizar. 
+                Si no se proporciona, se utilizarán todas las variables numéricas identificadas.
+
+        Returns
+        -------
+            None: Este método no retorna ningún valor. Genera gráficos directamente.
+
+        Raises
+        ------
+            ValueError: Si alguna de las variables proporcionadas en `num_vars` no se encuentra 
+                        en las variables numéricas identificadas.
+        """
 
         if num_vars is None:
             num_vars = self.numerical_features
@@ -352,6 +533,29 @@ class EDAProcessor:
         plt.show()
 
     def plot_histogram_vs_target(self, data,cat_vars=None):
+        """
+        Genera gráficos de barras agrupados para analizar la relación entre variables categóricas y el target.
+
+        Este método crea gráficos de barras para cada variable categórica seleccionada, mostrando
+        la frecuencia de sus valores desglosados por las categorías de la columna objetivo (`target`).
+
+        Parameters
+        ----------
+            data: pd.DataFrame
+                Conjunto de datos que contiene las variables categóricas a analizar.
+            cat_vars: list[str] (default=None)
+                Lista de nombres de columnas categóricas a analizar. 
+                Si no se proporciona, se utilizarán todas las variables categóricas identificadas.
+
+        Returns
+        -------
+            None: Este método no retorna ningún valor. Genera gráficos directamente.
+
+        Raises
+        ------
+            ValueError: Si alguna de las variables proporcionadas en `cat_vars` no se encuentra
+                        en las variables categóricas identificadas.
+        """
 
         if cat_vars is None:
             cat_vars = self.categorical_features
@@ -439,7 +643,7 @@ class EDAProcessor:
 
         Este método devuelve un DataFrame que contiene metadatos de cada columna en el conjunto de datos, incluyendo información como:
 
-        T- ipo de dato
+        - Tipo de dato
         - Número de valores faltantes
         - Porcentaje de valores faltantes
         - Número de valores únicos
