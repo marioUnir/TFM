@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Outliers module &mdash; TFM - UNIR | Documentación de la librería credit-card</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3ddd9672" />
+
+  
+    <link rel="shortcut icon" href="_static/unir_logo.png"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=e2bb6099"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=d190bf04"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Preprocessing module" href="Preprocessing.html" />
+    <link rel="prev" title="Modelling module" href="Modelling.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            credit-card
+              <img src="_static/unir_logo.png" class="logo" alt="Logotipo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Navegación</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">credit-card</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="EDA.html">EDA module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="EDA.html#EDA.EDAProcessor"><code class="docutils literal notranslate"><span class="pre">EDAProcessor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="EDA.html#EDA.EDAProcessor.distribution_variable"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.distribution_variable()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="EDA.html#EDA.EDAProcessor.get_results"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.get_results()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="EDA.html#EDA.EDAProcessor.plot_categorical_variables"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_categorical_variables()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="EDA.html#EDA.EDAProcessor.plot_correlations"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_correlations()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="EDA.html#EDA.EDAProcessor.plot_histogram_vs_target"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_histogram_vs_target()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="EDA.html#EDA.EDAProcessor.plot_numerical_variables"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_numerical_variables()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="EDA.html#EDA.EDAProcessor.plot_numerical_vs_target"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_numerical_vs_target()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="EDA.html#EDA.EDAProcessor.plot_target"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_target()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="EDA.html#EDA.EDAProcessor.run"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Modelling.html">Modelling module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.best_models"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.best_models</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.eval_model_test"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.eval_model_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.evaluation_df"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.evaluation_df</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.get_metrics_all_models"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.get_metrics_all_models()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.get_metrics_by_class_all_models"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.get_metrics_by_class_all_models()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.grid_results_df"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.grid_results_df</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.plot_evaluation_metrics"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.plot_evaluation_metrics()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.plot_roc_curve"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.plot_roc_curve()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.run"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.save_results"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.save_results()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Outliers module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Outliers.OutliersDetection"><code class="docutils literal notranslate"><span class="pre">OutliersDetection</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Outliers.OutliersDetection.combine_categories"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.combine_categories()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Outliers.OutliersDetection.get_outliers"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.get_outliers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Outliers.OutliersDetection.get_results"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.get_results()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Outliers.OutliersDetection.get_results_cat_vars"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.get_results_cat_vars()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Outliers.OutliersDetection.run"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Outliers.OutliersDetection.transform"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.transform()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Preprocessing.html">Preprocessing module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Preprocessing.html#Preprocessing.Preprocessing"><code class="docutils literal notranslate"><span class="pre">Preprocessing</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Preprocessing.html#Preprocessing.Preprocessing.fit_transform"><code class="docutils literal notranslate"><span class="pre">Preprocessing.fit_transform()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">credit-card</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">credit-card</a></li>
+      <li class="breadcrumb-item active">Outliers module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Outliers.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-Outliers">
+<span id="outliers-module"></span><h1>Outliers module<a class="headerlink" href="#module-Outliers" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="Outliers.OutliersDetection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Outliers.</span></span><span class="sig-name descname"><span class="pre">OutliersDetection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contamination</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_components</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Outliers.html#OutliersDetection"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Outliers.OutliersDetection" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase para la detección de valores atípicos (outliers) en variables numéricas y categóricas.</p>
+<section id="parametros">
+<h2>Parámetros<a class="headerlink" href="#parametros" title="Link to this heading"></a></h2>
+<dl>
+<dt>method<span class="classifier">str</span></dt><dd><p>Método para detectar valores atípicos. Puede ser uno de los siguientes:
+- «IQR»: Rango intercuartílico
+- «std»: Desviación estándar
+- «IForest»: Isolation Forest
+- «LOF»: Local Outlier Factor
+- «GMM»: Gaussian Mixture Model
+- «all»: Aplica todos los métodos disponibles</p>
+</dd>
+<dt>k<span class="classifier">float, opcional (default=1.5)</span></dt><dd><p>Valor multiplicador del rango intercuartílico (IQR) o desviación estándar para definir los límites
+de detección de outliers:</p>
+<p>Si <cite>method</cite> es «IQR», los límites son:
+.. math:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">text</span><span class="p">{</span><span class="n">lower_limit</span><span class="p">}</span> <span class="o">=</span> <span class="n">Q_1</span> <span class="o">-</span> <span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">Q_3</span> <span class="o">-</span> <span class="n">Q_1</span><span class="p">)</span>\\
+\<span class="n">text</span><span class="p">{</span><span class="n">upper_limit</span><span class="p">}</span> <span class="o">=</span> <span class="n">Q_3</span> <span class="o">+</span> <span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">Q_3</span> <span class="o">-</span> <span class="n">Q_1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Si <cite>method</cite> es «std», los límites son:
+.. math:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">text</span><span class="p">{</span><span class="n">lower_limit</span><span class="p">}</span> <span class="o">=</span> <span class="n">media</span> <span class="o">-</span> <span class="n">k</span> <span class="o">*</span> <span class="n">desviación</span>\\
+\<span class="n">text</span><span class="p">{</span><span class="n">upper_limit</span><span class="p">}</span> <span class="o">=</span> <span class="n">media</span> <span class="o">+</span> <span class="n">k</span> <span class="o">*</span> <span class="n">desviación</span>
+</pre></div>
+</div>
+</dd>
+<dt>threshold<span class="classifier">float, opcional (default=0.05)</span></dt><dd><p>Umbral para identificar valores atípicos en variables categóricas, basado en la frecuencia relativa.</p>
+</dd>
+<dt>seed<span class="classifier">int, opcional (default=42)</span></dt><dd><p>Semilla para los métodos que requieren aleatoriedad.</p>
+</dd>
+<dt>estimator<span class="classifier">object, opcional (default=None)</span></dt><dd><p>Estimador personalizado. Puede ser una instancia de <cite>IsolationForest</cite>, <cite>LocalOutlierFactor</cite>
+o <cite>GaussianMixture</cite>.</p>
+</dd>
+<dt>contamination<span class="classifier">float, opcional (default=0.05)</span></dt><dd><p>Proporción de datos considerados como valores atípicos para los métodos basados en estimadores.</p>
+</dd>
+<dt>n_neighbors<span class="classifier">int, opcional (default=20)</span></dt><dd><p>Número de vecinos para el método Local Outlier Factor.</p>
+</dd>
+<dt>n_components<span class="classifier">int, opcional (default=2)</span></dt><dd><p>Número de componentes en el modelo Gaussian Mixture.</p>
+</dd>
+</dl>
+</section>
+<section id="atributos">
+<h2>Atributos<a class="headerlink" href="#atributos" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>numerical_features<span class="classifier">list</span></dt><dd><p>Lista de nombres de variables numéricas en el conjunto de datos.</p>
+</dd>
+<dt>categorical_features<span class="classifier">list</span></dt><dd><p>Lista de nombres de variables categóricas en el conjunto de datos.</p>
+</dd>
+<dt>dict_column<span class="classifier">dict</span></dt><dd><p>Diccionario con los resultados de la detección de outliers en variables numéricas.</p>
+</dd>
+<dt>dict_column_cat<span class="classifier">dict</span></dt><dd><p>Diccionario con los resultados de la detección de outliers en variables categóricas.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="Outliers.OutliersDetection.combine_categories">
+<span class="sig-name descname"><span class="pre">combine_categories</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rare_categories</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_category</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Outliers.html#OutliersDetection.combine_categories"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Outliers.OutliersDetection.combine_categories" title="Link to this definition"></a></dt>
+<dd><p>Combina categorías poco frecuentes en una categoría existente o nueva.</p>
+<section id="id1">
+<h3>Parámetros<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>data<span class="classifier">pandas.DataFrame</span></dt><dd><p>Conjunto de datos original.</p>
+</dd>
+<dt>var<span class="classifier">str</span></dt><dd><p>Nombre de la variable categórica.</p>
+</dd>
+<dt>rare_categories<span class="classifier">list</span></dt><dd><p>Lista de categorías que se combinarán.</p>
+</dd>
+<dt>new_category<span class="classifier">str</span></dt><dd><p>Nombre de la nueva categoría que representará las categorías combinadas.</p>
+</dd>
+</dl>
+</section>
+<section id="retorna">
+<h3>Retorna<a class="headerlink" href="#retorna" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>pandas.DataFrame</dt><dd><p>DataFrame modificado con las categorías combinadas.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Outliers.OutliersDetection.get_outliers">
+<span class="sig-name descname"><span class="pre">get_outliers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variable</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Outliers.html#OutliersDetection.get_outliers"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Outliers.OutliersDetection.get_outliers" title="Link to this definition"></a></dt>
+<dd><p>Obtiene la lista de índices de valores atípicos para una variable específica.</p>
+<section id="id2">
+<h3>Parámetros<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>variable<span class="classifier">str</span></dt><dd><p>Nombre de la variable de la cual se quieren obtener los índices de valores atípicos.</p>
+</dd>
+</dl>
+</section>
+<section id="id3">
+<h3>Retorna<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>list</dt><dd><p>Lista de índices de los valores atípicos.</p>
+</dd>
+</dl>
+</section>
+<section id="lanza">
+<h3>Lanza<a class="headerlink" href="#lanza" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>Si la variable no ha sido analizada previamente.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Outliers.OutliersDetection.get_results">
+<span class="sig-name descname"><span class="pre">get_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Outliers.html#OutliersDetection.get_results"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Outliers.OutliersDetection.get_results" title="Link to this definition"></a></dt>
+<dd><p>Devuelve un resumen de los valores atípicos detectados para variables numéricas.</p>
+<section id="id4">
+<h3>Parámetros<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>method<span class="classifier">str, opcional</span></dt><dd><p>Método específico para el cual se quieren los resultados.
+Si no se especifica, se devolverán resultados de todos los métodos.</p>
+</dd>
+</dl>
+</section>
+<section id="id5">
+<h3>Retorna<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>pandas.DataFrame</dt><dd><p>Resumen de los valores atípicos detectados por variable y método.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Outliers.OutliersDetection.get_results_cat_vars">
+<span class="sig-name descname"><span class="pre">get_results_cat_vars</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Outliers.html#OutliersDetection.get_results_cat_vars"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Outliers.OutliersDetection.get_results_cat_vars" title="Link to this definition"></a></dt>
+<dd><p>Devuelve un resumen de los valores atípicos detectados en variables categóricas.</p>
+<section id="id6">
+<h3>Retorna<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>pandas.DataFrame</dt><dd><p>Resumen de los valores atípicos detectados para cada variable categórica.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Outliers.OutliersDetection.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Outliers.html#OutliersDetection.run"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Outliers.OutliersDetection.run" title="Link to this definition"></a></dt>
+<dd><p>Ejecuta el análisis de detección de valores atípicos.</p>
+<section id="id7">
+<h3>Parámetros<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>data<span class="classifier">pandas.DataFrame</span></dt><dd><p>Conjunto de datos sobre el que se detectarán valores atípicos.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Outliers.OutliersDetection.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Outliers.html#OutliersDetection.transform"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Outliers.OutliersDetection.transform" title="Link to this definition"></a></dt>
+<dd><p>Sustituye los valores atípicos detectados con la mediana o la media.</p>
+<section id="id8">
+<h3>Parámetros<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>data<span class="classifier">pandas.DataFrame</span></dt><dd><p>Conjunto de datos original.</p>
+</dd>
+<dt>method<span class="classifier">str</span></dt><dd><p>Método utilizado para identificar los valores atípicos.</p>
+</dd>
+<dt>metric<span class="classifier">str o dict, opcional</span></dt><dd><p>Puede ser «median» o «mean» para aplicar el mismo valor a todas las variables,
+o un diccionario para aplicar una métrica diferente a cada variable.</p>
+</dd>
+</dl>
+</section>
+<section id="id9">
+<h3>Retorna<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>pandas.DataFrame</dt><dd><p>Nuevo DataFrame con los valores atípicos sustituidos.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="Modelling.html" class="btn btn-neutral float-left" title="Modelling module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="Preprocessing.html" class="btn btn-neutral float-right" title="Preprocessing module" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Cristina Domínguez and Mario Río.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

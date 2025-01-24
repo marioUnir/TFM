@@ -1,0 +1,475 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EDA module &mdash; TFM - UNIR | Documentación de la librería credit-card</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3ddd9672" />
+
+  
+    <link rel="shortcut icon" href="_static/unir_logo.png"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=e2bb6099"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=d190bf04"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Modelling module" href="Modelling.html" />
+    <link rel="prev" title="credit-card" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            credit-card
+              <img src="_static/unir_logo.png" class="logo" alt="Logotipo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Navegación</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">credit-card</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">EDA module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#EDA.EDAProcessor"><code class="docutils literal notranslate"><span class="pre">EDAProcessor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#EDA.EDAProcessor.distribution_variable"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.distribution_variable()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#EDA.EDAProcessor.get_results"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.get_results()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#EDA.EDAProcessor.plot_categorical_variables"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_categorical_variables()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#EDA.EDAProcessor.plot_correlations"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_correlations()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#EDA.EDAProcessor.plot_histogram_vs_target"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_histogram_vs_target()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#EDA.EDAProcessor.plot_numerical_variables"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_numerical_variables()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#EDA.EDAProcessor.plot_numerical_vs_target"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_numerical_vs_target()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#EDA.EDAProcessor.plot_target"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_target()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#EDA.EDAProcessor.run"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Modelling.html">Modelling module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.best_models"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.best_models</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.eval_model_test"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.eval_model_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.evaluation_df"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.evaluation_df</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.get_metrics_all_models"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.get_metrics_all_models()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.get_metrics_by_class_all_models"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.get_metrics_by_class_all_models()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.grid_results_df"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.grid_results_df</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.plot_evaluation_metrics"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.plot_evaluation_metrics()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.plot_roc_curve"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.plot_roc_curve()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.run"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.save_results"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.save_results()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Outliers.html">Outliers module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Outliers.html#Outliers.OutliersDetection"><code class="docutils literal notranslate"><span class="pre">OutliersDetection</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Outliers.html#Outliers.OutliersDetection.combine_categories"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.combine_categories()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Outliers.html#Outliers.OutliersDetection.get_outliers"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.get_outliers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Outliers.html#Outliers.OutliersDetection.get_results"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.get_results()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Outliers.html#Outliers.OutliersDetection.get_results_cat_vars"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.get_results_cat_vars()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Outliers.html#Outliers.OutliersDetection.run"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Outliers.html#Outliers.OutliersDetection.transform"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.transform()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Preprocessing.html">Preprocessing module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Preprocessing.html#Preprocessing.Preprocessing"><code class="docutils literal notranslate"><span class="pre">Preprocessing</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Preprocessing.html#Preprocessing.Preprocessing.fit_transform"><code class="docutils literal notranslate"><span class="pre">Preprocessing.fit_transform()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">credit-card</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">credit-card</a></li>
+      <li class="breadcrumb-item active">EDA module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/EDA.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-EDA">
+<span id="eda-module"></span><h1>EDA module<a class="headerlink" href="#module-EDA" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="EDA.EDAProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EDA.</span></span><span class="sig-name descname"><span class="pre">EDAProcessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ordinal_columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EDA.html#EDAProcessor"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#EDA.EDAProcessor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase para procesar tareas de análisis exploratorio de datos (EDA).</p>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>dict_column<span class="classifier">dict</span></dt><dd><p>Diccionario para almacenar metadatos de las columnas.</p>
+</dd>
+<dt>n_samples<span class="classifier">int</span></dt><dd><p>Número de filas en el conjunto de datos.</p>
+</dd>
+<dt>n_columns<span class="classifier">int</span></dt><dd><p>Número de columnas en el conjunto de datos.</p>
+</dd>
+<dt>column_names<span class="classifier">list[str]</span></dt><dd><p>Lista con los nombres de las columnas.</p>
+</dd>
+<dt>categorical_features<span class="classifier">list[str]</span></dt><dd><p>Lista de columnas categóricas.</p>
+</dd>
+<dt>numerical_features<span class="classifier">list[str]</span></dt><dd><p>Lista de columnas numéricas.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>target<span class="classifier">str: </span></dt><dd><p>Nombre de la columna objetivo.</p>
+</dd>
+<dt>ordinal_columns<span class="classifier">list[str] </span></dt><dd><p>Lista de columnas ordinales.</p>
+</dd>
+<dt>exclude_columns<span class="classifier">list[str] | None (default=None)</span></dt><dd><p>Columnas a excluir del análisis.</p>
+</dd>
+<dt>verbose<span class="classifier">bool (default=True)</span></dt><dd><p>Indica si se imprimen mensajes durante el procesamiento.</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="EDA.EDAProcessor.distribution_variable">
+<span class="sig-name descname"><span class="pre">distribution_variable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EDA.html#EDAProcessor.distribution_variable"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#EDA.EDAProcessor.distribution_variable" title="Link to this definition"></a></dt>
+<dd><p>Calcula la distribución de una variable dividiéndola en intervalos.</p>
+<p>Este método permite dividir los valores de una columna en intervalos (bins) 
+y calcular la frecuencia de valores dentro de cada intervalo.</p>
+<section id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>data: pd.DataFrame </dt><dd><p>Conjunto de datos que contiene la columna a analizar.</p>
+</dd>
+<dt>column: str</dt><dd><p>Nombre de la columna para la cual calcular la distribución.</p>
+</dd>
+<dt>n_bins:  int (default=None)</dt><dd><p>Número de intervalos (bins) en los que dividir la columna.
+Si se proporciona, los intervalos se calcularán automáticamente usando valores equiespaciados.</p>
+</dd>
+<dt>bins<span class="classifier">list[float] | list[int] (default=None): Lista de límites de los intervalos definidos manualmente.</span></dt><dd><p>Si se proporciona, <cite>n_bins</cite> será ignorado.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>pd.Series: Serie con la frecuencia de valores en cada intervalo, ordenada por los intervalos.</p>
+</div></blockquote>
+</section>
+<section id="raises">
+<h3>Raises<a class="headerlink" href="#raises" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>ValueError: Si el nombre de la columna no está en el conjunto de datos.</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EDA.EDAProcessor.get_results">
+<span class="sig-name descname"><span class="pre">get_results</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/EDA.html#EDAProcessor.get_results"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#EDA.EDAProcessor.get_results" title="Link to this definition"></a></dt>
+<dd><p>Obtén el resumen del análisis exploratorio de datos (EDA).</p>
+<p>Este método devuelve un DataFrame que contiene metadatos de cada columna en el conjunto de datos, incluyendo información como:</p>
+<ul class="simple">
+<li><p>Tipo de dato</p></li>
+<li><p>Número de valores faltantes</p></li>
+<li><p>Porcentaje de valores faltantes</p></li>
+<li><p>Número de valores únicos</p></li>
+<li><p>Si la columna tiene filas duplicadas</p></li>
+</ul>
+<section id="id2">
+<h3>Returns<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>pandas.DataFrame</dt><dd><p>Un DataFrame donde cada fila corresponde a una columna en el conjunto de datos, 
+y los metadatos de cada columna se almacenan en la fila respectiva.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EDA.EDAProcessor.plot_categorical_variables">
+<span class="sig-name descname"><span class="pre">plot_categorical_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cat_vars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EDA.html#EDAProcessor.plot_categorical_variables"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#EDA.EDAProcessor.plot_categorical_variables" title="Link to this definition"></a></dt>
+<dd><p>Genera gráficos de barras para las variables categóricas seleccionadas.</p>
+<p>Este método crea gráficos de barras para analizar la distribución de las variables categóricas 
+en el conjunto de datos. Si se seleccionan múltiples variables, se generarán subgráficos.</p>
+<section id="id3">
+<h3>Parameters<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>data: pd.DataFrame</dt><dd><p>Conjunto de datos que contiene las variables categóricas a graficar.</p>
+</dd>
+<dt>cat_vars: list[str] (default=None)</dt><dd><p>Lista de nombres de columnas categóricas a graficar. 
+Si no se proporciona, se utilizarán todas las variables categóricas identificadas.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id4">
+<h3>Returns<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>None: Este método no retorna ningún valor. Genera gráficos directamente.</p>
+</div></blockquote>
+</section>
+<section id="id5">
+<h3>Raises<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>ValueError: Si alguna de las variables proporcionadas en <cite>cat_vars</cite> no se encuentra</dt><dd><p>en las variables categóricas identificadas.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EDA.EDAProcessor.plot_correlations">
+<span class="sig-name descname"><span class="pre">plot_correlations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/EDA.html#EDAProcessor.plot_correlations"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#EDA.EDAProcessor.plot_correlations" title="Link to this definition"></a></dt>
+<dd><p>Genera un mapa de calor para visualizar las correlaciones entre variables numéricas.</p>
+<p>Este método utiliza la matriz de correlación calculada previamente (<cite>self.df_corr</cite>)
+para crear un mapa de calor, lo que facilita el análisis de relaciones entre variables numéricas.</p>
+<section id="id6">
+<h3>Parameters<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>None: Este método no requiere parámetros adicionales.</p>
+</div></blockquote>
+</section>
+<section id="id7">
+<h3>Returns<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>None: Este método no retorna ningún valor. Genera un gráfico directamente.</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EDA.EDAProcessor.plot_histogram_vs_target">
+<span class="sig-name descname"><span class="pre">plot_histogram_vs_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cat_vars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EDA.html#EDAProcessor.plot_histogram_vs_target"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#EDA.EDAProcessor.plot_histogram_vs_target" title="Link to this definition"></a></dt>
+<dd><p>Genera gráficos de barras agrupados para analizar la relación entre variables categóricas y el target.</p>
+<p>Este método crea gráficos de barras para cada variable categórica seleccionada, mostrando
+la frecuencia de sus valores desglosados por las categorías de la columna objetivo (<cite>target</cite>).</p>
+<section id="id8">
+<h3>Parameters<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>data: pd.DataFrame</dt><dd><p>Conjunto de datos que contiene las variables categóricas a analizar.</p>
+</dd>
+<dt>cat_vars: list[str] (default=None)</dt><dd><p>Lista de nombres de columnas categóricas a analizar. 
+Si no se proporciona, se utilizarán todas las variables categóricas identificadas.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id9">
+<h3>Returns<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>None: Este método no retorna ningún valor. Genera gráficos directamente.</p>
+</div></blockquote>
+</section>
+<section id="id10">
+<h3>Raises<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>ValueError: Si alguna de las variables proporcionadas en <cite>cat_vars</cite> no se encuentra</dt><dd><p>en las variables categóricas identificadas.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EDA.EDAProcessor.plot_numerical_variables">
+<span class="sig-name descname"><span class="pre">plot_numerical_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_vars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EDA.html#EDAProcessor.plot_numerical_variables"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#EDA.EDAProcessor.plot_numerical_variables" title="Link to this definition"></a></dt>
+<dd><p>Genera histogramas para las variables numéricas seleccionadas.</p>
+<p>Este método crea histogramas para analizar la distribución de las variables numéricas
+en el conjunto de datos. Si se seleccionan múltiples variables, se generarán subgráficos.</p>
+<section id="id11">
+<h3>Parameters<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>data: pd.DataFrame</dt><dd><p>Conjunto de datos que contiene las variables a graficar.</p>
+</dd>
+<dt>num_vars: list[str] (default=None)</dt><dd><p>Lista de nombres de columnas numéricas a graficar. 
+Si no se proporciona, se utilizarán todas las variables numéricas identificadas.</p>
+</dd>
+<dt>figsize: tuple (default=None)</dt><dd><p>Dimensiones de la figura (ancho, alto). Si no se proporciona, se establecerán valores predeterminados.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id12">
+<h3>Returns<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>None: Este método no retorna ningún valor. Genera un gráfico directamente.</p>
+</div></blockquote>
+</section>
+<section id="id13">
+<h3>Raises<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>ValueError: Si alguna de las variables proporcionadas en <cite>num_vars</cite> no se encuentra</dt><dd><p>en las variables numéricas identificadas.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EDA.EDAProcessor.plot_numerical_vs_target">
+<span class="sig-name descname"><span class="pre">plot_numerical_vs_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_vars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EDA.html#EDAProcessor.plot_numerical_vs_target"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#EDA.EDAProcessor.plot_numerical_vs_target" title="Link to this definition"></a></dt>
+<dd><p>Genera gráficos de caja (boxplots) para analizar la relación entre variables numéricas y el target.</p>
+<p>Este método crea un gráfico de caja para cada variable numérica seleccionada, 
+mostrando la distribución de sus valores con respecto a las categorías de la columna objetivo (<cite>target</cite>).</p>
+<section id="id14">
+<h3>Parameters<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>data: pd.DataFrame</dt><dd><p>Conjunto de datos que contiene las variables a analizar.</p>
+</dd>
+<dt>num_vars: list[str] (default=None)</dt><dd><p>Lista de nombres de columnas numéricas a analizar. 
+Si no se proporciona, se utilizarán todas las variables numéricas identificadas.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id15">
+<h3>Returns<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>None: Este método no retorna ningún valor. Genera gráficos directamente.</p>
+</div></blockquote>
+</section>
+<section id="id16">
+<h3>Raises<a class="headerlink" href="#id16" title="Link to this heading"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>ValueError: Si alguna de las variables proporcionadas en <cite>num_vars</cite> no se encuentra </dt><dd><p>en las variables numéricas identificadas.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EDA.EDAProcessor.plot_target">
+<span class="sig-name descname"><span class="pre">plot_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EDA.html#EDAProcessor.plot_target"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#EDA.EDAProcessor.plot_target" title="Link to this definition"></a></dt>
+<dd><p>Genera un gráfico de barras para analizar la distribución del target.</p>
+<p>Este método crea un gráfico de barras que muestra la frecuencia de cada categoría 
+en la columna objetivo (<cite>target</cite>) del conjunto de datos.</p>
+<section id="id17">
+<h3>Parameters<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>data: pd.DataFrame</dt><dd><p>Conjunto de datos que contiene la columna objetivo.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id18">
+<h3>Returns<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>None: Este método no retorna ningún valor. Genera un gráfico directamente.</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EDA.EDAProcessor.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EDA.html#EDAProcessor.run"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#EDA.EDAProcessor.run" title="Link to this definition"></a></dt>
+<dd><p>Ejecuta el análisis exploratorio de datos.</p>
+<p>El EDA realiza tres pasos:</p>
+<ol class="arabic simple">
+<li><p>Identifica el tipo de variable (numérica, categórica, etc.).</p></li>
+<li><p>Calcula valores faltantes y duplicados.</p></li>
+<li><p>Calcula la matriz de correlación.</p></li>
+</ol>
+<section id="id19">
+<h3>Parameters<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>data<span class="classifier">pandas.DataFrame</span></dt><dd><p>Conjunto de datos a analizar.</p>
+</dd>
+</dl>
+</section>
+<section id="id20">
+<h3>Raises<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>TypeError: Si el argumento <cite>data</cite> no es un DataFrame de pandas.</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="modules.html" class="btn btn-neutral float-left" title="credit-card" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="Modelling.html" class="btn btn-neutral float-right" title="Modelling module" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Cristina Domínguez and Mario Río.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

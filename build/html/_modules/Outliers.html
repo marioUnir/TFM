@@ -1,0 +1,744 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Outliers &mdash; TFM - UNIR | Documentación de la librería credit-card</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3ddd9672" />
+
+  
+    <link rel="shortcut icon" href="../_static/unir_logo.png"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e2bb6099"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=d190bf04"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            credit-card
+              <img src="../_static/unir_logo.png" class="logo" alt="Logotipo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Navegación</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">credit-card</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../EDA.html">EDA module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor"><code class="docutils literal notranslate"><span class="pre">EDAProcessor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.distribution_variable"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.distribution_variable()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.get_results"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.get_results()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.plot_categorical_variables"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_categorical_variables()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.plot_correlations"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_correlations()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.plot_histogram_vs_target"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_histogram_vs_target()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.plot_numerical_variables"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_numerical_variables()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.plot_numerical_vs_target"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_numerical_vs_target()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.plot_target"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_target()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.run"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Modelling.html">Modelling module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.best_models"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.best_models</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.eval_model_test"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.eval_model_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.evaluation_df"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.evaluation_df</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.get_metrics_all_models"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.get_metrics_all_models()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.get_metrics_by_class_all_models"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.get_metrics_by_class_all_models()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.grid_results_df"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.grid_results_df</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.plot_evaluation_metrics"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.plot_evaluation_metrics()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.plot_roc_curve"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.plot_roc_curve()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.run"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.save_results"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.save_results()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Outliers.html">Outliers module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Outliers.html#Outliers.OutliersDetection"><code class="docutils literal notranslate"><span class="pre">OutliersDetection</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Outliers.html#Outliers.OutliersDetection.combine_categories"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.combine_categories()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Outliers.html#Outliers.OutliersDetection.get_outliers"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.get_outliers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Outliers.html#Outliers.OutliersDetection.get_results"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.get_results()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Outliers.html#Outliers.OutliersDetection.get_results_cat_vars"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.get_results_cat_vars()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Outliers.html#Outliers.OutliersDetection.run"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Outliers.html#Outliers.OutliersDetection.transform"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.transform()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Preprocessing.html">Preprocessing module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Preprocessing.html#Preprocessing.Preprocessing"><code class="docutils literal notranslate"><span class="pre">Preprocessing</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Preprocessing.html#Preprocessing.Preprocessing.fit_transform"><code class="docutils literal notranslate"><span class="pre">Preprocessing.fit_transform()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">credit-card</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">Outliers</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para Outliers</h1><div class="highlight"><pre>
+<span></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">IsolationForest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">LocalOutlierFactor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.mixture</span><span class="w"> </span><span class="kn">import</span> <span class="n">GaussianMixture</span>
+
+
+<div class="viewcode-block" id="OutliersDetection">
+<a class="viewcode-back" href="../Outliers.html#Outliers.OutliersDetection">[documentos]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">OutliersDetection</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Clase para la detección de valores atípicos (outliers) en variables numéricas y categóricas.</span>
+
+<span class="sd">    Parámetros</span>
+<span class="sd">    ----------</span>
+<span class="sd">    method : str</span>
+<span class="sd">        Método para detectar valores atípicos. Puede ser uno de los siguientes:</span>
+<span class="sd">        - &quot;IQR&quot;: Rango intercuartílico</span>
+<span class="sd">        - &quot;std&quot;: Desviación estándar</span>
+<span class="sd">        - &quot;IForest&quot;: Isolation Forest</span>
+<span class="sd">        - &quot;LOF&quot;: Local Outlier Factor</span>
+<span class="sd">        - &quot;GMM&quot;: Gaussian Mixture Model</span>
+<span class="sd">        - &quot;all&quot;: Aplica todos los métodos disponibles</span>
+
+<span class="sd">    k : float, opcional (default=1.5)</span>
+<span class="sd">        Valor multiplicador del rango intercuartílico (IQR) o desviación estándar para definir los límites</span>
+<span class="sd">        de detección de outliers:</span>
+
+<span class="sd">        Si `method` es &quot;IQR&quot;, los límites son:</span>
+<span class="sd">        .. math::</span>
+
+<span class="sd">            \\text{lower_limit} = Q_1 - k * (Q_3 - Q_1)\\\\</span>
+<span class="sd">            \\text{upper_limit} = Q_3 + k * (Q_3 - Q_1)</span>
+
+<span class="sd">        Si `method` es &quot;std&quot;, los límites son:</span>
+<span class="sd">        .. math::</span>
+
+<span class="sd">            \\text{lower_limit} = media - k * desviación\\\\</span>
+<span class="sd">            \\text{upper_limit} = media + k * desviación</span>
+
+<span class="sd">    threshold : float, opcional (default=0.05)</span>
+<span class="sd">        Umbral para identificar valores atípicos en variables categóricas, basado en la frecuencia relativa.</span>
+
+<span class="sd">    seed : int, opcional (default=42)</span>
+<span class="sd">        Semilla para los métodos que requieren aleatoriedad.</span>
+
+<span class="sd">    estimator : object, opcional (default=None)</span>
+<span class="sd">        Estimador personalizado. Puede ser una instancia de `IsolationForest`, `LocalOutlierFactor`</span>
+<span class="sd">        o `GaussianMixture`.</span>
+
+<span class="sd">    contamination : float, opcional (default=0.05)</span>
+<span class="sd">        Proporción de datos considerados como valores atípicos para los métodos basados en estimadores.</span>
+
+<span class="sd">    n_neighbors : int, opcional (default=20)</span>
+<span class="sd">        Número de vecinos para el método Local Outlier Factor.</span>
+
+<span class="sd">    n_components : int, opcional (default=2)</span>
+<span class="sd">        Número de componentes en el modelo Gaussian Mixture.</span>
+
+<span class="sd">    Atributos</span>
+<span class="sd">    ---------</span>
+<span class="sd">    numerical_features : list</span>
+<span class="sd">        Lista de nombres de variables numéricas en el conjunto de datos.</span>
+
+<span class="sd">    categorical_features : list</span>
+<span class="sd">        Lista de nombres de variables categóricas en el conjunto de datos.</span>
+
+<span class="sd">    dict_column : dict</span>
+<span class="sd">        Diccionario con los resultados de la detección de outliers en variables numéricas.</span>
+
+<span class="sd">    dict_column_cat : dict</span>
+<span class="sd">        Diccionario con los resultados de la detección de outliers en variables categóricas.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">method</span><span class="p">,</span>
+            <span class="n">k</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+            <span class="n">threshold</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+            <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+            <span class="n">estimator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">contamination</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+            <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+            <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span>
+    <span class="p">):</span>
+        <span class="c1"># Inicialización de parámetros clave</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="n">method</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="n">k</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="n">threshold</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">estimator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">contamination</span> <span class="o">=</span> <span class="n">contamination</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_neighbors</span> <span class="o">=</span> <span class="n">n_neighbors</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_components</span> <span class="o">=</span> <span class="n">n_components</span>
+
+        <span class="c1"># Inicializa atributos para almacenar resultados</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">numerical_features</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">categorical_features</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dict_column_cat</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># Verifica que los parámetros sean válidos</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_parameters</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_check_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Verifica que los parámetros iniciales sean válidos.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;IQR&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="s2">&quot;IForest&quot;</span><span class="p">,</span> <span class="s2">&quot;LOF&quot;</span><span class="p">,</span> <span class="s2">&quot;GMM&quot;</span><span class="p">,</span> <span class="s2">&quot;all&quot;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;`method` debe ser &#39;IQR&#39;, &#39;std&#39;, &#39;IForest&#39;, &#39;LOF&#39;, &#39;GMM&#39; o &#39;all&#39;.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;IQR&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;`k` debe ser un número si se utiliza el método &#39;IQR&#39; o &#39;std&#39;.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Comprueba que el estimador sea válido</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="p">,</span> <span class="n">IsolationForest</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;IForest&quot;</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="p">,</span> <span class="n">LocalOutlierFactor</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;LOF&quot;</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="p">,</span> <span class="n">GaussianMixture</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;GMM&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;`estimator` debe ser una instancia de IsolationForest, LocalOutlierFactor o GaussianMixture.&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="OutliersDetection.run">
+<a class="viewcode-back" href="../Outliers.html#Outliers.OutliersDetection.run">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Ejecuta el análisis de detección de valores atípicos.</span>
+
+<span class="sd">        Parámetros</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : pandas.DataFrame</span>
+<span class="sd">            Conjunto de datos sobre el que se detectarán valores atípicos.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;`data` debe ser un DataFrame de pandas.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Identifica las variables numéricas y categóricas</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">numerical_features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">categorical_features</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_numerical_categorical_features</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="c1"># Ejecuta la detección de valores atípicos</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_detect_outliers</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_numerical_categorical_features</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Identifica variables numéricas y categóricas en el conjunto de datos.</span>
+
+<span class="sd">        Parámetros</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : pandas.DataFrame</span>
+<span class="sd">            Conjunto de datos.</span>
+
+<span class="sd">        Retorna</span>
+<span class="sd">        -------</span>
+<span class="sd">        tuple</span>
+<span class="sd">            Listas de variables numéricas y categóricas.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">numerical_vars</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;number&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">categorical_vars</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;number&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+        <span class="c1"># Incluye variables numéricas que tienen menos de 10 valores únicos como categóricas</span>
+        <span class="n">categorical_vars</span> <span class="o">+=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numerical_vars</span> <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">]</span>
+        <span class="n">numerical_vars</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numerical_vars</span> <span class="k">if</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">categorical_vars</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">numerical_vars</span><span class="p">,</span> <span class="n">categorical_vars</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_initialize_estimator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Inicializa el estimador para métodos que lo requieran.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;IForest&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">IsolationForest</span><span class="p">(</span><span class="n">contamination</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">contamination</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;LOF&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">LocalOutlierFactor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_neighbors</span><span class="p">,</span> <span class="n">contamination</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">contamination</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;GMM&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_components</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_detect_outliers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Detecta valores atípicos según el método seleccionado.</span>
+
+<span class="sd">        Parámetros</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : pandas.DataFrame</span>
+<span class="sd">            Conjunto de datos en el que se detectarán valores atípicos.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;** Variables Numéricas **&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_detect_outliers_numerical</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># Detección en variables numéricas</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;** Variables Categóricas **&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_detect_outliers_categorical</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># Detección en variables categóricas</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_detect_outliers_numerical</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Detecta valores atípicos en variables numéricas según el método.</span>
+
+<span class="sd">        Parámetros</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : pandas.DataFrame</span>
+<span class="sd">            Conjunto de datos en el que se detectarán valores atípicos.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;all&quot;</span><span class="p">:</span>
+            <span class="c1"># Ejecuta todos los métodos y almacena resultados</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">all_methods</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;IQR&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="s2">&quot;IForest&quot;</span><span class="p">,</span> <span class="s2">&quot;LOF&quot;</span><span class="p">,</span> <span class="s2">&quot;GMM&quot;</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">method</span> <span class="ow">in</span> <span class="n">all_methods</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ejecutando método </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="n">method</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_estimator</span><span class="p">()</span>  <span class="c1"># Inicializa el estimador si es necesario</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">if</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;IForest&quot;</span><span class="p">,</span> <span class="s2">&quot;LOF&quot;</span><span class="p">,</span> <span class="s2">&quot;GMM&quot;</span><span class="p">]:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_detect_outliers_iforest_lof</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="k">if</span> <span class="n">method</span> <span class="o">!=</span> <span class="s2">&quot;GMM&quot;</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_detect_outliers_gmm</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;_detect_outliers_</span><span class="si">{</span><span class="n">method</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)(</span><span class="n">data</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span>  <span class="c1"># Resetea el método a &#39;all&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;IForest&quot;</span><span class="p">,</span> <span class="s2">&quot;LOF&quot;</span><span class="p">,</span> <span class="s2">&quot;GMM&quot;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_estimator</span><span class="p">()</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;IForest&quot;</span><span class="p">,</span> <span class="s2">&quot;LOF&quot;</span><span class="p">]:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_detect_outliers_iforest_lof</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_detect_outliers_gmm</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;_detect_outliers_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_detect_outliers_iqr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Detecta valores atípicos usando el método del rango intercuartílico (IQR).</span>
+
+<span class="sd">        Parámetros</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : pandas.DataFrame</span>
+<span class="sd">            Conjunto de datos en el que se detectarán valores atípicos.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerical_features</span><span class="p">:</span>
+            <span class="c1"># Calcula el rango intercuartílico</span>
+            <span class="n">Q1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+            <span class="n">Q3</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
+            <span class="n">IQR</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">-</span> <span class="n">Q1</span>
+
+            <span class="c1"># Calcula los límites</span>
+            <span class="n">lb</span> <span class="o">=</span> <span class="n">Q1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">*</span> <span class="n">IQR</span>
+            <span class="n">ub</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">*</span> <span class="n">IQR</span>
+
+            <span class="c1"># Identifica los outliers</span>
+            <span class="n">outliers</span> <span class="o">=</span> <span class="n">data</span><span class="p">[(</span><span class="n">data</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">lb</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">ub</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+            <span class="n">outliers_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">outliers</span><span class="p">)</span>
+            <span class="n">outliers_perc</span> <span class="o">=</span> <span class="p">(</span><span class="n">outliers_count</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span>
+
+            <span class="c1"># Guarda resultados</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">][</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;Q1&quot;</span><span class="p">:</span> <span class="n">Q1</span><span class="p">,</span>
+                <span class="s2">&quot;Q3&quot;</span><span class="p">:</span> <span class="n">Q3</span><span class="p">,</span>
+                <span class="s2">&quot;IQR&quot;</span><span class="p">:</span> <span class="n">IQR</span><span class="p">,</span>
+                <span class="s2">&quot;lb&quot;</span><span class="p">:</span> <span class="n">lb</span><span class="p">,</span>
+                <span class="s2">&quot;ub&quot;</span><span class="p">:</span> <span class="n">ub</span><span class="p">,</span>
+                <span class="s2">&quot;n_outliers&quot;</span><span class="p">:</span> <span class="n">outliers_count</span><span class="p">,</span>
+                <span class="s2">&quot;p_outliers&quot;</span><span class="p">:</span> <span class="n">outliers_perc</span><span class="p">,</span>
+            <span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_detect_outliers_std</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Detecta valores atípicos usando el método de desviación estándar.</span>
+
+<span class="sd">        Parámetros</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : pandas.DataFrame</span>
+<span class="sd">            Conjunto de datos en el que se detectarán valores atípicos.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerical_features</span><span class="p">:</span>
+            <span class="c1"># Calcula la media y la desviación estándar</span>
+            <span class="n">mean</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+            <span class="n">std_dev</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+            <span class="c1"># Calcula los límites</span>
+            <span class="n">lb</span> <span class="o">=</span> <span class="n">mean</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">*</span> <span class="n">std_dev</span>
+            <span class="n">ub</span> <span class="o">=</span> <span class="n">mean</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">*</span> <span class="n">std_dev</span>
+
+            <span class="c1"># Identifica los outliers</span>
+            <span class="n">outliers</span> <span class="o">=</span> <span class="n">data</span><span class="p">[(</span><span class="n">data</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">lb</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">ub</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+            <span class="n">outliers_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">outliers</span><span class="p">)</span>
+            <span class="n">outliers_perc</span> <span class="o">=</span> <span class="p">(</span><span class="n">outliers_count</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span>
+
+            <span class="c1"># Guarda resultados en el diccionario</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">][</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="n">mean</span><span class="p">,</span>
+                <span class="s2">&quot;std_dev&quot;</span><span class="p">:</span> <span class="n">std_dev</span><span class="p">,</span>
+                <span class="s2">&quot;lb&quot;</span><span class="p">:</span> <span class="n">lb</span><span class="p">,</span>
+                <span class="s2">&quot;ub&quot;</span><span class="p">:</span> <span class="n">ub</span><span class="p">,</span>
+                <span class="s2">&quot;n_outliers&quot;</span><span class="p">:</span> <span class="n">outliers_count</span><span class="p">,</span>
+                <span class="s2">&quot;p_outliers&quot;</span><span class="p">:</span> <span class="n">outliers_perc</span><span class="p">,</span>
+            <span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_detect_outliers_iforest_lof</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Detecta valores atípicos utilizando Isolation Forest o Local Outlier Factor.</span>
+
+<span class="sd">        Parámetros</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : pandas.DataFrame</span>
+<span class="sd">            Conjunto de datos en el que se detectarán valores atípicos.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerical_features</span><span class="p">:</span>
+            <span class="c1"># Prepara los datos como un array 2D (necesario para los modelos)</span>
+            <span class="n">data_reshaped</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+            <span class="c1"># Genera las predicciones (-1 indica outliers)</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">data_reshaped</span><span class="p">)</span>
+            <span class="n">outliers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">labels</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">outliers_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">outliers</span><span class="p">)</span>
+            <span class="n">outliers_perc</span> <span class="o">=</span> <span class="p">(</span><span class="n">outliers_count</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span>
+
+            <span class="c1"># Guarda los resultados</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">][</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;n_outliers&quot;</span><span class="p">:</span> <span class="n">outliers_count</span><span class="p">,</span>
+                <span class="s2">&quot;p_outliers&quot;</span><span class="p">:</span> <span class="n">outliers_perc</span><span class="p">,</span>
+            <span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_detect_outliers_gmm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Detecta valores atípicos utilizando Gaussian Mixture Model.</span>
+
+<span class="sd">        Parámetros</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : pandas.DataFrame</span>
+<span class="sd">            Conjunto de datos en el que se detectarán valores atípicos.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerical_features</span><span class="p">:</span>
+            <span class="c1"># Prepara los datos como un array 2D (necesario para los modelos)</span>
+            <span class="n">data_reshaped</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+            <span class="c1"># Ajusta el modelo y calcula las puntuaciones</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_reshaped</span><span class="p">)</span>
+            <span class="n">scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">score_samples</span><span class="p">(</span><span class="n">data_reshaped</span><span class="p">)</span>
+
+            <span class="c1"># Calcula un umbral basado en el percentil inferior (5% por defecto)</span>
+            <span class="n">threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="n">outliers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">scores</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">outliers_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">outliers</span><span class="p">)</span>
+            <span class="n">outliers_perc</span> <span class="o">=</span> <span class="p">(</span><span class="n">outliers_count</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span>
+
+            <span class="c1"># Guarda los resultados</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">][</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;n_outliers&quot;</span><span class="p">:</span> <span class="n">outliers_count</span><span class="p">,</span>
+                <span class="s2">&quot;p_outliers&quot;</span><span class="p">:</span> <span class="n">outliers_perc</span><span class="p">,</span>
+            <span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_detect_outliers_categorical</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Identifica valores atípicos en variables categóricas basados en su frecuencia relativa.</span>
+
+<span class="sd">        Parámetros</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : pandas.DataFrame</span>
+<span class="sd">            Conjunto de datos en el que se detectarán valores atípicos.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">categorical_features</span><span class="p">:</span>
+            <span class="c1"># Calcula la frecuencia relativa de cada categoría</span>
+            <span class="n">value_counts</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="c1"># Filtra categorías con frecuencias menores al umbral</span>
+            <span class="n">series</span> <span class="o">=</span> <span class="n">value_counts</span><span class="p">[</span><span class="n">value_counts</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span><span class="p">]</span>
+            <span class="n">categories</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+            <span class="c1"># Cuenta los valores atípicos en estas categorías</span>
+            <span class="n">n_outliers</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">categories</span><span class="p">)])</span> <span class="k">if</span> <span class="n">categories</span> <span class="k">else</span> <span class="mi">0</span>
+            <span class="n">p_outliers</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_outliers</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span>
+
+            <span class="c1"># Guarda resultados en el diccionario</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dict_column_cat</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;n_outliers&quot;</span><span class="p">:</span> <span class="n">n_outliers</span><span class="p">,</span>
+                <span class="s2">&quot;p_outliers&quot;</span><span class="p">:</span> <span class="n">p_outliers</span><span class="p">,</span>
+                <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">index</span><span class="p">))</span> <span class="k">if</span> <span class="n">n_outliers</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+            <span class="p">}</span>
+
+<div class="viewcode-block" id="OutliersDetection.get_outliers">
+<a class="viewcode-back" href="../Outliers.html#Outliers.OutliersDetection.get_outliers">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_outliers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Obtiene la lista de índices de valores atípicos para una variable específica.</span>
+
+<span class="sd">        Parámetros</span>
+<span class="sd">        ----------</span>
+<span class="sd">        variable : str</span>
+<span class="sd">            Nombre de la variable de la cual se quieren obtener los índices de valores atípicos.</span>
+
+<span class="sd">        Retorna</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            Lista de índices de los valores atípicos.</span>
+
+<span class="sd">        Lanza</span>
+<span class="sd">        -----</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            Si la variable no ha sido analizada previamente.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Verifica si la variable fue analizada</span>
+        <span class="k">if</span> <span class="n">variable</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;La variable </span><span class="si">{</span><span class="n">variable</span><span class="si">}</span><span class="s2"> no ha sido analizada.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Devuelve los índices de los outliers detectados</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;outliers&quot;</span><span class="p">,</span> <span class="p">[])</span></div>
+
+
+<div class="viewcode-block" id="OutliersDetection.get_results">
+<a class="viewcode-back" href="../Outliers.html#Outliers.OutliersDetection.get_results">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Devuelve un resumen de los valores atípicos detectados para variables numéricas.</span>
+
+<span class="sd">        Parámetros</span>
+<span class="sd">        ----------</span>
+<span class="sd">        method : str, opcional</span>
+<span class="sd">            Método específico para el cual se quieren los resultados.</span>
+<span class="sd">            Si no se especifica, se devolverán resultados de todos los métodos.</span>
+
+<span class="sd">        Retorna</span>
+<span class="sd">        -------</span>
+<span class="sd">        pandas.DataFrame</span>
+<span class="sd">            Resumen de los valores atípicos detectados por variable y método.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">method</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;El método </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2"> no ha sido aplicado.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">!=</span> <span class="s2">&quot;all&quot;</span><span class="p">:</span>
+            <span class="c1"># Retorna resultados para el método actual</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Combina resultados de todos los métodos</span>
+            <span class="k">if</span> <span class="n">method</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="n">method</span><span class="p">,</span> <span class="n">variables</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">for</span> <span class="n">var</span><span class="p">,</span> <span class="n">metrics</span> <span class="ow">in</span> <span class="n">variables</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                        <span class="k">if</span> <span class="n">var</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+                            <span class="n">results</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+                        <span class="n">results</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2"> n_outliers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;n_outliers&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+                        <span class="n">results</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2"> p_outliers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;p_outliers&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">[</span><span class="n">method</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="o">.</span><span class="n">T</span></div>
+
+
+<div class="viewcode-block" id="OutliersDetection.get_results_cat_vars">
+<a class="viewcode-back" href="../Outliers.html#Outliers.OutliersDetection.get_results_cat_vars">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_results_cat_vars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Devuelve un resumen de los valores atípicos detectados en variables categóricas.</span>
+
+<span class="sd">        Retorna</span>
+<span class="sd">        -------</span>
+<span class="sd">        pandas.DataFrame</span>
+<span class="sd">            Resumen de los valores atípicos detectados para cada variable categórica.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Convierte el diccionario de resultados a un DataFrame</span>
+        <span class="n">results_cat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dict_column_cat</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+        <span class="k">return</span> <span class="n">results_cat</span></div>
+
+
+<div class="viewcode-block" id="OutliersDetection.transform">
+<a class="viewcode-back" href="../Outliers.html#Outliers.OutliersDetection.transform">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sustituye los valores atípicos detectados con la mediana o la media.</span>
+
+<span class="sd">        Parámetros</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : pandas.DataFrame</span>
+<span class="sd">            Conjunto de datos original.</span>
+
+<span class="sd">        method : str</span>
+<span class="sd">            Método utilizado para identificar los valores atípicos.</span>
+
+<span class="sd">        metric : str o dict, opcional</span>
+<span class="sd">            Puede ser &quot;median&quot; o &quot;mean&quot; para aplicar el mismo valor a todas las variables,</span>
+<span class="sd">            o un diccionario para aplicar una métrica diferente a cada variable.</span>
+
+<span class="sd">        Retorna</span>
+<span class="sd">        -------</span>
+<span class="sd">        pandas.DataFrame</span>
+<span class="sd">            Nuevo DataFrame con los valores atípicos sustituidos.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;El método </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2"> no ha sido aplicado. &quot;</span>
+                             <span class="sa">f</span><span class="s2">&quot;Métodos disponibles: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">metric</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">metric</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;median&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">]:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;`metric` debe ser &#39;median&#39; o &#39;mean&#39;.&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">metric</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;`metric` debe ser un string o un diccionario.&quot;</span><span class="p">)</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">get_metric</span><span class="p">(</span><span class="n">data_transformed</span><span class="p">,</span> <span class="n">metric</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Calcula la mediana o media para la variable especificada.</span>
+
+<span class="sd">            Parámetros</span>
+<span class="sd">            ----------</span>
+<span class="sd">            data_transformed : pandas.DataFrame</span>
+<span class="sd">                DataFrame transformado.</span>
+
+<span class="sd">            metric : str o dict</span>
+<span class="sd">                Métrica a utilizar.</span>
+
+<span class="sd">            var : str</span>
+<span class="sd">                Nombre de la variable.</span>
+
+<span class="sd">            Retorna</span>
+<span class="sd">            -------</span>
+<span class="sd">            float</span>
+<span class="sd">                Valor de la métrica.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">metric</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">metric</span> <span class="o">==</span> <span class="s2">&quot;median&quot;</span><span class="p">:</span>
+                    <span class="n">_metric</span> <span class="o">=</span> <span class="n">data_transformed</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">_metric</span> <span class="o">=</span> <span class="n">data_transformed</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">metric</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">metric</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;median&quot;</span><span class="p">:</span>
+                    <span class="n">_metric</span> <span class="o">=</span> <span class="n">data_transformed</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+                <span class="k">elif</span> <span class="n">metric</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;mean&quot;</span><span class="p">:</span>
+                    <span class="n">_metric</span> <span class="o">=</span> <span class="n">data_transformed</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`metric` no es válido para la variable </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">_metric</span>
+
+        <span class="c1"># Copia el DataFrame original</span>
+        <span class="n">data_transformed</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="c1"># Reemplaza los valores atípicos</span>
+        <span class="k">for</span> <span class="n">var</span><span class="p">,</span> <span class="n">metrics</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">[</span><span class="n">method</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="s2">&quot;lb&quot;</span> <span class="ow">in</span> <span class="n">metrics</span> <span class="ow">and</span> <span class="s2">&quot;ub&quot;</span> <span class="ow">in</span> <span class="n">metrics</span><span class="p">:</span>
+                <span class="c1"># Para métodos como IQR y std</span>
+                <span class="n">lb</span> <span class="o">=</span> <span class="n">metrics</span><span class="p">[</span><span class="s2">&quot;lb&quot;</span><span class="p">]</span>
+                <span class="n">ub</span> <span class="o">=</span> <span class="n">metrics</span><span class="p">[</span><span class="s2">&quot;ub&quot;</span><span class="p">]</span>
+                <span class="n">_metric</span> <span class="o">=</span> <span class="n">get_metric</span><span class="p">(</span><span class="n">data_transformed</span><span class="p">,</span> <span class="n">metric</span><span class="p">,</span> <span class="n">var</span><span class="p">)</span>
+                <span class="n">data_transformed</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_transformed</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">_metric</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">lb</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">ub</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="s2">&quot;n_outliers&quot;</span> <span class="ow">in</span> <span class="n">metrics</span><span class="p">:</span>
+                <span class="c1"># Para métodos como IForest, LOF, GMM</span>
+                <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+                <span class="n">outlier_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">labels</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">_metric</span> <span class="o">=</span> <span class="n">get_metric</span><span class="p">(</span><span class="n">data_transformed</span><span class="p">,</span> <span class="n">metric</span><span class="p">,</span> <span class="n">var</span><span class="p">)</span>
+                <span class="n">data_transformed</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">outlier_indices</span><span class="p">,</span> <span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="n">_metric</span>
+
+        <span class="k">return</span> <span class="n">data_transformed</span></div>
+
+
+<div class="viewcode-block" id="OutliersDetection.combine_categories">
+<a class="viewcode-back" href="../Outliers.html#Outliers.OutliersDetection.combine_categories">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">combine_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">rare_categories</span><span class="p">,</span> <span class="n">new_category</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Combina categorías poco frecuentes en una categoría existente o nueva.</span>
+
+<span class="sd">        Parámetros</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : pandas.DataFrame</span>
+<span class="sd">            Conjunto de datos original.</span>
+
+<span class="sd">        var : str</span>
+<span class="sd">            Nombre de la variable categórica.</span>
+
+<span class="sd">        rare_categories : list</span>
+<span class="sd">            Lista de categorías que se combinarán.</span>
+
+<span class="sd">        new_category : str</span>
+<span class="sd">            Nombre de la nueva categoría que representará las categorías combinadas.</span>
+
+<span class="sd">        Retorna</span>
+<span class="sd">        -------</span>
+<span class="sd">        pandas.DataFrame</span>
+<span class="sd">            DataFrame modificado con las categorías combinadas.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Reemplaza las categorías poco frecuentes por la nueva categoría</span>
+        <span class="n">data</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">new_category</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">rare_categories</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span></div>
+</div>
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Cristina Domínguez and Mario Río.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

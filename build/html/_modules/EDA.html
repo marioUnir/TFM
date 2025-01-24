@@ -1,0 +1,846 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EDA &mdash; TFM - UNIR | Documentación de la librería credit-card</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3ddd9672" />
+
+  
+    <link rel="shortcut icon" href="../_static/unir_logo.png"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e2bb6099"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=d190bf04"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            credit-card
+              <img src="../_static/unir_logo.png" class="logo" alt="Logotipo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Navegación</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">credit-card</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../EDA.html">EDA module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor"><code class="docutils literal notranslate"><span class="pre">EDAProcessor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.distribution_variable"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.distribution_variable()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.get_results"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.get_results()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.plot_categorical_variables"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_categorical_variables()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.plot_correlations"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_correlations()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.plot_histogram_vs_target"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_histogram_vs_target()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.plot_numerical_variables"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_numerical_variables()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.plot_numerical_vs_target"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_numerical_vs_target()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.plot_target"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_target()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.run"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Modelling.html">Modelling module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.best_models"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.best_models</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.eval_model_test"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.eval_model_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.evaluation_df"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.evaluation_df</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.get_metrics_all_models"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.get_metrics_all_models()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.get_metrics_by_class_all_models"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.get_metrics_by_class_all_models()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.grid_results_df"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.grid_results_df</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.plot_evaluation_metrics"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.plot_evaluation_metrics()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.plot_roc_curve"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.plot_roc_curve()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.run"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.save_results"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.save_results()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Outliers.html">Outliers module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Outliers.html#Outliers.OutliersDetection"><code class="docutils literal notranslate"><span class="pre">OutliersDetection</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Outliers.html#Outliers.OutliersDetection.combine_categories"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.combine_categories()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Outliers.html#Outliers.OutliersDetection.get_outliers"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.get_outliers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Outliers.html#Outliers.OutliersDetection.get_results"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.get_results()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Outliers.html#Outliers.OutliersDetection.get_results_cat_vars"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.get_results_cat_vars()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Outliers.html#Outliers.OutliersDetection.run"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Outliers.html#Outliers.OutliersDetection.transform"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.transform()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Preprocessing.html">Preprocessing module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Preprocessing.html#Preprocessing.Preprocessing"><code class="docutils literal notranslate"><span class="pre">Preprocessing</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Preprocessing.html#Preprocessing.Preprocessing.fit_transform"><code class="docutils literal notranslate"><span class="pre">Preprocessing.fit_transform()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">credit-card</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">EDA</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para EDA</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+
+<div class="viewcode-block" id="EDAProcessor">
+<a class="viewcode-back" href="../EDA.html#EDA.EDAProcessor">[documentos]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">EDAProcessor</span><span class="p">:</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Clase para procesar tareas de análisis exploratorio de datos (EDA).</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">        dict_column : dict</span>
+<span class="sd">            Diccionario para almacenar metadatos de las columnas.</span>
+<span class="sd">        n_samples : int</span>
+<span class="sd">            Número de filas en el conjunto de datos.</span>
+<span class="sd">        n_columns : int</span>
+<span class="sd">            Número de columnas en el conjunto de datos.</span>
+<span class="sd">        column_names : list[str]</span>
+<span class="sd">            Lista con los nombres de las columnas.</span>
+<span class="sd">        categorical_features : list[str]</span>
+<span class="sd">            Lista de columnas categóricas.</span>
+<span class="sd">        numerical_features : list[str]</span>
+<span class="sd">            Lista de columnas numéricas.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        target : str: </span>
+<span class="sd">            Nombre de la columna objetivo.</span>
+<span class="sd">        ordinal_columns : list[str] </span>
+<span class="sd">            Lista de columnas ordinales.</span>
+<span class="sd">        exclude_columns : list[str] | None (default=None)</span>
+<span class="sd">            Columnas a excluir del análisis.</span>
+<span class="sd">        verbose : bool (default=True)</span>
+<span class="sd">            Indica si se imprimen mensajes durante el procesamiento.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">target</span><span class="p">,</span>
+            <span class="n">ordinal_columns</span><span class="p">,</span>
+            <span class="n">exclude_columns</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="n">target</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ordinal_columns</span> <span class="o">=</span> <span class="n">ordinal_columns</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">exclude_columns</span> <span class="o">=</span> <span class="n">exclude_columns</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_columns</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">column_names</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">categorical_features</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">numerical_features</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_initialize_dict_column</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Inicializa el diccionario para almacenar metadatos de cada columna.</span>
+
+<span class="sd">        Cada columna tendrá información como tipo de dato, cantidad y porcentaje de valores</span>
+<span class="sd">        faltantes, número de valores únicos y si tiene duplicados.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">dict_column_info</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;dtype&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;n_missing&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;p_missing&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s2">&quot;n_unique&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;is_duplicate&quot;</span><span class="p">:</span> <span class="kc">False</span>
+        <span class="p">}</span>
+
+        <span class="c1"># initialize dict of columns</span>
+        <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_names</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">dict_column_info</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<div class="viewcode-block" id="EDAProcessor.run">
+<a class="viewcode-back" href="../EDA.html#EDA.EDAProcessor.run">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Ejecuta el análisis exploratorio de datos.</span>
+
+<span class="sd">        El EDA realiza tres pasos: </span>
+
+<span class="sd">        1. Identifica el tipo de variable (numérica, categórica, etc.).</span>
+<span class="sd">        2. Calcula valores faltantes y duplicados.</span>
+<span class="sd">        3. Calcula la matriz de correlación.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : pandas.DataFrame</span>
+<span class="sd">            Conjunto de datos a analizar.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">            TypeError: Si el argumento `data` no es un DataFrame de pandas.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;`data` debe ser un DataFrame de Pandas.&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_columns</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">column_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_dict_column</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empezando EDA ...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Paso 1: Identifica variables numéricas y categóricas</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_variable_types</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="c1"># Paso 2: Encuentra missings y duplicados</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_missing_and_duplicates</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="c1"># Paso 3: Correlaciones</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_correlations</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;EDA completado ...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_variable_types</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Identifica variables numéricas y categóricas</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : pandas.DataFrame</span>
+<span class="sd">            Conjunto de datos a analizar.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">numerical_vars</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span>
+            <span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;number&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">categorical_vars</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span>
+            <span class="n">exclude</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;number&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+        <span class="c1"># Agrega variables explícitamente si algunos valores numéricos son categóricos </span>
+        <span class="c1"># (por ejemplo, Género, Matrimonio).</span>
+        <span class="n">categorical_vars</span> <span class="o">+=</span> <span class="p">[</span>
+            <span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numerical_vars</span> <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">10</span>
+        <span class="p">]</span>
+        <span class="n">numerical_vars</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numerical_vars</span> <span class="k">if</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">categorical_vars</span>
+        <span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_names</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">col</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">[</span><span class="n">col</span><span class="p">][</span><span class="s2">&quot;dtype&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;target&quot;</span>
+            <span class="k">elif</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numerical_vars</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">col</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ordinal_columns</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">[</span><span class="n">col</span><span class="p">][</span><span class="s2">&quot;dtype&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ordinal&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">[</span><span class="n">col</span><span class="p">][</span><span class="s2">&quot;dtype&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;numerical&quot;</span>
+            <span class="k">elif</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">categorical_vars</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">col</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ordinal_columns</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">[</span><span class="n">col</span><span class="p">][</span><span class="s2">&quot;dtype&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ordinal&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">[</span><span class="n">col</span><span class="p">][</span><span class="s2">&quot;dtype&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;categorical&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">categorical_features</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">categorical_vars</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ordinal_columns</span>
+            <span class="ow">and</span> <span class="n">x</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">target</span> <span class="ow">and</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">exclude_columns</span>
+        <span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">numerical_features</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">numerical_vars</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ordinal_columns</span>
+            <span class="ow">and</span> <span class="n">x</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">target</span> <span class="ow">and</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">exclude_columns</span>
+        <span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_calculate_missing_and_duplicates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calcula los valores faltantes y duplicados para cada columna y </span>
+<span class="sd">        se almacenan en dict_column.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : pandas.DataFrame</span>
+<span class="sd">            Conjunto de datos a analizar.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_names</span><span class="p">:</span>
+            <span class="n">missing_count</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">[</span><span class="n">col</span><span class="p">][</span><span class="s2">&quot;n_missing&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">missing_count</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">[</span><span class="n">col</span><span class="p">][</span><span class="s2">&quot;p_missing&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">missing_count</span> <span class="o">/</span>
+                                                  <span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">[</span><span class="n">col</span><span class="p">][</span><span class="s2">&quot;n_unique&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+
+        <span class="c1"># Comprueba filas duplicada y actualiza ``dict_column``</span>
+        <span class="n">is_duplicate</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_names</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">[</span><span class="n">col</span><span class="p">][</span><span class="s2">&quot;is_duplicate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">is_duplicate</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_calculate_correlations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calcula la matriz de correlación para las variables numéricas.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : pandas.DataFrame</span>
+<span class="sd">            Conjunto de datos a analizar.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Calcula la correlación para las variables numéricas</span>
+        <span class="n">corr</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">numerical_features</span> <span class="o">+</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">df_corr</span> <span class="o">=</span> <span class="n">corr</span>
+
+<div class="viewcode-block" id="EDAProcessor.distribution_variable">
+<a class="viewcode-back" href="../EDA.html#EDA.EDAProcessor.distribution_variable">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">distribution_variable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calcula la distribución de una variable dividiéndola en intervalos.</span>
+
+<span class="sd">        Este método permite dividir los valores de una columna en intervalos (bins) </span>
+<span class="sd">        y calcular la frecuencia de valores dentro de cada intervalo.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">            data: pd.DataFrame </span>
+<span class="sd">                Conjunto de datos que contiene la columna a analizar.</span>
+<span class="sd">            column: str</span>
+<span class="sd">                Nombre de la columna para la cual calcular la distribución.</span>
+<span class="sd">            n_bins:  int (default=None)</span>
+<span class="sd">                Número de intervalos (bins) en los que dividir la columna.</span>
+<span class="sd">                Si se proporciona, los intervalos se calcularán automáticamente usando valores equiespaciados.</span>
+<span class="sd">            bins : list[float] | list[int] (default=None): Lista de límites de los intervalos definidos manualmente.</span>
+<span class="sd">                Si se proporciona, `n_bins` será ignorado.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">            pd.Series: Serie con la frecuencia de valores en cada intervalo, ordenada por los intervalos.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">            ValueError: Si el nombre de la columna no está en el conjunto de datos.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">column</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;`column` debe ser un nombre válido de columna.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">n_bins</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">min_value</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+            <span class="n">max_value</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+            <span class="n">bins</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">min_value</span><span class="p">,</span> <span class="n">max_value</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_bins</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span>
+                      <span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="EDAProcessor.plot_numerical_variables">
+<a class="viewcode-back" href="../EDA.html#EDA.EDAProcessor.plot_numerical_variables">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_numerical_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">num_vars</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Genera histogramas para las variables numéricas seleccionadas.</span>
+
+<span class="sd">        Este método crea histogramas para analizar la distribución de las variables numéricas</span>
+<span class="sd">        en el conjunto de datos. Si se seleccionan múltiples variables, se generarán subgráficos.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">            data: pd.DataFrame</span>
+<span class="sd">                Conjunto de datos que contiene las variables a graficar.</span>
+<span class="sd">            num_vars: list[str] (default=None)</span>
+<span class="sd">                Lista de nombres de columnas numéricas a graficar. </span>
+<span class="sd">                Si no se proporciona, se utilizarán todas las variables numéricas identificadas.</span>
+<span class="sd">            figsize: tuple (default=None)</span>
+<span class="sd">                Dimensiones de la figura (ancho, alto). Si no se proporciona, se establecerán valores predeterminados.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">            None: Este método no retorna ningún valor. Genera un gráfico directamente.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">            ValueError: Si alguna de las variables proporcionadas en `num_vars` no se encuentra</span>
+<span class="sd">                        en las variables numéricas identificadas.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">num_vars</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">num_vars</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerical_features</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">bad_input</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">num_vars</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerical_features</span><span class="p">:</span>
+                    <span class="n">bad_input</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">bad_input</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Las siguientes columnas no se consideran numéricas: &quot;</span>
+                                 <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bad_input</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">num_graphs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">num_vars</span><span class="p">)</span>
+
+        <span class="c1"># Configurar el estilo de Seaborn</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Caso de un solo gráfico</span>
+        <span class="k">if</span> <span class="n">num_graphs</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+
+            <span class="k">if</span> <span class="n">figsize</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+            
+            <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+            <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">num_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Distribución de </span><span class="si">{</span><span class="n">num_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">num_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="k">if</span> <span class="n">figsize</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">num_graphs</span> <span class="o">*</span> <span class="mf">2.5</span><span class="p">)</span>
+
+            <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+            <span class="n">vls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_graphs</span> <span class="o">+</span> <span class="n">num_graphs</span> <span class="o">%</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">layout</span> <span class="o">=</span> <span class="p">[</span><span class="n">vls</span><span class="p">[</span><span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_graphs</span><span class="p">,</span> <span class="n">n</span><span class="p">)]</span>
+            <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot_mosaic</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">var</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">num_vars</span><span class="p">):</span>
+                <span class="c1"># Histograma</span>
+                <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">var</span><span class="p">],</span>
+                             <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+                             <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                             <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                             <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">)</span>
+                <span class="c1"># Añadir título</span>
+                <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Distribución de </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                                  <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+                                  <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+                <span class="c1"># Añadir título al eje X</span>
+                <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="c1"># Añadir título al eje y</span>
+                <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequencia&#39;</span><span class="p">)</span>
+
+            <span class="c1"># Eliminar subplot en caso de que haya un número impar de subplots</span>
+            <span class="k">if</span> <span class="n">num_graphs</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">fig</span><span class="o">.</span><span class="n">delaxes</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="n">num_graphs</span><span class="p">])</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="EDAProcessor.plot_categorical_variables">
+<a class="viewcode-back" href="../EDA.html#EDA.EDAProcessor.plot_categorical_variables">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_categorical_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">cat_vars</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Genera gráficos de barras para las variables categóricas seleccionadas.</span>
+
+<span class="sd">        Este método crea gráficos de barras para analizar la distribución de las variables categóricas </span>
+<span class="sd">        en el conjunto de datos. Si se seleccionan múltiples variables, se generarán subgráficos.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">            data: pd.DataFrame</span>
+<span class="sd">                Conjunto de datos que contiene las variables categóricas a graficar.</span>
+<span class="sd">            cat_vars: list[str] (default=None)</span>
+<span class="sd">                Lista de nombres de columnas categóricas a graficar. </span>
+<span class="sd">                Si no se proporciona, se utilizarán todas las variables categóricas identificadas.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">            None: Este método no retorna ningún valor. Genera gráficos directamente.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">            ValueError: Si alguna de las variables proporcionadas en `cat_vars` no se encuentra</span>
+<span class="sd">                        en las variables categóricas identificadas.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">cat_vars</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">cat_vars</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">categorical_features</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">bad_input</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cat_vars</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">categorical_features</span><span class="p">:</span>
+                    <span class="n">bad_input</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">bad_input</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Las siguientes columnas no se consideran categóricas: &quot;</span>
+                                 <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bad_input</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">num_graphs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cat_vars</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">num_graphs</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+            <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">cat_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Distribución de </span><span class="si">{</span><span class="n">cat_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cat_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+            <span class="n">vls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_graphs</span> <span class="o">+</span> <span class="n">num_graphs</span> <span class="o">%</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">layout</span> <span class="o">=</span> <span class="p">[</span><span class="n">vls</span><span class="p">[</span><span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_graphs</span><span class="p">,</span> <span class="n">n</span><span class="p">)]</span>
+            <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot_mosaic</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">num_graphs</span> <span class="o">*</span> <span class="mf">2.5</span><span class="p">))</span>
+
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">var</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cat_vars</span><span class="p">):</span>
+                <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">var</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">)</span>
+                <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Distribución de </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                                  <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+                                  <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+                <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
+
+                <span class="c1"># Rotar las etiquetas del eje x</span>
+                <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+
+            <span class="c1"># Eliminar subplot en caso de que haya un número impar de subplots</span>
+            <span class="k">if</span> <span class="n">num_graphs</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">fig</span><span class="o">.</span><span class="n">delaxes</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="n">num_graphs</span><span class="p">])</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="EDAProcessor.plot_target">
+<a class="viewcode-back" href="../EDA.html#EDA.EDAProcessor.plot_target">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_target</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Genera un gráfico de barras para analizar la distribución del target.</span>
+
+<span class="sd">        Este método crea un gráfico de barras que muestra la frecuencia de cada categoría </span>
+<span class="sd">        en la columna objetivo (`target`) del conjunto de datos.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">            data: pd.DataFrame</span>
+<span class="sd">                Conjunto de datos que contiene la columna objetivo.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">            None: Este método no retorna ningún valor. Genera un gráfico directamente.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+                      <span class="n">x</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">,</span>
+                      <span class="n">hue</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">,</span>
+                      <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;pastel&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribución del target: Default&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Default&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="EDAProcessor.plot_correlations">
+<a class="viewcode-back" href="../EDA.html#EDA.EDAProcessor.plot_correlations">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_correlations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Genera un mapa de calor para visualizar las correlaciones entre variables numéricas.</span>
+
+<span class="sd">        Este método utiliza la matriz de correlación calculada previamente (`self.df_corr`)</span>
+<span class="sd">        para crear un mapa de calor, lo que facilita el análisis de relaciones entre variables numéricas.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">            None: Este método no requiere parámetros adicionales.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">            None: Este método no retorna ningún valor. Genera un gráfico directamente.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+        <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+        <span class="n">heatmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df_corr</span><span class="p">,</span>
+                              <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span>
+                              <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                              <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.1f&quot;</span><span class="p">,</span>  <span class="c1"># Usar un solo decimal para hacer los números más compactos</span>
+                              <span class="n">annot_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">})</span>  <span class="c1"># Ajusta el tamaño de la fuente de las anotaciones</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mapa de Calor de la Matriz de Correlación&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Alineación de las etiquetas del eje x y y</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="EDAProcessor.plot_numerical_vs_target">
+<a class="viewcode-back" href="../EDA.html#EDA.EDAProcessor.plot_numerical_vs_target">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_numerical_vs_target</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">num_vars</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Genera gráficos de caja (boxplots) para analizar la relación entre variables numéricas y el target.</span>
+
+<span class="sd">        Este método crea un gráfico de caja para cada variable numérica seleccionada, </span>
+<span class="sd">        mostrando la distribución de sus valores con respecto a las categorías de la columna objetivo (`target`).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">            data: pd.DataFrame</span>
+<span class="sd">                Conjunto de datos que contiene las variables a analizar.</span>
+<span class="sd">            num_vars: list[str] (default=None)</span>
+<span class="sd">                Lista de nombres de columnas numéricas a analizar. </span>
+<span class="sd">                Si no se proporciona, se utilizarán todas las variables numéricas identificadas.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">            None: Este método no retorna ningún valor. Genera gráficos directamente.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">            ValueError: Si alguna de las variables proporcionadas en `num_vars` no se encuentra </span>
+<span class="sd">                        en las variables numéricas identificadas.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">num_vars</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">num_vars</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerical_features</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">bad_input</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">num_vars</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerical_features</span><span class="p">:</span>
+                    <span class="n">bad_input</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">bad_input</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Las siguientes columnas no se consideran numéricas: &quot;</span>
+                                 <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bad_input</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">num_graphs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">num_vars</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">num_graphs</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+            <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">num_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;skyblue&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">num_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> vs Default&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Default&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">num_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+            <span class="n">vls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_graphs</span> <span class="o">+</span> <span class="n">num_graphs</span> <span class="o">%</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">layout</span> <span class="o">=</span> <span class="p">[</span><span class="n">vls</span><span class="p">[</span><span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_graphs</span><span class="p">,</span> <span class="n">n</span><span class="p">)]</span>
+            <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot_mosaic</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">num_graphs</span> <span class="o">*</span> <span class="mf">2.5</span><span class="p">))</span>
+
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">var</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">num_vars</span><span class="p">):</span>
+                <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+                            <span class="n">x</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">,</span>
+                            <span class="n">y</span><span class="o">=</span><span class="n">var</span><span class="p">,</span>
+                            <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                            <span class="n">color</span><span class="o">=</span><span class="s2">&quot;skyblue&quot;</span><span class="p">,</span>
+                            <span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">var</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="p">)</span><span class="si">}</span><span class="s1"> vs Default&#39;</span><span class="p">)</span>
+                <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Default&#39;</span><span class="p">)</span>
+                <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">))</span>
+                <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+            <span class="c1"># Eliminar subplot en caso de que haya un número impar de subplots</span>
+            <span class="k">if</span> <span class="n">num_graphs</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">fig</span><span class="o">.</span><span class="n">delaxes</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="n">num_graphs</span><span class="p">])</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="EDAProcessor.plot_histogram_vs_target">
+<a class="viewcode-back" href="../EDA.html#EDA.EDAProcessor.plot_histogram_vs_target">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_histogram_vs_target</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span><span class="n">cat_vars</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Genera gráficos de barras agrupados para analizar la relación entre variables categóricas y el target.</span>
+
+<span class="sd">        Este método crea gráficos de barras para cada variable categórica seleccionada, mostrando</span>
+<span class="sd">        la frecuencia de sus valores desglosados por las categorías de la columna objetivo (`target`).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">            data: pd.DataFrame</span>
+<span class="sd">                Conjunto de datos que contiene las variables categóricas a analizar.</span>
+<span class="sd">            cat_vars: list[str] (default=None)</span>
+<span class="sd">                Lista de nombres de columnas categóricas a analizar. </span>
+<span class="sd">                Si no se proporciona, se utilizarán todas las variables categóricas identificadas.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">            None: Este método no retorna ningún valor. Genera gráficos directamente.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">            ValueError: Si alguna de las variables proporcionadas en `cat_vars` no se encuentra</span>
+<span class="sd">                        en las variables categóricas identificadas.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">cat_vars</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">cat_vars</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">categorical_features</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">bad_input</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cat_vars</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">categorical_features</span><span class="p">:</span>
+                    <span class="n">bad_input</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">bad_input</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Las siguientes columnas no se consideran categóricas: &quot;</span>
+                                 <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bad_input</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">num_graphs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cat_vars</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">num_graphs</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+            <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">cat_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">hue</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Blues_d&#39;</span><span class="p">,</span>
+                          <span class="n">order</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="n">cat_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Distribución de </span><span class="si">{</span><span class="n">cat_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> por Default&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">cat_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>
+                <span class="n">height</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+                    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                                       <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="n">height</span><span class="p">),</span>
+                                       <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">),</span>
+                                       <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+            <span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Default&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+            <span class="n">vls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_graphs</span> <span class="o">+</span> <span class="n">num_graphs</span> <span class="o">%</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">layout</span> <span class="o">=</span> <span class="p">[</span><span class="n">vls</span><span class="p">[</span><span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_graphs</span><span class="p">,</span> <span class="n">n</span><span class="p">)]</span>
+            <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot_mosaic</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">num_graphs</span> <span class="o">*</span> <span class="mf">2.5</span><span class="p">))</span>
+
+            <span class="c1"># Crear un gráfico para cada variable categórica</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cat_vars</span><span class="p">):</span>
+                <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">attribute</span><span class="p">,</span>
+                              <span class="n">hue</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">,</span>
+                              <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+                              <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Blues_d&#39;</span><span class="p">,</span>
+                              <span class="n">order</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+                              <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Distribución de </span><span class="si">{</span><span class="n">attribute</span><span class="si">}</span><span class="s1"> por Default&#39;</span><span class="p">)</span>
+                <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">attribute</span><span class="p">)</span>
+                <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
+                <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+                <span class="c1"># Eliminar la leyenda de cada subgráfico</span>
+                <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_legend</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+                <span class="c1"># Añadir etiquetas de conteo</span>
+                <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>
+                    <span class="n">height</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>  <span class="c1"># Verificar si la barra no está vacía</span>
+                        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                                         <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="n">height</span><span class="p">),</span>
+                                         <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                                         <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                                         <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">),</span>
+                                         <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">,</span>
+                                         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span>
+                                         <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+
+            <span class="c1"># Eliminar subplot en caso de que haya un número impar de subplots</span>
+            <span class="k">if</span> <span class="n">num_graphs</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">fig</span><span class="o">.</span><span class="n">delaxes</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="n">num_graphs</span><span class="p">])</span>
+
+            <span class="c1"># Crear una leyenda única para toda la figura</span>
+            <span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+            <span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="p">,</span>
+                       <span class="n">labels</span><span class="p">,</span>
+                       <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Default&#39;</span><span class="p">,</span>
+                       <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">,</span>
+                       <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">),</span>
+                       <span class="n">ncol</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+        <span class="c1"># Ajustar el layout y mostrar el gráfico</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">rect</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="EDAProcessor.get_results">
+<a class="viewcode-back" href="../EDA.html#EDA.EDAProcessor.get_results">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_results</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Obtén el resumen del análisis exploratorio de datos (EDA).</span>
+
+<span class="sd">        Este método devuelve un DataFrame que contiene metadatos de cada columna en el conjunto de datos, incluyendo información como:</span>
+
+<span class="sd">        - Tipo de dato</span>
+<span class="sd">        - Número de valores faltantes</span>
+<span class="sd">        - Porcentaje de valores faltantes</span>
+<span class="sd">        - Número de valores únicos</span>
+<span class="sd">        - Si la columna tiene filas duplicadas</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pandas.DataFrame</span>
+<span class="sd">            Un DataFrame donde cada fila corresponde a una columna en el conjunto de datos, </span>
+<span class="sd">            y los metadatos de cada columna se almacenan en la fila respectiva.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">)</span><span class="o">.</span><span class="n">T</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Cristina Domínguez and Mario Río.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,744 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modelling &mdash; TFM - UNIR | Documentación de la librería credit-card</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3ddd9672" />
+
+  
+    <link rel="shortcut icon" href="../_static/unir_logo.png"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e2bb6099"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=d190bf04"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            credit-card
+              <img src="../_static/unir_logo.png" class="logo" alt="Logotipo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Navegación</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">credit-card</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../EDA.html">EDA module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor"><code class="docutils literal notranslate"><span class="pre">EDAProcessor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.distribution_variable"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.distribution_variable()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.get_results"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.get_results()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.plot_categorical_variables"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_categorical_variables()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.plot_correlations"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_correlations()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.plot_histogram_vs_target"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_histogram_vs_target()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.plot_numerical_variables"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_numerical_variables()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.plot_numerical_vs_target"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_numerical_vs_target()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.plot_target"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.plot_target()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../EDA.html#EDA.EDAProcessor.run"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Modelling.html">Modelling module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.best_models"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.best_models</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.eval_model_test"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.eval_model_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.evaluation_df"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.evaluation_df</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.get_metrics_all_models"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.get_metrics_all_models()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.get_metrics_by_class_all_models"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.get_metrics_by_class_all_models()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.grid_results_df"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.grid_results_df</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.plot_evaluation_metrics"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.plot_evaluation_metrics()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.plot_roc_curve"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.plot_roc_curve()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.run"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Modelling.html#Modelling.ModelSelectionPipeline.save_results"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.save_results()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Outliers.html">Outliers module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Outliers.html#Outliers.OutliersDetection"><code class="docutils literal notranslate"><span class="pre">OutliersDetection</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Outliers.html#Outliers.OutliersDetection.combine_categories"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.combine_categories()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Outliers.html#Outliers.OutliersDetection.get_outliers"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.get_outliers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Outliers.html#Outliers.OutliersDetection.get_results"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.get_results()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Outliers.html#Outliers.OutliersDetection.get_results_cat_vars"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.get_results_cat_vars()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Outliers.html#Outliers.OutliersDetection.run"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Outliers.html#Outliers.OutliersDetection.transform"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.transform()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Preprocessing.html">Preprocessing module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Preprocessing.html#Preprocessing.Preprocessing"><code class="docutils literal notranslate"><span class="pre">Preprocessing</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Preprocessing.html#Preprocessing.Preprocessing.fit_transform"><code class="docutils literal notranslate"><span class="pre">Preprocessing.fit_transform()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">credit-card</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">Modelling</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para Modelling</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="kn">import</span> <span class="n">Patch</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.over_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">SMOTE</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">StratifiedKFold</span><span class="p">,</span> <span class="n">GridSearchCV</span><span class="p">,</span> <span class="n">cross_val_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.naive_bayes</span><span class="w"> </span><span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span><span class="p">,</span> <span class="n">GradientBoostingClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">f1_score</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+
+<div class="viewcode-block" id="ModelSelectionPipeline">
+<a class="viewcode-back" href="../Modelling.html#Modelling.ModelSelectionPipeline">[documentos]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ModelSelectionPipeline</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> 
+            <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+            <span class="n">models</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">param_grids</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">save_path</span><span class="o">=</span><span class="s2">&quot;outputs/&quot;</span>
+        <span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_size</span> <span class="o">=</span> <span class="n">test_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">random_state</span> <span class="o">=</span> <span class="n">random_state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">models</span> <span class="o">=</span> <span class="n">models</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">param_grids</span> <span class="o">=</span> <span class="n">param_grids</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_path</span> <span class="o">=</span> <span class="n">save_path</span>
+
+        <span class="c1"># Seleccionamos los modelos de Machine Learning</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_models</span><span class="p">()</span>
+
+        <span class="c1"># Fijar hiperparámetros</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_hyperparameters</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_split_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;División en train y test ...&quot;</span><span class="p">)</span>
+
+        <span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+            <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">test_size</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">random_state</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span>
+        <span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_apply_smote</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">):</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Balanceando el dataset en train ...&quot;</span><span class="p">)</span>
+        
+        <span class="n">smote</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">random_state</span><span class="p">)</span>
+        <span class="n">X_train_smote</span><span class="p">,</span> <span class="n">y_train_smote</span> <span class="o">=</span> <span class="n">smote</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">X_train_smote</span><span class="p">,</span> <span class="n">y_train_smote</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_initialize_models</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">models</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;Logistic Regression&quot;</span><span class="p">:</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">random_state</span><span class="p">),</span>
+                <span class="s2">&quot;Decision Tree&quot;</span><span class="p">:</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">random_state</span><span class="p">),</span>
+                <span class="s2">&quot;Naive Bayes&quot;</span><span class="p">:</span> <span class="n">GaussianNB</span><span class="p">(),</span>
+                <span class="s2">&quot;K-Nearest Neighbors&quot;</span><span class="p">:</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
+                <span class="s2">&quot;Random Forest&quot;</span><span class="p">:</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">random_state</span><span class="p">),</span>
+                <span class="s2">&quot;Gradient Boosting&quot;</span><span class="p">:</span> <span class="n">GradientBoostingClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">random_state</span><span class="p">)</span>
+            <span class="p">}</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimadores seleccionados : </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_set_hyperparameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_grids</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">param_grids</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;Logistic Regression&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+                    <span class="s2">&quot;solver&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;lbfgs&quot;</span><span class="p">,</span> <span class="s2">&quot;liblinear&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;penalty&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;l2&quot;</span><span class="p">]</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;Decision Tree&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;criterion&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;gini&quot;</span><span class="p">,</span> <span class="s2">&quot;entropy&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+                    <span class="s2">&quot;min_samples_split&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;Naive Bayes&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;var_smoothing&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;K-Nearest Neighbors&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;n_neighbors&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+                    <span class="s2">&quot;weights&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;uniform&quot;</span><span class="p">,</span> <span class="s2">&quot;distance&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;metric&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span> <span class="s2">&quot;manhattan&quot;</span><span class="p">]</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;Random Forest&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+                    <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+                    <span class="s2">&quot;min_samples_split&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;Gradient Boosting&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+                    <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span>
+                    <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">!=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param_grids</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;`models` y `param_grids` no son coherentes. Revísalos.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_fit_grid_search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_train_smote</span><span class="p">,</span> <span class="n">y_train_smote</span><span class="p">):</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Búsqueda de hiperparámetros ...&quot;</span><span class="p">)</span>
+
+        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_best_models</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">grid_results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">kfold</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">random_state</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;** </span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2"> **&quot;</span><span class="p">)</span>
+            <span class="n">start_model</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+                <span class="n">estimator</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+                <span class="n">param_grid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">param_grids</span><span class="p">[</span><span class="n">model_name</span><span class="p">],</span>
+                <span class="n">cv</span><span class="o">=</span><span class="n">kfold</span><span class="p">,</span>
+                <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
+                <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">2</span>
+            <span class="p">)</span>
+            <span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_smote</span><span class="p">,</span> <span class="n">y_train_smote</span><span class="p">)</span>
+            <span class="n">elapsed_time_model</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_model</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_best_models</span><span class="p">[</span><span class="n">model_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">best_estimator_</span>
+            <span class="n">grid_results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s2">&quot;Model&quot;</span><span class="p">:</span> <span class="n">model_name</span><span class="p">,</span>
+                <span class="s2">&quot;Best Params&quot;</span><span class="p">:</span> <span class="n">grid</span><span class="o">.</span><span class="n">best_params_</span><span class="p">,</span>
+                <span class="s2">&quot;Best Accuracy&quot;</span><span class="p">:</span> <span class="n">grid</span><span class="o">.</span><span class="n">best_score_</span><span class="p">,</span>
+                <span class="s2">&quot;Execution Time (s)&quot;</span><span class="p">:</span> <span class="n">elapsed_time_model</span>
+            <span class="p">})</span>
+        
+        <span class="n">grid_results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">grid_results</span><span class="p">)</span>
+        <span class="n">grid_results_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;Best Accuracy&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_grid_results_df</span> <span class="o">=</span> <span class="n">grid_results_df</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid_search_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_search_time</span> <span class="o">&gt;</span> <span class="mi">60</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tiempo total (min): </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">grid_search_time</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tiempo total (s): </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">grid_search_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_evaluate_models</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_train_smote</span><span class="p">,</span> <span class="n">y_train_smote</span><span class="p">):</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluando mejor modelo ...&quot;</span><span class="p">)</span>
+
+        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="n">evaluation_summary</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">kfold</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">random_state</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">best_model</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">best_models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;** </span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2"> **&quot;</span><span class="p">)</span>
+            <span class="n">start_model</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="n">accuracy</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">best_model</span><span class="p">,</span> <span class="n">X_train_smote</span><span class="p">,</span> <span class="n">y_train_smote</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kfold</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+            <span class="n">precision</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">best_model</span><span class="p">,</span> <span class="n">X_train_smote</span><span class="p">,</span> <span class="n">y_train_smote</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kfold</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;precision_weighted&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+            <span class="n">recall</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">best_model</span><span class="p">,</span> <span class="n">X_train_smote</span><span class="p">,</span> <span class="n">y_train_smote</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kfold</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;recall_weighted&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+            <span class="n">f1</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">best_model</span><span class="p">,</span> <span class="n">X_train_smote</span><span class="p">,</span> <span class="n">y_train_smote</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kfold</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;f1_weighted&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+            <span class="n">roc_auc</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">best_model</span><span class="p">,</span> <span class="n">X_train_smote</span><span class="p">,</span> <span class="n">y_train_smote</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kfold</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;roc_auc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+            <span class="n">elapsed_time_model</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_model</span>
+
+            <span class="n">evaluation_summary</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s2">&quot;Model&quot;</span><span class="p">:</span> <span class="n">model_name</span><span class="p">,</span>
+                <span class="s2">&quot;Mean Accuracy&quot;</span><span class="p">:</span> <span class="n">accuracy</span><span class="p">,</span>
+                <span class="s2">&quot;Mean Precision&quot;</span><span class="p">:</span> <span class="n">precision</span><span class="p">,</span>
+                <span class="s2">&quot;Mean Recall&quot;</span><span class="p">:</span> <span class="n">recall</span><span class="p">,</span>
+                <span class="s2">&quot;Mean F1-Score&quot;</span><span class="p">:</span> <span class="n">f1</span><span class="p">,</span>
+                <span class="s2">&quot;Mean ROC-AUC&quot;</span><span class="p">:</span> <span class="n">roc_auc</span><span class="p">,</span>
+                <span class="s2">&quot;Execution Time (s)&quot;</span><span class="p">:</span> <span class="n">elapsed_time_model</span>
+            <span class="p">})</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_evaluation_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">evaluation_summary</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_evaluation_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;Mean Accuracy&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluation_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluation_time</span> <span class="o">&gt;</span> <span class="mi">60</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tiempo total (min): </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">evaluation_time</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tiempo total (s): </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">evaluation_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ModelSelectionPipeline.save_results">
+<a class="viewcode-back" href="../Modelling.html#Modelling.ModelSelectionPipeline.save_results">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save_results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">save_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Guardando resultados ...&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">save_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">save_path</span> <span class="o">=</span> <span class="s2">&quot;outputs/&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">save_path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span>
+                <span class="n">save_path</span> <span class="o">+=</span> <span class="s2">&quot;/&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_grid_results_df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">save_path</span><span class="si">}</span><span class="s2">grid_results_df.xlsx&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_evaluation_df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">save_path</span><span class="si">}</span><span class="s2">evaluation_df.xlsx&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">best_model</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">best_models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">save_path</span><span class="si">}{</span><span class="n">model_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">_best_model.joblib&quot;</span>
+            <span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">best_model</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ModelSelectionPipeline.run">
+<a class="viewcode-back" href="../Modelling.html#Modelling.ModelSelectionPipeline.run">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+
+        <span class="c1"># Paso 1 : Dividir la muestra en train y test</span>
+        <span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_split_data</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+        <span class="c1"># Paso 2 : Balancear el dataset</span>
+        <span class="n">X_train_smote</span><span class="p">,</span> <span class="n">y_train_smote</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_smote</span><span class="p">(</span><span class="n">X_train</span><span class="o">=</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="o">=</span><span class="n">y_train</span><span class="p">)</span>
+              
+        <span class="c1"># Paso 3 : Búsqueda de hiperparámetros</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fit_grid_search</span><span class="p">(</span><span class="n">X_train_smote</span><span class="o">=</span><span class="n">X_train_smote</span><span class="p">,</span> <span class="n">y_train_smote</span><span class="o">=</span><span class="n">y_train_smote</span><span class="p">)</span>
+        
+        <span class="c1"># Paso 4 : Evaluación de modelos</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_evaluate_models</span><span class="p">(</span><span class="n">X_train_smote</span><span class="o">=</span><span class="n">X_train_smote</span><span class="p">,</span> <span class="n">y_train_smote</span><span class="o">=</span><span class="n">y_train_smote</span><span class="p">)</span>
+
+        <span class="c1"># Paso 5 : Guardamos los resultados</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_results</span><span class="p">(</span><span class="n">save_path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">save_path</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_train_smote</span><span class="p">,</span> <span class="n">y_train_smote</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_val</span></div>
+
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">grid_results_df</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_grid_results_df&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_grid_results_df</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_grid_results_df</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_grid_results_df_excel</span><span class="p">()</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluation_df</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_evaluation_df&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_evaluation_df</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_evaluation_df</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_evaluation_df_excel</span><span class="p">()</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">best_models</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_best_models&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_best_models</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_best_models</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_models</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_load_models</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+
+        <span class="c1"># Cargar los modelos desde los archivos y almacenarlos en best_models con los mismos nombres</span>
+        <span class="n">best_models</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">model_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+        <span class="c1"># Iterar sobre los nombres de los modelos y cargar los archivos correspondientes</span>
+        <span class="k">for</span> <span class="n">model_name</span> <span class="ow">in</span> <span class="n">model_names</span><span class="p">:</span>
+            <span class="c1"># Definir el nombre del archivo de cada modelo</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">save_path</span><span class="si">}{</span><span class="n">model_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">_best_model.joblib&quot;</span>
+            <span class="c1"># Cargar el modelo y guardarlo en el diccionario best_models con el nombre original</span>
+            <span class="n">best_models</span><span class="p">[</span><span class="n">model_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Modelo </span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2"> cargado desde </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_best_models</span> <span class="o">=</span> <span class="n">best_models</span>
+
+        <span class="k">return</span> <span class="n">best_models</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_load_evaluation_df_excel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_evaluation_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">save_path</span><span class="si">}</span><span class="s2">evaluation_df.xlsx&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Model&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_evaluation_df</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_load_grid_results_df_excel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_grid_results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">save_path</span><span class="si">}</span><span class="s2">grid_results_df.xlsx&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Model&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_grid_results_df</span>
+    
+<div class="viewcode-block" id="ModelSelectionPipeline.get_metrics_all_models">
+<a class="viewcode-back" href="../Modelling.html#Modelling.ModelSelectionPipeline.get_metrics_all_models">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_metrics_all_models</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        
+        <span class="n">evaluation_summary</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">best_model</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">best_models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            
+            <span class="c1"># Realizamos predicciones</span>
+            <span class="n">y_pred</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="n">y_pred_prob</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">best_model</span><span class="p">,</span> <span class="s2">&quot;predict_proba&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+            
+            <span class="c1"># Calculamos las métricas</span>
+            <span class="n">metrics</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;Accuracy&#39;</span><span class="p">:</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">),</span>
+                <span class="s1">&#39;Precision&#39;</span><span class="p">:</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+                <span class="s1">&#39;Recall&#39;</span><span class="p">:</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+                <span class="s1">&#39;F1-Score&#39;</span><span class="p">:</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+                <span class="s1">&#39;ROC-AUC&#39;</span><span class="p">:</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred_prob</span><span class="p">)</span> <span class="k">if</span> <span class="n">y_pred_prob</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
+            <span class="p">}</span>
+            <span class="n">evaluation_summary</span><span class="p">[</span><span class="n">model_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">metrics</span>
+
+        <span class="c1"># Convertir resultados de evaluación en un DataFrame</span>
+        <span class="n">metrics_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">evaluation_summary</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">metrics_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;Accuracy&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">metrics_df</span></div>
+
+    
+<div class="viewcode-block" id="ModelSelectionPipeline.get_metrics_by_class_all_models">
+<a class="viewcode-back" href="../Modelling.html#Modelling.ModelSelectionPipeline.get_metrics_by_class_all_models">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_metrics_by_class_all_models</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+
+        <span class="c1"># Función para calcular métricas usando scikit-learn</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">calculate_metrics_by_class</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+            <span class="c1"># Calculamos la matriz de confusión</span>
+            <span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+            
+            <span class="c1"># Calculamos métricas globales y por clase</span>
+            <span class="n">metrics</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;Confusion Matrix&#39;</span><span class="p">:</span> <span class="n">cm</span><span class="p">,</span>
+                <span class="s1">&#39;Accuracy&#39;</span><span class="p">:</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">),</span>
+                <span class="s1">&#39;Precision (0 - No Default)&#39;</span><span class="p">:</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+                <span class="s1">&#39;Precision (1 - Default)&#39;</span><span class="p">:</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+                <span class="s1">&#39;Recall (0 - No Default)&#39;</span><span class="p">:</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+                <span class="s1">&#39;Recall (1 - Default)&#39;</span><span class="p">:</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+                <span class="s1">&#39;F1-Score (0 - No Default)&#39;</span><span class="p">:</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+                <span class="s1">&#39;F1-Score (1 - Default)&#39;</span><span class="p">:</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">metrics</span>
+        
+        <span class="n">metrics_by_class</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># Evaluamos cada modelo y almacenamos las métricas en el diccionario</span>
+        <span class="k">for</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">best_model</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">best_models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            
+            <span class="n">y_pred</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            
+            <span class="c1"># Calculamos las métricas y las añadimos al diccionario</span>
+            <span class="n">metrics_by_class</span><span class="p">[</span><span class="n">model_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">calculate_metrics_by_class</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+        <span class="c1"># Convertimos el diccionario de métricas a un DataFrame para facilitar la visualización</span>
+        <span class="n">metrics_df_by_class</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">metrics_by_class</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+        <span class="c1"># Mostramos las métricas</span>
+        <span class="n">metrics_df_by_class</span> <span class="o">=</span> <span class="n">metrics_df_by_class</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Confusion Matrix&#39;</span><span class="p">])</span>
+        <span class="n">metrics_df_by_class</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;Accuracy&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">metrics_df_by_class</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Accuracy&quot;</span><span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">metrics_df_by_class</span> <span class="o">=</span> <span class="n">metrics_df_by_class</span>
+
+        <span class="c1"># Guardar matriz de confusión</span>
+        <span class="n">cm_model</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">best_model</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">best_models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">cm_model</span><span class="p">[</span><span class="n">model_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">metrics_by_class</span><span class="p">[</span><span class="n">model_name</span><span class="p">][</span><span class="s2">&quot;Confusion Matrix&quot;</span><span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cm</span> <span class="o">=</span> <span class="n">cm_model</span>
+
+        <span class="k">return</span> <span class="n">metrics_df_by_class</span></div>
+
+
+<div class="viewcode-block" id="ModelSelectionPipeline.eval_model_test">
+<a class="viewcode-back" href="../Modelling.html#Modelling.ModelSelectionPipeline.eval_model_test">[documentos]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">eval_model_test</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Evalúa las métricas de un problema binario o multiclase dado un modelo y datos de prueba.</span>
+
+<span class="sd">        Parámetros</span>
+<span class="sd">        ----------</span>
+<span class="sd">            model: El modelo que se está evaluando.</span>
+<span class="sd">            X_test: Datos de características de prueba.</span>
+<span class="sd">            y_test: Etiquetas verdaderas de prueba.</span>
+<span class="sd">            classes (list, opcional): Lista de clases esperadas. Si es None, se asume [0, 1].</span>
+<span class="sd">        </span>
+<span class="sd">        Return</span>
+<span class="sd">        ------</span>
+<span class="sd">            dict: Diccionario con las métricas generales y por clase.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">if</span> <span class="n">classes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Determinar clases únicas en y_test si no están proporcionadas</span>
+            <span class="n">classes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_test</span><span class="p">))</span>
+
+        <span class="c1"># Predicción</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+        
+        <span class="c1"># Matriz de confusión</span>
+        <span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">classes</span><span class="p">)</span>
+        <span class="n">df_cm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">classes</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matriz de confusión:&quot;</span><span class="p">)</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">df_cm</span><span class="p">)</span>
+        
+            <span class="c1"># Total de instancias en el conjunto de prueba</span>
+        <span class="n">total_predictions</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        
+        <span class="c1"># Instancias clasificadas correctamente</span>
+        <span class="n">correct_predictions</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">cm</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cm</span><span class="p">)))</span>
+        <span class="n">p_correct</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">correct_predictions</span> <span class="o">/</span> <span class="n">total_predictions</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        
+        <span class="c1"># Instancias clasificadas incorrectamente</span>
+        <span class="n">incorrect_predictions</span> <span class="o">=</span> <span class="n">total_predictions</span> <span class="o">-</span> <span class="n">correct_predictions</span>
+        <span class="n">p_incorrect</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">incorrect_predictions</span> <span class="o">/</span> <span class="n">total_predictions</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Instancias clasificadas correctamente:&quot;</span><span class="p">,</span> <span class="n">correct_predictions</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">% Instancias clasificadas correctamente = Accuracy:&quot;</span><span class="p">,</span> <span class="n">p_correct</span><span class="p">,</span> <span class="s2">&quot;%&quot;</span><span class="p">)</span>
+    
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Instancias clasificadas incorrectamente:&quot;</span><span class="p">,</span> <span class="n">incorrect_predictions</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">% Instancias clasificadas incorrectamente = Error Rate:&quot;</span><span class="p">,</span> <span class="n">p_incorrect</span><span class="p">,</span> <span class="s2">&quot;%&quot;</span><span class="p">)</span>
+        
+           
+        <span class="c1"># Métricas por clase</span>
+        <span class="n">metrics_by_class</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">category</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">classes</span><span class="p">):</span>
+            <span class="n">total</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+            <span class="n">positive</span> <span class="o">=</span> <span class="n">cm</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+            <span class="n">negative</span> <span class="o">=</span> <span class="n">total</span> <span class="o">-</span> <span class="n">positive</span>
+            <span class="n">sum_col_i</span> <span class="o">=</span> <span class="n">cm</span><span class="p">[:,</span> <span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        
+            <span class="n">tp</span> <span class="o">=</span> <span class="n">cm</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="n">idx</span><span class="p">]</span>
+            <span class="n">fn</span> <span class="o">=</span> <span class="n">positive</span> <span class="o">-</span> <span class="n">tp</span>
+            <span class="n">fp</span> <span class="o">=</span> <span class="n">sum_col_i</span> <span class="o">-</span> <span class="n">tp</span>
+            <span class="n">tn</span> <span class="o">=</span> <span class="n">total</span> <span class="o">-</span> <span class="n">positive</span> <span class="o">-</span> <span class="n">sum_col_i</span> <span class="o">+</span> <span class="n">tp</span>
+
+            <span class="n">precission</span> <span class="o">=</span> <span class="n">tp</span> <span class="o">/</span> <span class="p">(</span><span class="n">tp</span> <span class="o">+</span> <span class="n">fp</span><span class="p">)</span>
+            <span class="n">accuracy</span> <span class="o">=</span> <span class="p">(</span><span class="n">tp</span> <span class="o">+</span> <span class="n">tn</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">positive</span> <span class="o">+</span> <span class="n">negative</span><span class="p">)</span>
+            <span class="c1"># recall</span>
+            <span class="n">tp_rate</span> <span class="o">=</span> <span class="n">tp</span> <span class="o">/</span> <span class="n">positive</span>
+            <span class="c1"># specificity</span>
+            <span class="n">tn_rate</span> <span class="o">=</span> <span class="n">tn</span> <span class="o">/</span> <span class="n">negative</span>
+            <span class="n">fp_rate</span> <span class="o">=</span> <span class="n">fp</span> <span class="o">/</span> <span class="n">negative</span>
+            <span class="n">f1_score</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">precission</span> <span class="o">*</span> <span class="n">tp_rate</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">precission</span> <span class="o">+</span> <span class="n">tp_rate</span><span class="p">)</span>
+            <span class="n">support</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">y_test</span> <span class="o">==</span> <span class="n">category</span><span class="p">)</span>
+
+            <span class="n">metrics_by_class</span><span class="p">[</span><span class="n">category</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;Precision&quot;</span><span class="p">:</span> <span class="n">precission</span><span class="p">,</span>
+                <span class="s2">&quot;Accuracy&quot;</span><span class="p">:</span> <span class="n">accuracy</span><span class="p">,</span>
+                <span class="s2">&quot;Recall (Sensitivity)&quot;</span><span class="p">:</span> <span class="n">tp_rate</span><span class="p">,</span>
+                <span class="s2">&quot;Specificity&quot;</span><span class="p">:</span> <span class="n">tn_rate</span><span class="p">,</span>
+                <span class="s2">&quot;FP Rate&quot;</span><span class="p">:</span> <span class="n">fp_rate</span><span class="p">,</span>
+                <span class="s2">&quot;F1-Score&quot;</span><span class="p">:</span> <span class="n">f1_score</span><span class="p">,</span>
+                <span class="s2">&quot;Support&quot;</span><span class="p">:</span> <span class="n">support</span>
+            <span class="p">}</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Métricas de cada clase:&quot;</span><span class="p">)</span>
+        <span class="n">metric_class</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">metrics_by_class</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">metric_class</span><span class="p">)</span>
+
+        <span class="c1"># Métricas generales</span>
+        <span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+        <span class="n">roc_auc</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="c1"># Solo calculamos ROC-AUC para problemas binarios</span>
+            <span class="n">y_pred_proba</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">roc_auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_proba</span><span class="p">)</span>
+        
+        <span class="c1"># Guardamos las métricas</span>
+        <span class="n">metrics</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;Accuracy&quot;</span><span class="p">:</span> <span class="n">accuracy</span><span class="p">,</span>
+            <span class="s2">&quot;ROC-AUC&quot;</span><span class="p">:</span> <span class="n">roc_auc</span><span class="p">,</span>
+            <span class="s2">&quot;Metrics by Class&quot;</span><span class="p">:</span> <span class="n">metric_class</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Métricas generales</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Métricas generales:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">metrics</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="o">!=</span> <span class="s2">&quot;Metrics by Class&quot;</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">metrics</span></div>
+
+    
+<div class="viewcode-block" id="ModelSelectionPipeline.plot_evaluation_metrics">
+<a class="viewcode-back" href="../Modelling.html#Modelling.ModelSelectionPipeline.plot_evaluation_metrics">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_evaluation_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Genera gráficos para las métricas de evaluación: Precision, Recall, F1-Score, y Accuracy.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;metrics_df_by_class&quot;</span><span class="p">):</span>
+            <span class="n">metrics_df_by_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">metrics_df_by_class</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Please execute first `get_metrics_by_class_all_models` method.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Palette de tonos azules</span>
+        <span class="n">blue_palette</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;#1973B8&quot;</span><span class="p">,</span> <span class="s2">&quot;#5BBEFF&quot;</span><span class="p">,</span> <span class="s2">&quot;#004481&quot;</span><span class="p">]</span>
+
+        <span class="c1"># Función para añadir valores en las barras (evita anotar valores 0.0)</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">add_values_to_bars</span><span class="p">(</span><span class="n">ax</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">bar</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>
+                <span class="n">height</span> <span class="o">=</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">height</span> <span class="o">&gt;</span> <span class="mf">0.01</span><span class="p">:</span>  <span class="c1"># Mostrar solo valores significativos</span>
+                    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">height</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> 
+                                <span class="p">(</span><span class="n">bar</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">height</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">),</span>
+                                <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Métricas a graficar</span>
+        <span class="n">metrics_to_plot</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Precision&#39;</span><span class="p">,</span> <span class="s1">&#39;Recall&#39;</span><span class="p">,</span> <span class="s1">&#39;F1-Score&#39;</span><span class="p">]</span>
+
+        <span class="c1"># Crear subplots</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+        <span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+        <span class="c1"># Gráficos combinados para Precision, Recall y F1-Score</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">metric</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">metrics_to_plot</span><span class="p">):</span>
+            <span class="n">metric_0</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">metric</span><span class="si">}</span><span class="s1"> (0 - No Default)&#39;</span>
+            <span class="n">metric_1</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">metric</span><span class="si">}</span><span class="s1"> (1 - Default)&#39;</span>
+            
+            <span class="n">data_to_plot</span> <span class="o">=</span> <span class="n">metrics_df_by_class</span><span class="p">[[</span><span class="n">metric_0</span><span class="p">,</span> <span class="n">metric_1</span><span class="p">]]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span>
+                <span class="n">id_vars</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;Clase&#39;</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;Valor&#39;</span>
+            <span class="p">)</span>
+            <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data_to_plot</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Valor&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Clase&#39;</span><span class="p">,</span> 
+                            <span class="n">palette</span><span class="o">=</span><span class="n">blue_palette</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">add_values_to_bars</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">metric</span><span class="si">}</span><span class="s1"> por Clase&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Modelo&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">metric</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">())))</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">get_legend</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>  <span class="c1"># Eliminamos la leyenda individual</span>
+
+        <span class="c1"># Gráfico de Accuracy</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">metrics_df_by_class</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Accuracy&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">blue_palette</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">add_values_to_bars</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Accuracy de Modelos&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Modelo&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Accuracy&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">())))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Crear una leyenda común fuera del gráfico</span>
+        <span class="n">handles</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">Patch</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">blue_palette</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;No Default&#39;</span><span class="p">),</span>
+            <span class="n">Patch</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">blue_palette</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Default&#39;</span><span class="p">)</span>
+        <span class="p">]</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">handles</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Clase&#39;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.02</span><span class="p">),</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+        <span class="c1"># Ajustar diseño</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">rect</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">])</span>  <span class="c1"># Dejar espacio para la leyenda</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="ModelSelectionPipeline.plot_roc_curve">
+<a class="viewcode-back" href="../Modelling.html#Modelling.ModelSelectionPipeline.plot_roc_curve">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_roc_curve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+
+        <span class="c1"># Crear una paleta de colores azules</span>
+        <span class="c1"># colors = sns.color_palette(&quot;Blues&quot;, n_colors=len(self.best_models))</span>
+
+        <span class="c1"># Crear un gráfico de Curvas ROC</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+        <span class="c1"># Evaluar cada modelo en best_models</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">best_models</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span> 
+            <span class="c1"># Predecir probabilidades (para calcular la curva ROC)</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;predict_proba&quot;</span><span class="p">):</span>
+                <span class="n">y_pred_prob</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># Probabilidades de la clase 1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Si no hay `predict_proba`, usar `decision_function` (ej. SVM)</span>
+                <span class="n">y_pred_prob</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            
+            <span class="c1"># Calcular la curva ROC</span>
+            <span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred_prob</span><span class="p">)</span>
+            <span class="n">auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred_prob</span><span class="p">)</span>
+            
+            <span class="c1"># Graficar con colores azules</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1"> (AUC = </span><span class="si">{</span><span class="n">auc</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span><span class="c1">#, color=colors[idx])</span>
+
+        <span class="c1"># Graficar línea de referencia (clasificador aleatorio)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Random Classifier&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Configuración del gráfico</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Curvas ROC de los Modelos&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;False Positive Rate (FPR)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True Positive Rate (TPR)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+</div>
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Cristina Domínguez and Mario Río.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

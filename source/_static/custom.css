@@ -1,0 +1,97 @@
+/* General */
+body {
+    font-family: "Arial", sans-serif;
+    background-color: #f4f4f4; /* Gris claro */
+    color: #000000; /* Negro */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Encabezados */
+h1, h2, h3, h4, h5, h6 {
+    color: #00558a; /* Azul oscuro */
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Enlaces */
+a {
+    color: #00558a; /* Azul oscuro */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Encabezado principal */
+.wy-side-nav-search {
+    background-color: #00558a; /* Azul oscuro */
+    color: #ffffff; /* Blanco */
+    padding: 15px;
+    border-bottom: 3px solid #003f6b; /* Un azul más oscuro */
+}
+
+.wy-side-nav-search input {
+    background-color: #ffffff; /* Blanco */
+    color: #000000; /* Negro */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* Navegación lateral */
+.wy-nav-side {
+    background-color: #00558a; /* Azul oscuro */
+    color: #ffffff; /* Blanco */
+}
+
+.wy-nav-side a {
+    color: #ffffff; /* Blanco */
+}
+
+.wy-nav-side a:hover {
+    color: #f4f4f4; /* Gris claro */
+}
+
+/* Contenido principal */
+.document {
+    background-color: #ffffff; /* Blanco */
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+/* Tablas */
+table {
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+    background-color: #f9f9f9; /* Gris muy claro */
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #00558a; /* Azul oscuro */
+    color: #ffffff; /* Blanco */
+}
+
+/* Código */
+pre {
+    background-color: #f4f4f4; /* Gris claro */
+    padding: 10px;
+    border-left: 5px solid #00558a; /* Azul oscuro */
+    font-family: "Courier New", monospace;
+    border-radius: 5px;
+    overflow-x: auto;
+}
