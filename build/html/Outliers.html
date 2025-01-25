@@ -9,7 +9,7 @@
   <title>Outliers module &mdash; TFM - UNIR | Documentación de la librería credit-card</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3ddd9672" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=fda1fe14" />
 
   
     <link rel="shortcut icon" href="_static/unir_logo.png"/>
@@ -19,6 +19,7 @@
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/translations.js?v=d190bf04"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -135,185 +136,160 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Outliers.</span></span><span class="sig-name descname"><span class="pre">OutliersDetection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contamination</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_components</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Outliers.html#OutliersDetection"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Outliers.OutliersDetection" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Clase para la detección de valores atípicos (outliers) en variables numéricas y categóricas.</p>
-<section id="parametros">
-<h2>Parámetros<a class="headerlink" href="#parametros" title="Link to this heading"></a></h2>
-<dl>
-<dt>method<span class="classifier">str</span></dt><dd><p>Método para detectar valores atípicos. Puede ser uno de los siguientes:
-- «IQR»: Rango intercuartílico
-- «std»: Desviación estándar
-- «IForest»: Isolation Forest
-- «LOF»: Local Outlier Factor
-- «GMM»: Gaussian Mixture Model
-- «all»: Aplica todos los métodos disponibles</p>
+<p>Esta clase implementa múltiples métodos para detectar valores atípicos en conjuntos de datos,
+incluyendo técnicas estadísticas y modelos basados en machine learning.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method</strong> (<em>str</em>) – <p>Método para detectar valores atípicos. Puede ser uno de los siguientes:</p>
+<ul>
+<li><p>IQR: Rango intercuartílico.</p></li>
+<li><p>std: Desviación estándar.</p></li>
+<li><p>IForest: Isolation Forest.</p></li>
+<li><p>LOF: Local Outlier Factor.</p></li>
+<li><p>GMM: Gaussian Mixture Model.</p></li>
+<li><p>all: Aplica todos los métodos disponibles.</p></li>
+</ul>
+</p></li>
+<li><p><strong>k</strong> (<em>float</em><em>, </em><em>optional</em><em> (</em><em>default=1.5</em><em>)</em>) – <p>Valor multiplicador utilizado en los métodos estadísticos (IQR o std).</p>
+<ul>
+<li><p>Si <cite>method</cite> es IQR, los límites se calculan como:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{lower limit} = Q_1 - k \cdot (Q_3 - Q_1) \\
+\text{upper limit} = Q_3 + k \cdot (Q_3 - Q_1)\end{split}\]</div>
+<ul>
+<li><p>Si <cite>method</cite> es std, los límites se calculan como:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{lower limit} = \mu - k \cdot \sigma \\
+\text{upper limit} = \mu + k \cdot \sigma\end{split}\]</div>
+</p></li>
+<li><p><strong>threshold</strong> (<em>float</em><em>, </em><em>optional</em><em> (</em><em>default=0.05</em><em>)</em>) – Umbral para identificar valores atípicos en variables categóricas, basado en la frecuencia relativa.</p></li>
+<li><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em><em> (</em><em>default=42</em><em>)</em>) – Semilla para los métodos que requieren aleatoriedad.</p></li>
+<li><p><strong>estimator</strong> (<em>object</em><em>, </em><em>optional</em><em> (</em><em>default=None</em><em>)</em>) – Estimador personalizado. Puede ser una instancia de <cite>IsolationForest</cite>, <cite>LocalOutlierFactor</cite> 
+o <cite>GaussianMixture</cite>.</p></li>
+<li><p><strong>contamination</strong> (<em>float</em><em>, </em><em>optional</em><em> (</em><em>default=0.05</em><em>)</em>) – Proporción de datos considerados como valores atípicos para los métodos basados en estimadores.</p></li>
+<li><p><strong>n_neighbors</strong> (<em>int</em><em>, </em><em>optional</em><em> (</em><em>default=20</em><em>)</em>) – Número de vecinos para el método Local Outlier Factor.</p></li>
+<li><p><strong>n_components</strong> (<em>int</em><em>, </em><em>optional</em><em> (</em><em>default=2</em><em>)</em>) – Número de componentes en el modelo Gaussian Mixture.</p></li>
+</ul>
 </dd>
-<dt>k<span class="classifier">float, opcional (default=1.5)</span></dt><dd><p>Valor multiplicador del rango intercuartílico (IQR) o desviación estándar para definir los límites
-de detección de outliers:</p>
-<p>Si <cite>method</cite> es «IQR», los límites son:
-.. math:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">text</span><span class="p">{</span><span class="n">lower_limit</span><span class="p">}</span> <span class="o">=</span> <span class="n">Q_1</span> <span class="o">-</span> <span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">Q_3</span> <span class="o">-</span> <span class="n">Q_1</span><span class="p">)</span>\\
-\<span class="n">text</span><span class="p">{</span><span class="n">upper_limit</span><span class="p">}</span> <span class="o">=</span> <span class="n">Q_3</span> <span class="o">+</span> <span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">Q_3</span> <span class="o">-</span> <span class="n">Q_1</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Si <cite>method</cite> es «std», los límites son:
-.. math:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">text</span><span class="p">{</span><span class="n">lower_limit</span><span class="p">}</span> <span class="o">=</span> <span class="n">media</span> <span class="o">-</span> <span class="n">k</span> <span class="o">*</span> <span class="n">desviación</span>\\
-\<span class="n">text</span><span class="p">{</span><span class="n">upper_limit</span><span class="p">}</span> <span class="o">=</span> <span class="n">media</span> <span class="o">+</span> <span class="n">k</span> <span class="o">*</span> <span class="n">desviación</span>
-</pre></div>
-</div>
-</dd>
-<dt>threshold<span class="classifier">float, opcional (default=0.05)</span></dt><dd><p>Umbral para identificar valores atípicos en variables categóricas, basado en la frecuencia relativa.</p>
-</dd>
-<dt>seed<span class="classifier">int, opcional (default=42)</span></dt><dd><p>Semilla para los métodos que requieren aleatoriedad.</p>
-</dd>
-<dt>estimator<span class="classifier">object, opcional (default=None)</span></dt><dd><p>Estimador personalizado. Puede ser una instancia de <cite>IsolationForest</cite>, <cite>LocalOutlierFactor</cite>
-o <cite>GaussianMixture</cite>.</p>
-</dd>
-<dt>contamination<span class="classifier">float, opcional (default=0.05)</span></dt><dd><p>Proporción de datos considerados como valores atípicos para los métodos basados en estimadores.</p>
-</dd>
-<dt>n_neighbors<span class="classifier">int, opcional (default=20)</span></dt><dd><p>Número de vecinos para el método Local Outlier Factor.</p>
-</dd>
-<dt>n_components<span class="classifier">int, opcional (default=2)</span></dt><dd><p>Número de componentes en el modelo Gaussian Mixture.</p>
-</dd>
-</dl>
-</section>
-<section id="atributos">
-<h2>Atributos<a class="headerlink" href="#atributos" title="Link to this heading"></a></h2>
-<dl class="simple">
-<dt>numerical_features<span class="classifier">list</span></dt><dd><p>Lista de nombres de variables numéricas en el conjunto de datos.</p>
-</dd>
-<dt>categorical_features<span class="classifier">list</span></dt><dd><p>Lista de nombres de variables categóricas en el conjunto de datos.</p>
-</dd>
-<dt>dict_column<span class="classifier">dict</span></dt><dd><p>Diccionario con los resultados de la detección de outliers en variables numéricas.</p>
-</dd>
-<dt>dict_column_cat<span class="classifier">dict</span></dt><dd><p>Diccionario con los resultados de la detección de outliers en variables categóricas.</p>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>numerical_features</strong> (<em>list</em>) – Lista de nombres de variables numéricas en el conjunto de datos.</p></li>
+<li><p><strong>categorical_features</strong> (<em>list</em>) – Lista de nombres de variables categóricas en el conjunto de datos.</p></li>
+<li><p><strong>dict_column</strong> (<em>dict</em>) – Diccionario con los resultados de la detección de outliers en variables numéricas.</p></li>
+<li><p><strong>dict_column_cat</strong> (<em>dict</em>) – Diccionario con los resultados de la detección de outliers en variables categóricas.</p></li>
+</ul>
 </dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="Outliers.OutliersDetection.combine_categories">
 <span class="sig-name descname"><span class="pre">combine_categories</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rare_categories</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_category</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Outliers.html#OutliersDetection.combine_categories"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Outliers.OutliersDetection.combine_categories" title="Link to this definition"></a></dt>
 <dd><p>Combina categorías poco frecuentes en una categoría existente o nueva.</p>
-<section id="id1">
-<h3>Parámetros<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
-<dl class="simple">
-<dt>data<span class="classifier">pandas.DataFrame</span></dt><dd><p>Conjunto de datos original.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pandas.DataFrame</em>) – Conjunto de datos original.</p></li>
+<li><p><strong>var</strong> (<em>str</em>) – Nombre de la variable categórica.</p></li>
+<li><p><strong>rare_categories</strong> (<em>list</em>) – Lista de categorías que se combinarán.</p></li>
+<li><p><strong>new_category</strong> (<em>str</em>) – Nombre de la nueva categoría que representará las categorías combinadas.</p></li>
+</ul>
 </dd>
-<dt>var<span class="classifier">str</span></dt><dd><p>Nombre de la variable categórica.</p>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame modificado con las categorías combinadas.</p>
 </dd>
-<dt>rare_categories<span class="classifier">list</span></dt><dd><p>Lista de categorías que se combinarán.</p>
-</dd>
-<dt>new_category<span class="classifier">str</span></dt><dd><p>Nombre de la nueva categoría que representará las categorías combinadas.</p>
-</dd>
-</dl>
-</section>
-<section id="retorna">
-<h3>Retorna<a class="headerlink" href="#retorna" title="Link to this heading"></a></h3>
-<dl class="simple">
-<dt>pandas.DataFrame</dt><dd><p>DataFrame modificado con las categorías combinadas.</p>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="Outliers.OutliersDetection.get_outliers">
 <span class="sig-name descname"><span class="pre">get_outliers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variable</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Outliers.html#OutliersDetection.get_outliers"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Outliers.OutliersDetection.get_outliers" title="Link to this definition"></a></dt>
 <dd><p>Obtiene la lista de índices de valores atípicos para una variable específica.</p>
-<section id="id2">
-<h3>Parámetros<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
-<dl class="simple">
-<dt>variable<span class="classifier">str</span></dt><dd><p>Nombre de la variable de la cual se quieren obtener los índices de valores atípicos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>variable</strong> (<em>str Parameters</em>) – Nombre de la variable de la cual se quieren obtener los índices de valores atípicos.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Lista de índices de los valores atípicos.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+<dt class="field-even">Muestra<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – Si la variable no ha sido analizada previamente.</p>
 </dd>
 </dl>
-</section>
-<section id="id3">
-<h3>Retorna<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
-<dl class="simple">
-<dt>list</dt><dd><p>Lista de índices de los valores atípicos.</p>
-</dd>
-</dl>
-</section>
-<section id="lanza">
-<h3>Lanza<a class="headerlink" href="#lanza" title="Link to this heading"></a></h3>
-<dl class="simple">
-<dt>ValueError</dt><dd><p>Si la variable no ha sido analizada previamente.</p>
-</dd>
-</dl>
-</section>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="Outliers.OutliersDetection.get_results">
 <span class="sig-name descname"><span class="pre">get_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Outliers.html#OutliersDetection.get_results"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Outliers.OutliersDetection.get_results" title="Link to this definition"></a></dt>
 <dd><p>Devuelve un resumen de los valores atípicos detectados para variables numéricas.</p>
-<section id="id4">
-<h3>Parámetros<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
-<dl class="simple">
-<dt>method<span class="classifier">str, opcional</span></dt><dd><p>Método específico para el cual se quieren los resultados.
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>method</strong> (<em>str</em><em> (</em><em>default=None</em><em>)</em>) – Método específico para el cual se quieren los resultados.
 Si no se especifica, se devolverán resultados de todos los métodos.</p>
 </dd>
-</dl>
-</section>
-<section id="id5">
-<h3>Retorna<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
-<dl class="simple">
-<dt>pandas.DataFrame</dt><dd><p>Resumen de los valores atípicos detectados por variable y método.</p>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Resumen de los valores atípicos detectados por variable y método.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="Outliers.OutliersDetection.get_results_cat_vars">
 <span class="sig-name descname"><span class="pre">get_results_cat_vars</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Outliers.html#OutliersDetection.get_results_cat_vars"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Outliers.OutliersDetection.get_results_cat_vars" title="Link to this definition"></a></dt>
 <dd><p>Devuelve un resumen de los valores atípicos detectados en variables categóricas.</p>
-<section id="id6">
-<h3>Retorna<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
-<dl class="simple">
-<dt>pandas.DataFrame</dt><dd><p>Resumen de los valores atípicos detectados para cada variable categórica.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Resumen de los valores atípicos detectados para cada variable categórica.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>pd.DataFrame</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="Outliers.OutliersDetection.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Outliers.html#OutliersDetection.run"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Outliers.OutliersDetection.run" title="Link to this definition"></a></dt>
 <dd><p>Ejecuta el análisis de detección de valores atípicos.</p>
-<section id="id7">
-<h3>Parámetros<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
-<dl class="simple">
-<dt>data<span class="classifier">pandas.DataFrame</span></dt><dd><p>Conjunto de datos sobre el que se detectarán valores atípicos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>pandas.DataFrame</em>) – Conjunto de datos sobre el que se detectarán valores atípicos.</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="Outliers.OutliersDetection.transform">
 <span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Outliers.html#OutliersDetection.transform"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Outliers.OutliersDetection.transform" title="Link to this definition"></a></dt>
 <dd><p>Sustituye los valores atípicos detectados con la mediana o la media.</p>
-<section id="id8">
-<h3>Parámetros<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
-<dl class="simple">
-<dt>data<span class="classifier">pandas.DataFrame</span></dt><dd><p>Conjunto de datos original.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pandas.DataFrame</em>) – Conjunto de datos original.</p></li>
+<li><p><strong>method</strong> (<em>str</em>) – Método utilizado para identificar los valores atípicos.</p></li>
+<li><p><strong>metric</strong> (<em>str</em><em> | </em><em>dict</em><em>, </em><em>optional</em>) – Puede ser «median» o «mean» para aplicar el mismo valor a todas las variables, 
+o un diccionario para aplicar una métrica diferente a cada variable. Por defecto, «median».</p></li>
+</ul>
 </dd>
-<dt>method<span class="classifier">str</span></dt><dd><p>Método utilizado para identificar los valores atípicos.</p>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nuevo DataFrame con los valores atípicos sustituidos.</p>
 </dd>
-<dt>metric<span class="classifier">str o dict, opcional</span></dt><dd><p>Puede ser «median» o «mean» para aplicar el mismo valor a todas las variables,
-o un diccionario para aplicar una métrica diferente a cada variable.</p>
-</dd>
-</dl>
-</section>
-<section id="id9">
-<h3>Retorna<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
-<dl class="simple">
-<dt>pandas.DataFrame</dt><dd><p>Nuevo DataFrame con los valores atípicos sustituidos.</p>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
 </dd>
 </dl>
-</section>
 </dd></dl>
 
-</section>
 </dd></dl>
 
 </section>

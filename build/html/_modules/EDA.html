@@ -8,7 +8,7 @@
   <title>EDA &mdash; TFM - UNIR | Documentación de la librería credit-card</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3ddd9672" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=fda1fe14" />
 
   
     <link rel="shortcut icon" href="../_static/unir_logo.png"/>
@@ -134,35 +134,30 @@
 <div class="viewcode-block" id="EDAProcessor">
 <a class="viewcode-back" href="../EDA.html#EDA.EDAProcessor">[documentos]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">EDAProcessor</span><span class="p">:</span>
-
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Clase para procesar tareas de análisis exploratorio de datos (EDA).</span>
 
-<span class="sd">    Attributes</span>
-<span class="sd">    ----------</span>
-<span class="sd">        dict_column : dict</span>
-<span class="sd">            Diccionario para almacenar metadatos de las columnas.</span>
-<span class="sd">        n_samples : int</span>
-<span class="sd">            Número de filas en el conjunto de datos.</span>
-<span class="sd">        n_columns : int</span>
-<span class="sd">            Número de columnas en el conjunto de datos.</span>
-<span class="sd">        column_names : list[str]</span>
-<span class="sd">            Lista con los nombres de las columnas.</span>
-<span class="sd">        categorical_features : list[str]</span>
-<span class="sd">            Lista de columnas categóricas.</span>
-<span class="sd">        numerical_features : list[str]</span>
-<span class="sd">            Lista de columnas numéricas.</span>
+<span class="sd">    :param target: Nombre de la columna objetivo.</span>
+<span class="sd">    :type target: str</span>
+<span class="sd">    :param ordinal_columns: Lista de columnas ordinales.</span>
+<span class="sd">    :type ordinal_columns: list</span>
+<span class="sd">    :param exclude_columns: Columnas a excluir del análisis. Por defecto, None.</span>
+<span class="sd">    :type exclude_columns: list | None (default=None)</span>
+<span class="sd">    :param verbose: Indica si se imprimen mensajes durante el procesamiento. Por defecto, True.</span>
+<span class="sd">    :type verbose: bool (default=True)</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        target : str: </span>
-<span class="sd">            Nombre de la columna objetivo.</span>
-<span class="sd">        ordinal_columns : list[str] </span>
-<span class="sd">            Lista de columnas ordinales.</span>
-<span class="sd">        exclude_columns : list[str] | None (default=None)</span>
-<span class="sd">            Columnas a excluir del análisis.</span>
-<span class="sd">        verbose : bool (default=True)</span>
-<span class="sd">            Indica si se imprimen mensajes durante el procesamiento.</span>
+<span class="sd">    :ivar dict_column: Diccionario para almacenar metadatos de las columnas.</span>
+<span class="sd">    :vartype dict_column: dict</span>
+<span class="sd">    :ivar n_samples: Número de filas en el conjunto de datos.</span>
+<span class="sd">    :vartype n_samples: int</span>
+<span class="sd">    :ivar n_columns: Número de columnas en el conjunto de datos.</span>
+<span class="sd">    :vartype n_columns: int</span>
+<span class="sd">    :ivar column_names: Lista con los nombres de las columnas.</span>
+<span class="sd">    :vartype column_names: list</span>
+<span class="sd">    :ivar categorical_features: Lista de columnas categóricas.</span>
+<span class="sd">    :vartype categorical_features: list</span>
+<span class="sd">    :ivar numerical_features: Lista de columnas numéricas.</span>
+<span class="sd">    :vartype numerical_features: list</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
@@ -211,22 +206,18 @@
 <a class="viewcode-back" href="../EDA.html#EDA.EDAProcessor.run">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Ejecuta el análisis exploratorio de datos.</span>
+<span class="sd">        Ejecuta el análisis exploratorio de datos (EDA).</span>
 
-<span class="sd">        El EDA realiza tres pasos: </span>
+<span class="sd">        El EDA realiza los siguientes pasos:</span>
 
 <span class="sd">        1. Identifica el tipo de variable (numérica, categórica, etc.).</span>
 <span class="sd">        2. Calcula valores faltantes y duplicados.</span>
 <span class="sd">        3. Calcula la matriz de correlación.</span>
-<span class="sd">        </span>
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        data : pandas.DataFrame</span>
-<span class="sd">            Conjunto de datos a analizar.</span>
 
-<span class="sd">        Raises</span>
-<span class="sd">        ------</span>
-<span class="sd">            TypeError: Si el argumento `data` no es un DataFrame de pandas.</span>
+<span class="sd">        :param data: Conjunto de datos a analizar.</span>
+<span class="sd">        :type data: pandas.DataFrame</span>
+
+<span class="sd">        :raises TypeError: Si el argumento `data` no es un DataFrame de pandas.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
@@ -346,25 +337,21 @@
 <span class="sd">        Este método permite dividir los valores de una columna en intervalos (bins) </span>
 <span class="sd">        y calcular la frecuencia de valores dentro de cada intervalo.</span>
 
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">            data: pd.DataFrame </span>
-<span class="sd">                Conjunto de datos que contiene la columna a analizar.</span>
-<span class="sd">            column: str</span>
-<span class="sd">                Nombre de la columna para la cual calcular la distribución.</span>
-<span class="sd">            n_bins:  int (default=None)</span>
-<span class="sd">                Número de intervalos (bins) en los que dividir la columna.</span>
-<span class="sd">                Si se proporciona, los intervalos se calcularán automáticamente usando valores equiespaciados.</span>
-<span class="sd">            bins : list[float] | list[int] (default=None): </span>
-<span class="sd">                Lista de límites de los intervalos definidos manualmente. Si se proporciona, `n_bins` será ignorado.</span>
+<span class="sd">        :param data: Conjunto de datos que contiene la columna a analizar.</span>
+<span class="sd">        :type data: pd.DataFrame</span>
+<span class="sd">        :param column: Nombre de la columna para la cual calcular la distribución.</span>
+<span class="sd">        :type column: str</span>
+<span class="sd">        :param n_bins: Número de intervalos (bins) en los que dividir la columna. </span>
+<span class="sd">            Si se proporciona, los intervalos se calcularán automáticamente usando valores equiespaciados.</span>
+<span class="sd">        :type n_bins: int, optional (default=None)</span>
+<span class="sd">        :param bins: Lista de límites de los intervalos definidos manualmente. </span>
+<span class="sd">            Si se proporciona, `n_bins` será ignorado.</span>
+<span class="sd">        :type bins: list[float] | list[int], optional (default=None)</span>
 
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">            pd.Series: Serie con la frecuencia de valores en cada intervalo, ordenada por los intervalos.</span>
+<span class="sd">        :return: Serie con la frecuencia de valores en cada intervalo, ordenada por los intervalos.</span>
+<span class="sd">        :rtype: pd.Series</span>
 
-<span class="sd">        Raises</span>
-<span class="sd">        ------</span>
-<span class="sd">            ValueError: Si el nombre de la columna no está en el conjunto de datos.</span>
+<span class="sd">        :raises ValueError: Si el nombre de la columna no está en el conjunto de datos.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="n">column</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
@@ -389,23 +376,18 @@
 <span class="sd">        Este método crea histogramas para analizar la distribución de las variables numéricas</span>
 <span class="sd">        en el conjunto de datos. Si se seleccionan múltiples variables, se generarán subgráficos.</span>
 
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">            data: pd.DataFrame</span>
-<span class="sd">                Conjunto de datos que contiene las variables a graficar.</span>
-<span class="sd">            num_vars: list[str] (default=None)</span>
-<span class="sd">                Lista de nombres de columnas numéricas a graficar. </span>
-<span class="sd">                Si no se proporciona, se utilizarán todas las variables numéricas identificadas.</span>
-<span class="sd">            figsize: tuple (default=None)</span>
-<span class="sd">                Dimensiones de la figura (ancho, alto). Si no se proporciona, se establecerán valores predeterminados.</span>
+<span class="sd">        :param data: Conjunto de datos que contiene las variables a graficar.</span>
+<span class="sd">        :type data: pd.DataFrame</span>
+<span class="sd">        :param num_vars: Lista de nombres de columnas numéricas a graficar. </span>
+<span class="sd">            Si no se proporciona, se utilizarán todas las variables numéricas identificadas.</span>
+<span class="sd">        :type num_vars: list[str], optional (default=None)</span>
+<span class="sd">        :param figsize: Dimensiones de la figura (ancho, alto). Si no se proporciona, se establecerán valores predeterminados.</span>
+<span class="sd">        :type figsize: tuple, optional (default=None)</span>
 
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">            None: Este método no retorna ningún valor. Genera un gráfico directamente.</span>
+<span class="sd">        :return: Este método no retorna ningún valor. Genera un gráfico directamente.</span>
+<span class="sd">        :rtype: None</span>
 
-<span class="sd">        Raises</span>
-<span class="sd">        ------</span>
-<span class="sd">            ValueError: Si alguna de las variables proporcionadas en `num_vars` no se encuentra en las variables numéricas identificadas.</span>
+<span class="sd">        :raises ValueError: Si alguna de las variables proporcionadas en `num_vars` no se encuentra en las variables numéricas identificadas.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="n">num_vars</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -479,21 +461,16 @@
 <span class="sd">        Este método crea gráficos de barras para analizar la distribución de las variables categóricas </span>
 <span class="sd">        en el conjunto de datos. Si se seleccionan múltiples variables, se generarán subgráficos.</span>
 
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">            data: pd.DataFrame</span>
-<span class="sd">                Conjunto de datos que contiene las variables categóricas a graficar.</span>
-<span class="sd">            cat_vars: list[str] (default=None)</span>
-<span class="sd">                Lista de nombres de columnas categóricas a graficar. </span>
-<span class="sd">                Si no se proporciona, se utilizarán todas las variables categóricas identificadas.</span>
+<span class="sd">        :param data: Conjunto de datos que contiene las variables categóricas a graficar.</span>
+<span class="sd">        :type data: pd.DataFrame</span>
+<span class="sd">        :param cat_vars: Lista de nombres de columnas categóricas a graficar. </span>
+<span class="sd">            Si no se proporciona, se utilizarán todas las variables categóricas identificadas.</span>
+<span class="sd">        :type cat_vars: list[str], optional (default=None)</span>
 
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">            None: Este método no retorna ningún valor. Genera gráficos directamente.</span>
+<span class="sd">        :return: Este método no retorna ningún valor. Genera gráficos directamente.</span>
+<span class="sd">        :rtype: None</span>
 
-<span class="sd">        Raises</span>
-<span class="sd">        ------</span>
-<span class="sd">            ValueError: Si alguna de las variables proporcionadas en `cat_vars` no se encuentra en las variables categóricas identificadas.</span>
+<span class="sd">        :raises ValueError: Si alguna de las variables proporcionadas en `cat_vars` no se encuentra en las variables categóricas identificadas.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="n">cat_vars</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -550,14 +527,11 @@
 <span class="sd">        Este método crea un gráfico de barras que muestra la frecuencia de cada categoría </span>
 <span class="sd">        en la columna objetivo (`target`) del conjunto de datos.</span>
 
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">            data: pd.DataFrame</span>
-<span class="sd">                Conjunto de datos que contiene la columna objetivo.</span>
+<span class="sd">        :param data: Conjunto de datos que contiene la columna objetivo.</span>
+<span class="sd">        :type data: pd.DataFrame</span>
 
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">            None: Este método no retorna ningún valor. Genera un gráfico directamente.</span>
+<span class="sd">        :return: Este método no retorna ningún valor. Genera un gráfico directamente.</span>
+<span class="sd">        :rtype: None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
@@ -579,13 +553,8 @@
 <span class="sd">        Este método utiliza la matriz de correlación calculada previamente (`self.df_corr`)</span>
 <span class="sd">        para crear un mapa de calor, lo que facilita el análisis de relaciones entre variables numéricas.</span>
 
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">            None: Este método no requiere parámetros adicionales.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">            None: Este método no retorna ningún valor. Genera un gráfico directamente.</span>
+<span class="sd">        :return: Este método no retorna ningún valor. Genera un gráfico directamente.</span>
+<span class="sd">        :rtype: None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
@@ -616,22 +585,17 @@
 <span class="sd">        Este método crea un gráfico de caja para cada variable numérica seleccionada, </span>
 <span class="sd">        mostrando la distribución de sus valores con respecto a las categorías de la columna objetivo (`target`).</span>
 
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">            data: pd.DataFrame</span>
-<span class="sd">                Conjunto de datos que contiene las variables a analizar.</span>
-<span class="sd">            num_vars: list[str] (default=None)</span>
-<span class="sd">                Lista de nombres de columnas numéricas a analizar. </span>
-<span class="sd">                Si no se proporciona, se utilizarán todas las variables numéricas identificadas.</span>
+<span class="sd">        :param data: Conjunto de datos que contiene las variables a analizar.</span>
+<span class="sd">        :type data: pd.DataFrame</span>
+<span class="sd">        :param num_vars: Lista de nombres de columnas numéricas a analizar. </span>
+<span class="sd">            Si no se proporciona, se utilizarán todas las variables numéricas identificadas.</span>
+<span class="sd">        :type num_vars: list[str], optional (default=None)</span>
 
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">            None: Este método no retorna ningún valor. Genera gráficos directamente.</span>
+<span class="sd">        :return: Este método no retorna ningún valor. Genera gráficos directamente.</span>
+<span class="sd">        :rtype: None</span>
 
-<span class="sd">        Raises</span>
-<span class="sd">        ------</span>
-<span class="sd">            ValueError: Si alguna de las variables proporcionadas en `num_vars` no se encuentra en las variables numéricas identificadas.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        :raises ValueError: Si alguna de las variables proporcionadas en `num_vars` no se encuentra en las variables numéricas identificadas.</span>
+<span class="sd">        &quot;&quot;&quot;</span> 
 
         <span class="k">if</span> <span class="n">num_vars</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">num_vars</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerical_features</span>
@@ -688,21 +652,16 @@
 <span class="sd">        Este método crea gráficos de barras para cada variable categórica seleccionada, mostrando</span>
 <span class="sd">        la frecuencia de sus valores desglosados por las categorías de la columna objetivo (`target`).</span>
 
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">            data: pd.DataFrame</span>
-<span class="sd">                Conjunto de datos que contiene las variables categóricas a analizar.</span>
-<span class="sd">            cat_vars: list[str] (default=None)</span>
-<span class="sd">                Lista de nombres de columnas categóricas a analizar. </span>
-<span class="sd">                Si no se proporciona, se utilizarán todas las variables categóricas identificadas.</span>
+<span class="sd">        :param data: Conjunto de datos que contiene las variables categóricas a analizar.</span>
+<span class="sd">        :type data: pd.DataFrame</span>
+<span class="sd">        :param cat_vars: Lista de nombres de columnas categóricas a analizar. </span>
+<span class="sd">            Si no se proporciona, se utilizarán todas las variables categóricas identificadas.</span>
+<span class="sd">        :type cat_vars: list[str], optional (default=None)</span>
 
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">            None: Este método no retorna ningún valor. Genera gráficos directamente.</span>
+<span class="sd">        :return: Este método no retorna ningún valor. Genera gráficos directamente.</span>
+<span class="sd">        :rtype: None</span>
 
-<span class="sd">        Raises</span>
-<span class="sd">        ------</span>
-<span class="sd">            ValueError: Si alguna de las variables proporcionadas en `cat_vars` no se encuentra en las variables categóricas identificadas.</span>
+<span class="sd">        :raises ValueError: Si alguna de las variables proporcionadas en `cat_vars` no se encuentra en las variables categóricas identificadas.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="n">cat_vars</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -790,21 +749,19 @@
 <a class="viewcode-back" href="../EDA.html#EDA.EDAProcessor.get_results">[documentos]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_results</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Obtén el resumen del análisis exploratorio de datos (EDA).</span>
+<span class="sd">        Obtiene el resumen del análisis exploratorio de datos (EDA).</span>
 
 <span class="sd">        Este método devuelve un DataFrame que contiene metadatos de cada columna en el conjunto de datos, incluyendo información como:</span>
 
-<span class="sd">        - Tipo de dato</span>
-<span class="sd">        - Número de valores faltantes</span>
-<span class="sd">        - Porcentaje de valores faltantes</span>
-<span class="sd">        - Número de valores únicos</span>
-<span class="sd">        - Si la columna tiene filas duplicadas</span>
+<span class="sd">        - Tipo de dato.</span>
+<span class="sd">        - Número de valores faltantes.</span>
+<span class="sd">        - Porcentaje de valores faltantes.</span>
+<span class="sd">        - Número de valores únicos.</span>
+<span class="sd">        - Si la columna tiene filas duplicadas.</span>
 
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        pandas.DataFrame</span>
-<span class="sd">            Un DataFrame donde cada fila corresponde a una columna en el conjunto de datos, </span>
+<span class="sd">        :return: Un DataFrame donde cada fila corresponde a una columna en el conjunto de datos, </span>
 <span class="sd">            y los metadatos de cada columna se almacenan en la fila respectiva.</span>
+<span class="sd">        :rtype: pandas.DataFrame</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">)</span><span class="o">.</span><span class="n">T</span></div>

@@ -11,66 +11,58 @@ class OutliersDetection:
     """
     Clase para la detección de valores atípicos (outliers) en variables numéricas y categóricas.
 
-    Parámetros
-    ----------
-    method : str
-        Método para detectar valores atípicos. Puede ser uno de los siguientes:
-        - "IQR": Rango intercuartílico
-        - "std": Desviación estándar
-        - "IForest": Isolation Forest
-        - "LOF": Local Outlier Factor
-        - "GMM": Gaussian Mixture Model
-        - "all": Aplica todos los métodos disponibles
+    Esta clase implementa múltiples métodos para detectar valores atípicos en conjuntos de datos,
+    incluyendo técnicas estadísticas y modelos basados en machine learning.
 
-    k : float, opcional (default=1.5)
-        Valor multiplicador del rango intercuartílico (IQR) o desviación estándar para definir los límites
-        de detección de outliers:
+    :param method: Método para detectar valores atípicos. Puede ser uno de los siguientes:
 
-        Si `method` es "IQR", los límites son:
+        - IQR: Rango intercuartílico.
+        - std: Desviación estándar.
+        - IForest: Isolation Forest.
+        - LOF: Local Outlier Factor.
+        - GMM: Gaussian Mixture Model.
+        - all: Aplica todos los métodos disponibles.
+    :type method: str
+    :param k: Valor multiplicador utilizado en los métodos estadísticos (IQR o std).
+
+        - Si `method` es IQR, los límites se calculan como:
+
         .. math::
 
-            \\text{lower_limit} = Q_1 - k * (Q_3 - Q_1)\\\\
-            \\text{upper_limit} = Q_3 + k * (Q_3 - Q_1)
+            \\text{lower limit} = Q_1 - k \\cdot (Q_3 - Q_1) \\\\
+            \\text{upper limit} = Q_3 + k \\cdot (Q_3 - Q_1)
 
-        Si `method` es "std", los límites son:
+        - Si `method` es std, los límites se calculan como:
+
         .. math::
 
-            \\text{lower_limit} = media - k * desviación\\\\
-            \\text{upper_limit} = media + k * desviación
-
-    threshold : float, opcional (default=0.05)
-        Umbral para identificar valores atípicos en variables categóricas, basado en la frecuencia relativa.
-
-    seed : int, opcional (default=42)
-        Semilla para los métodos que requieren aleatoriedad.
-
-    estimator : object, opcional (default=None)
-        Estimador personalizado. Puede ser una instancia de `IsolationForest`, `LocalOutlierFactor`
+            \\text{lower limit} = \\mu - k \\cdot \\sigma \\\\
+            \\text{upper limit} = \\mu + k \\cdot \\sigma
+    :type k: float, optional (default=1.5)
+    :param threshold: Umbral para identificar valores atípicos en variables categóricas, basado en la frecuencia relativa.
+    :type threshold: float, optional (default=0.05)
+    :param seed: Semilla para los métodos que requieren aleatoriedad.
+    :type seed: int, optional (default=42)
+    :param estimator: Estimador personalizado. Puede ser una instancia de `IsolationForest`, `LocalOutlierFactor` 
         o `GaussianMixture`.
+    :type estimator: object, optional (default=None)
+    :param contamination: Proporción de datos considerados como valores atípicos para los métodos basados en estimadores.
+    :type contamination: float, optional (default=0.05)
+    :param n_neighbors: Número de vecinos para el método Local Outlier Factor.
+    :type n_neighbors: int, optional (default=20)
+    :param n_components: Número de componentes en el modelo Gaussian Mixture.
+    :type n_components: int, optional (default=2)
 
-    contamination : float, opcional (default=0.05)
-        Proporción de datos considerados como valores atípicos para los métodos basados en estimadores.
-
-    n_neighbors : int, opcional (default=20)
-        Número de vecinos para el método Local Outlier Factor.
-
-    n_components : int, opcional (default=2)
-        Número de componentes en el modelo Gaussian Mixture.
-
-    Atributos
-    ---------
-    numerical_features : list
-        Lista de nombres de variables numéricas en el conjunto de datos.
-
-    categorical_features : list
-        Lista de nombres de variables categóricas en el conjunto de datos.
-
-    dict_column : dict
-        Diccionario con los resultados de la detección de outliers en variables numéricas.
-
-    dict_column_cat : dict
-        Diccionario con los resultados de la detección de outliers en variables categóricas.
+    :ivar numerical_features: Lista de nombres de variables numéricas en el conjunto de datos.
+    :vartype numerical_features: list
+    :ivar categorical_features: Lista de nombres de variables categóricas en el conjunto de datos.
+    :vartype categorical_features: list
+    :ivar dict_column: Diccionario con los resultados de la detección de outliers en variables numéricas.
+    :vartype dict_column: dict
+    :ivar dict_column_cat: Diccionario con los resultados de la detección de outliers en variables categóricas.
+    :vartype dict_column_cat: dict
     """
+
 
     def __init__(
             self,
@@ -127,10 +119,9 @@ class OutliersDetection:
         """
         Ejecuta el análisis de detección de valores atípicos.
 
-        Parámetros
-        ----------
-        data : pandas.DataFrame
-            Conjunto de datos sobre el que se detectarán valores atípicos.
+        :param data: Conjunto de datos sobre el que se detectarán valores atípicos.
+        :type data: pandas.DataFrame
+            
         """
         if not isinstance(data, pd.DataFrame):
             raise TypeError("`data` debe ser un DataFrame de pandas.")
@@ -145,15 +136,11 @@ class OutliersDetection:
         """
         Identifica variables numéricas y categóricas en el conjunto de datos.
 
-        Parámetros
-        ----------
-        data : pandas.DataFrame
-            Conjunto de datos.
+        :param data: Conjunto de datos sobre el que se detectarán valores atípicos.
+        :type data: pandas.DataFrame
 
-        Retorna
-        -------
-        tuple
-            Listas de variables numéricas y categóricas.
+        :return: Listas de variables numéricas y categóricas.
+        :rtype: tuple
         """
         numerical_vars = data.select_dtypes(include=['number']).columns.tolist()
         categorical_vars = data.select_dtypes(exclude=['number']).columns.tolist()
@@ -180,7 +167,7 @@ class OutliersDetection:
         """
         Detecta valores atípicos según el método seleccionado.
 
-        Parámetros
+        Parameters
         ----------
         data : pandas.DataFrame
             Conjunto de datos en el que se detectarán valores atípicos.
@@ -195,7 +182,7 @@ class OutliersDetection:
         """
         Detecta valores atípicos en variables numéricas según el método.
 
-        Parámetros
+        Parameters
         ----------
         data : pandas.DataFrame
             Conjunto de datos en el que se detectarán valores atípicos.
@@ -229,7 +216,7 @@ class OutliersDetection:
         """
         Detecta valores atípicos usando el método del rango intercuartílico (IQR).
 
-        Parámetros
+        Parameters
         ----------
         data : pandas.DataFrame
             Conjunto de datos en el que se detectarán valores atípicos.
@@ -264,7 +251,7 @@ class OutliersDetection:
         """
         Detecta valores atípicos usando el método de desviación estándar.
 
-        Parámetros
+        Parameters
         ----------
         data : pandas.DataFrame
             Conjunto de datos en el que se detectarán valores atípicos.
@@ -297,7 +284,7 @@ class OutliersDetection:
         """
         Detecta valores atípicos utilizando Isolation Forest o Local Outlier Factor.
 
-        Parámetros
+        Parameters
         ----------
         data : pandas.DataFrame
             Conjunto de datos en el que se detectarán valores atípicos.
@@ -322,7 +309,7 @@ class OutliersDetection:
         """
         Detecta valores atípicos utilizando Gaussian Mixture Model.
 
-        Parámetros
+        Parameters
         ----------
         data : pandas.DataFrame
             Conjunto de datos en el que se detectarán valores atípicos.
@@ -351,7 +338,7 @@ class OutliersDetection:
         """
         Identifica valores atípicos en variables categóricas basados en su frecuencia relativa.
 
-        Parámetros
+        Parameters
         ----------
         data : pandas.DataFrame
             Conjunto de datos en el que se detectarán valores atípicos.
@@ -379,20 +366,13 @@ class OutliersDetection:
         """
         Obtiene la lista de índices de valores atípicos para una variable específica.
 
-        Parámetros
-        ----------
-        variable : str
-            Nombre de la variable de la cual se quieren obtener los índices de valores atípicos.
+        :param variable: Nombre de la variable de la cual se quieren obtener los índices de valores atípicos.
+        :type variable: str Parameters
 
-        Retorna
-        -------
-        list
-            Lista de índices de los valores atípicos.
+        :return: Lista de índices de los valores atípicos.
+        :rtype: list
 
-        Lanza
-        -----
-        ValueError
-            Si la variable no ha sido analizada previamente.
+        :raises ValueError: Si la variable no ha sido analizada previamente.                   
         """
         # Verifica si la variable fue analizada
         if variable not in self.dict_column:
@@ -405,16 +385,12 @@ class OutliersDetection:
         """
         Devuelve un resumen de los valores atípicos detectados para variables numéricas.
 
-        Parámetros
-        ----------
-        method : str, opcional
-            Método específico para el cual se quieren los resultados.
+        :param method: Método específico para el cual se quieren los resultados.
             Si no se especifica, se devolverán resultados de todos los métodos.
+        :type method: str (default=None)
 
-        Retorna
-        -------
-        pandas.DataFrame
-            Resumen de los valores atípicos detectados por variable y método.
+        :return: Resumen de los valores atípicos detectados por variable y método.
+        :rtype: pd.DataFrame           
         """
         if method is not None:
             if method not in self.dict_column:
@@ -443,10 +419,8 @@ class OutliersDetection:
         """
         Devuelve un resumen de los valores atípicos detectados en variables categóricas.
 
-        Retorna
-        -------
-        pandas.DataFrame
-            Resumen de los valores atípicos detectados para cada variable categórica.
+        :return: Resumen de los valores atípicos detectados para cada variable categórica.
+        :rtype: pd.DataFrame      
         """
         # Convierte el diccionario de resultados a un DataFrame
         results_cat = pd.DataFrame(self.dict_column_cat).T
@@ -456,23 +430,18 @@ class OutliersDetection:
         """
         Sustituye los valores atípicos detectados con la mediana o la media.
 
-        Parámetros
-        ----------
-        data : pandas.DataFrame
-            Conjunto de datos original.
+        :param data: Conjunto de datos original.
+        :type data: pandas.DataFrame
+        :param method: Método utilizado para identificar los valores atípicos.
+        :type method: str
+        :param metric: Puede ser "median" o "mean" para aplicar el mismo valor a todas las variables, 
+            o un diccionario para aplicar una métrica diferente a cada variable. Por defecto, "median".
+        :type metric: str | dict, optional
 
-        method : str
-            Método utilizado para identificar los valores atípicos.
-
-        metric : str o dict, opcional
-            Puede ser "median" o "mean" para aplicar el mismo valor a todas las variables,
-            o un diccionario para aplicar una métrica diferente a cada variable.
-
-        Retorna
-        -------
-        pandas.DataFrame
-            Nuevo DataFrame con los valores atípicos sustituidos.
+        :return: Nuevo DataFrame con los valores atípicos sustituidos.
+        :rtype: pandas.DataFrame
         """
+
         if method not in self.dict_column:
             raise ValueError(f"El método {method} no ha sido aplicado. "
                              f"Métodos disponibles: {list(self.dict_column.keys())}")
@@ -487,7 +456,7 @@ class OutliersDetection:
             """
             Calcula la mediana o media para la variable especificada.
 
-            Parámetros
+            Parameters
             ----------
             data_transformed : pandas.DataFrame
                 DataFrame transformado.
@@ -498,7 +467,7 @@ class OutliersDetection:
             var : str
                 Nombre de la variable.
 
-            Retorna
+            Returns
             -------
             float
                 Valor de la métrica.
@@ -541,25 +510,19 @@ class OutliersDetection:
         """
         Combina categorías poco frecuentes en una categoría existente o nueva.
 
-        Parámetros
-        ----------
-        data : pandas.DataFrame
-            Conjunto de datos original.
+        :param data: Conjunto de datos original.
+        :type data: pandas.DataFrame
+        :param var: Nombre de la variable categórica.
+        :type var: str
+        :param rare_categories: Lista de categorías que se combinarán.
+        :type rare_categories: list
+        :param new_category: Nombre de la nueva categoría que representará las categorías combinadas.
+        :type new_category: str
 
-        var : str
-            Nombre de la variable categórica.
-
-        rare_categories : list
-            Lista de categorías que se combinarán.
-
-        new_category : str
-            Nombre de la nueva categoría que representará las categorías combinadas.
-
-        Retorna
-        -------
-        pandas.DataFrame
-            DataFrame modificado con las categorías combinadas.
+        :return: DataFrame modificado con las categorías combinadas.
+        :rtype: pandas.DataFrame
         """
+
         # Reemplaza las categorías poco frecuentes por la nueva categoría
         data[var] = data[var].apply(lambda x: new_category if x in rare_categories else x)
         return data

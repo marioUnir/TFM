@@ -23,6 +23,7 @@ author = 'Cristina Domínguez and Mario Río'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',  # Para incluir enlaces al código fuente
+    'sphinx.ext.mathjax',  # Necesario para fórmulas matemáticas
 ]
 
 templates_path = ['_templates']

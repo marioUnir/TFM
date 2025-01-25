@@ -5,35 +5,30 @@ import seaborn as sns
 
 
 class EDAProcessor:
-
     """
     Clase para procesar tareas de análisis exploratorio de datos (EDA).
 
-    Attributes
-    ----------
-        dict_column : dict
-            Diccionario para almacenar metadatos de las columnas.
-        n_samples : int
-            Número de filas en el conjunto de datos.
-        n_columns : int
-            Número de columnas en el conjunto de datos.
-        column_names : list[str]
-            Lista con los nombres de las columnas.
-        categorical_features : list[str]
-            Lista de columnas categóricas.
-        numerical_features : list[str]
-            Lista de columnas numéricas.
+    :param target: Nombre de la columna objetivo.
+    :type target: str
+    :param ordinal_columns: Lista de columnas ordinales.
+    :type ordinal_columns: list
+    :param exclude_columns: Columnas a excluir del análisis. Por defecto, None.
+    :type exclude_columns: list | None (default=None)
+    :param verbose: Indica si se imprimen mensajes durante el procesamiento. Por defecto, True.
+    :type verbose: bool (default=True)
 
-    Parameters
-    ----------
-        target : str: 
-            Nombre de la columna objetivo.
-        ordinal_columns : list[str] 
-            Lista de columnas ordinales.
-        exclude_columns : list[str] | None (default=None)
-            Columnas a excluir del análisis.
-        verbose : bool (default=True)
-            Indica si se imprimen mensajes durante el procesamiento.
+    :ivar dict_column: Diccionario para almacenar metadatos de las columnas.
+    :vartype dict_column: dict
+    :ivar n_samples: Número de filas en el conjunto de datos.
+    :vartype n_samples: int
+    :ivar n_columns: Número de columnas en el conjunto de datos.
+    :vartype n_columns: int
+    :ivar column_names: Lista con los nombres de las columnas.
+    :vartype column_names: list
+    :ivar categorical_features: Lista de columnas categóricas.
+    :vartype categorical_features: list
+    :ivar numerical_features: Lista de columnas numéricas.
+    :vartype numerical_features: list
     """
 
     def __init__(
@@ -80,22 +75,18 @@ class EDAProcessor:
 
     def run(self, data):
         """
-        Ejecuta el análisis exploratorio de datos.
+        Ejecuta el análisis exploratorio de datos (EDA).
 
-        El EDA realiza tres pasos: 
+        El EDA realiza los siguientes pasos:
 
         1. Identifica el tipo de variable (numérica, categórica, etc.).
         2. Calcula valores faltantes y duplicados.
         3. Calcula la matriz de correlación.
-        
-        Parameters
-        ----------
-        data : pandas.DataFrame
-            Conjunto de datos a analizar.
 
-        Raises
-        ------
-            TypeError: Si el argumento `data` no es un DataFrame de pandas.
+        :param data: Conjunto de datos a analizar.
+        :type data: pandas.DataFrame
+
+        :raises TypeError: Si el argumento `data` no es un DataFrame de pandas.
         """
 
         if not isinstance(data, pd.DataFrame):
@@ -212,25 +203,21 @@ class EDAProcessor:
         Este método permite dividir los valores de una columna en intervalos (bins) 
         y calcular la frecuencia de valores dentro de cada intervalo.
 
-        Parameters
-        ----------
-            data: pd.DataFrame 
-                Conjunto de datos que contiene la columna a analizar.
-            column: str
-                Nombre de la columna para la cual calcular la distribución.
-            n_bins:  int (default=None)
-                Número de intervalos (bins) en los que dividir la columna.
-                Si se proporciona, los intervalos se calcularán automáticamente usando valores equiespaciados.
-            bins : list[float] | list[int] (default=None): 
-                Lista de límites de los intervalos definidos manualmente. Si se proporciona, `n_bins` será ignorado.
+        :param data: Conjunto de datos que contiene la columna a analizar.
+        :type data: pd.DataFrame
+        :param column: Nombre de la columna para la cual calcular la distribución.
+        :type column: str
+        :param n_bins: Número de intervalos (bins) en los que dividir la columna. 
+            Si se proporciona, los intervalos se calcularán automáticamente usando valores equiespaciados.
+        :type n_bins: int, optional (default=None)
+        :param bins: Lista de límites de los intervalos definidos manualmente. 
+            Si se proporciona, `n_bins` será ignorado.
+        :type bins: list[float] | list[int], optional (default=None)
 
-        Returns
-        -------
-            pd.Series: Serie con la frecuencia de valores en cada intervalo, ordenada por los intervalos.
+        :return: Serie con la frecuencia de valores en cada intervalo, ordenada por los intervalos.
+        :rtype: pd.Series
 
-        Raises
-        ------
-            ValueError: Si el nombre de la columna no está en el conjunto de datos.
+        :raises ValueError: Si el nombre de la columna no está en el conjunto de datos.
         """
 
         if column not in data.columns:
@@ -252,23 +239,18 @@ class EDAProcessor:
         Este método crea histogramas para analizar la distribución de las variables numéricas
         en el conjunto de datos. Si se seleccionan múltiples variables, se generarán subgráficos.
 
-        Parameters
-        ----------
-            data: pd.DataFrame
-                Conjunto de datos que contiene las variables a graficar.
-            num_vars: list[str] (default=None)
-                Lista de nombres de columnas numéricas a graficar. 
-                Si no se proporciona, se utilizarán todas las variables numéricas identificadas.
-            figsize: tuple (default=None)
-                Dimensiones de la figura (ancho, alto). Si no se proporciona, se establecerán valores predeterminados.
+        :param data: Conjunto de datos que contiene las variables a graficar.
+        :type data: pd.DataFrame
+        :param num_vars: Lista de nombres de columnas numéricas a graficar. 
+            Si no se proporciona, se utilizarán todas las variables numéricas identificadas.
+        :type num_vars: list[str], optional (default=None)
+        :param figsize: Dimensiones de la figura (ancho, alto). Si no se proporciona, se establecerán valores predeterminados.
+        :type figsize: tuple, optional (default=None)
 
-        Returns
-        -------
-            None: Este método no retorna ningún valor. Genera un gráfico directamente.
+        :return: Este método no retorna ningún valor. Genera un gráfico directamente.
+        :rtype: None
 
-        Raises
-        ------
-            ValueError: Si alguna de las variables proporcionadas en `num_vars` no se encuentra en las variables numéricas identificadas.
+        :raises ValueError: Si alguna de las variables proporcionadas en `num_vars` no se encuentra en las variables numéricas identificadas.
         """
 
         if num_vars is None:
@@ -339,21 +321,16 @@ class EDAProcessor:
         Este método crea gráficos de barras para analizar la distribución de las variables categóricas 
         en el conjunto de datos. Si se seleccionan múltiples variables, se generarán subgráficos.
 
-        Parameters
-        ----------
-            data: pd.DataFrame
-                Conjunto de datos que contiene las variables categóricas a graficar.
-            cat_vars: list[str] (default=None)
-                Lista de nombres de columnas categóricas a graficar. 
-                Si no se proporciona, se utilizarán todas las variables categóricas identificadas.
+        :param data: Conjunto de datos que contiene las variables categóricas a graficar.
+        :type data: pd.DataFrame
+        :param cat_vars: Lista de nombres de columnas categóricas a graficar. 
+            Si no se proporciona, se utilizarán todas las variables categóricas identificadas.
+        :type cat_vars: list[str], optional (default=None)
 
-        Returns
-        -------
-            None: Este método no retorna ningún valor. Genera gráficos directamente.
+        :return: Este método no retorna ningún valor. Genera gráficos directamente.
+        :rtype: None
 
-        Raises
-        ------
-            ValueError: Si alguna de las variables proporcionadas en `cat_vars` no se encuentra en las variables categóricas identificadas.
+        :raises ValueError: Si alguna de las variables proporcionadas en `cat_vars` no se encuentra en las variables categóricas identificadas.
         """
 
         if cat_vars is None:
@@ -407,14 +384,11 @@ class EDAProcessor:
         Este método crea un gráfico de barras que muestra la frecuencia de cada categoría 
         en la columna objetivo (`target`) del conjunto de datos.
 
-        Parameters
-        ----------
-            data: pd.DataFrame
-                Conjunto de datos que contiene la columna objetivo.
+        :param data: Conjunto de datos que contiene la columna objetivo.
+        :type data: pd.DataFrame
 
-        Returns
-        -------
-            None: Este método no retorna ningún valor. Genera un gráfico directamente.
+        :return: Este método no retorna ningún valor. Genera un gráfico directamente.
+        :rtype: None
         """
 
         plt.figure(figsize=(10, 6))
@@ -433,13 +407,8 @@ class EDAProcessor:
         Este método utiliza la matriz de correlación calculada previamente (`self.df_corr`)
         para crear un mapa de calor, lo que facilita el análisis de relaciones entre variables numéricas.
 
-        Parameters
-        ----------
-            None: Este método no requiere parámetros adicionales.
-
-        Returns
-        -------
-            None: Este método no retorna ningún valor. Genera un gráfico directamente.
+        :return: Este método no retorna ningún valor. Genera un gráfico directamente.
+        :rtype: None
         """
 
         plt.figure(figsize=(14, 10))
@@ -467,22 +436,17 @@ class EDAProcessor:
         Este método crea un gráfico de caja para cada variable numérica seleccionada, 
         mostrando la distribución de sus valores con respecto a las categorías de la columna objetivo (`target`).
 
-        Parameters
-        ----------
-            data: pd.DataFrame
-                Conjunto de datos que contiene las variables a analizar.
-            num_vars: list[str] (default=None)
-                Lista de nombres de columnas numéricas a analizar. 
-                Si no se proporciona, se utilizarán todas las variables numéricas identificadas.
+        :param data: Conjunto de datos que contiene las variables a analizar.
+        :type data: pd.DataFrame
+        :param num_vars: Lista de nombres de columnas numéricas a analizar. 
+            Si no se proporciona, se utilizarán todas las variables numéricas identificadas.
+        :type num_vars: list[str], optional (default=None)
 
-        Returns
-        -------
-            None: Este método no retorna ningún valor. Genera gráficos directamente.
+        :return: Este método no retorna ningún valor. Genera gráficos directamente.
+        :rtype: None
 
-        Raises
-        ------
-            ValueError: Si alguna de las variables proporcionadas en `num_vars` no se encuentra en las variables numéricas identificadas.
-        """
+        :raises ValueError: Si alguna de las variables proporcionadas en `num_vars` no se encuentra en las variables numéricas identificadas.
+        """ 
 
         if num_vars is None:
             num_vars = self.numerical_features
@@ -536,21 +500,16 @@ class EDAProcessor:
         Este método crea gráficos de barras para cada variable categórica seleccionada, mostrando
         la frecuencia de sus valores desglosados por las categorías de la columna objetivo (`target`).
 
-        Parameters
-        ----------
-            data: pd.DataFrame
-                Conjunto de datos que contiene las variables categóricas a analizar.
-            cat_vars: list[str] (default=None)
-                Lista de nombres de columnas categóricas a analizar. 
-                Si no se proporciona, se utilizarán todas las variables categóricas identificadas.
+        :param data: Conjunto de datos que contiene las variables categóricas a analizar.
+        :type data: pd.DataFrame
+        :param cat_vars: Lista de nombres de columnas categóricas a analizar. 
+            Si no se proporciona, se utilizarán todas las variables categóricas identificadas.
+        :type cat_vars: list[str], optional (default=None)
 
-        Returns
-        -------
-            None: Este método no retorna ningún valor. Genera gráficos directamente.
+        :return: Este método no retorna ningún valor. Genera gráficos directamente.
+        :rtype: None
 
-        Raises
-        ------
-            ValueError: Si alguna de las variables proporcionadas en `cat_vars` no se encuentra en las variables categóricas identificadas.
+        :raises ValueError: Si alguna de las variables proporcionadas en `cat_vars` no se encuentra en las variables categóricas identificadas.
         """
 
         if cat_vars is None:
@@ -635,21 +594,19 @@ class EDAProcessor:
 
     def get_results(self):
         """
-        Obtén el resumen del análisis exploratorio de datos (EDA).
+        Obtiene el resumen del análisis exploratorio de datos (EDA).
 
         Este método devuelve un DataFrame que contiene metadatos de cada columna en el conjunto de datos, incluyendo información como:
 
-        - Tipo de dato
-        - Número de valores faltantes
-        - Porcentaje de valores faltantes
-        - Número de valores únicos
-        - Si la columna tiene filas duplicadas
+        - Tipo de dato.
+        - Número de valores faltantes.
+        - Porcentaje de valores faltantes.
+        - Número de valores únicos.
+        - Si la columna tiene filas duplicadas.
 
-        Returns
-        -------
-        pandas.DataFrame
-            Un DataFrame donde cada fila corresponde a una columna en el conjunto de datos, 
+        :return: Un DataFrame donde cada fila corresponde a una columna en el conjunto de datos, 
             y los metadatos de cada columna se almacenan en la fila respectiva.
+        :rtype: pandas.DataFrame
         """
 
         return pd.DataFrame(self.dict_column).T

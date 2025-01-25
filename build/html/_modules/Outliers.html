@@ -8,7 +8,7 @@
   <title>Outliers &mdash; TFM - UNIR | Documentación de la librería credit-card</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3ddd9672" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=fda1fe14" />
 
   
     <link rel="shortcut icon" href="../_static/unir_logo.png"/>
@@ -140,66 +140,58 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Clase para la detección de valores atípicos (outliers) en variables numéricas y categóricas.</span>
 
-<span class="sd">    Parámetros</span>
-<span class="sd">    ----------</span>
-<span class="sd">    method : str</span>
-<span class="sd">        Método para detectar valores atípicos. Puede ser uno de los siguientes:</span>
-<span class="sd">        - &quot;IQR&quot;: Rango intercuartílico</span>
-<span class="sd">        - &quot;std&quot;: Desviación estándar</span>
-<span class="sd">        - &quot;IForest&quot;: Isolation Forest</span>
-<span class="sd">        - &quot;LOF&quot;: Local Outlier Factor</span>
-<span class="sd">        - &quot;GMM&quot;: Gaussian Mixture Model</span>
-<span class="sd">        - &quot;all&quot;: Aplica todos los métodos disponibles</span>
+<span class="sd">    Esta clase implementa múltiples métodos para detectar valores atípicos en conjuntos de datos,</span>
+<span class="sd">    incluyendo técnicas estadísticas y modelos basados en machine learning.</span>
 
-<span class="sd">    k : float, opcional (default=1.5)</span>
-<span class="sd">        Valor multiplicador del rango intercuartílico (IQR) o desviación estándar para definir los límites</span>
-<span class="sd">        de detección de outliers:</span>
+<span class="sd">    :param method: Método para detectar valores atípicos. Puede ser uno de los siguientes:</span>
 
-<span class="sd">        Si `method` es &quot;IQR&quot;, los límites son:</span>
+<span class="sd">        - IQR: Rango intercuartílico.</span>
+<span class="sd">        - std: Desviación estándar.</span>
+<span class="sd">        - IForest: Isolation Forest.</span>
+<span class="sd">        - LOF: Local Outlier Factor.</span>
+<span class="sd">        - GMM: Gaussian Mixture Model.</span>
+<span class="sd">        - all: Aplica todos los métodos disponibles.</span>
+<span class="sd">    :type method: str</span>
+<span class="sd">    :param k: Valor multiplicador utilizado en los métodos estadísticos (IQR o std).</span>
+
+<span class="sd">        - Si `method` es IQR, los límites se calculan como:</span>
+
 <span class="sd">        .. math::</span>
 
-<span class="sd">            \\text{lower_limit} = Q_1 - k * (Q_3 - Q_1)\\\\</span>
-<span class="sd">            \\text{upper_limit} = Q_3 + k * (Q_3 - Q_1)</span>
+<span class="sd">            \\text{lower limit} = Q_1 - k \\cdot (Q_3 - Q_1) \\\\</span>
+<span class="sd">            \\text{upper limit} = Q_3 + k \\cdot (Q_3 - Q_1)</span>
 
-<span class="sd">        Si `method` es &quot;std&quot;, los límites son:</span>
+<span class="sd">        - Si `method` es std, los límites se calculan como:</span>
+
 <span class="sd">        .. math::</span>
 
-<span class="sd">            \\text{lower_limit} = media - k * desviación\\\\</span>
-<span class="sd">            \\text{upper_limit} = media + k * desviación</span>
-
-<span class="sd">    threshold : float, opcional (default=0.05)</span>
-<span class="sd">        Umbral para identificar valores atípicos en variables categóricas, basado en la frecuencia relativa.</span>
-
-<span class="sd">    seed : int, opcional (default=42)</span>
-<span class="sd">        Semilla para los métodos que requieren aleatoriedad.</span>
-
-<span class="sd">    estimator : object, opcional (default=None)</span>
-<span class="sd">        Estimador personalizado. Puede ser una instancia de `IsolationForest`, `LocalOutlierFactor`</span>
+<span class="sd">            \\text{lower limit} = \\mu - k \\cdot \\sigma \\\\</span>
+<span class="sd">            \\text{upper limit} = \\mu + k \\cdot \\sigma</span>
+<span class="sd">    :type k: float, optional (default=1.5)</span>
+<span class="sd">    :param threshold: Umbral para identificar valores atípicos en variables categóricas, basado en la frecuencia relativa.</span>
+<span class="sd">    :type threshold: float, optional (default=0.05)</span>
+<span class="sd">    :param seed: Semilla para los métodos que requieren aleatoriedad.</span>
+<span class="sd">    :type seed: int, optional (default=42)</span>
+<span class="sd">    :param estimator: Estimador personalizado. Puede ser una instancia de `IsolationForest`, `LocalOutlierFactor` </span>
 <span class="sd">        o `GaussianMixture`.</span>
+<span class="sd">    :type estimator: object, optional (default=None)</span>
+<span class="sd">    :param contamination: Proporción de datos considerados como valores atípicos para los métodos basados en estimadores.</span>
+<span class="sd">    :type contamination: float, optional (default=0.05)</span>
+<span class="sd">    :param n_neighbors: Número de vecinos para el método Local Outlier Factor.</span>
+<span class="sd">    :type n_neighbors: int, optional (default=20)</span>
+<span class="sd">    :param n_components: Número de componentes en el modelo Gaussian Mixture.</span>
+<span class="sd">    :type n_components: int, optional (default=2)</span>
 
-<span class="sd">    contamination : float, opcional (default=0.05)</span>
-<span class="sd">        Proporción de datos considerados como valores atípicos para los métodos basados en estimadores.</span>
-
-<span class="sd">    n_neighbors : int, opcional (default=20)</span>
-<span class="sd">        Número de vecinos para el método Local Outlier Factor.</span>
-
-<span class="sd">    n_components : int, opcional (default=2)</span>
-<span class="sd">        Número de componentes en el modelo Gaussian Mixture.</span>
-
-<span class="sd">    Atributos</span>
-<span class="sd">    ---------</span>
-<span class="sd">    numerical_features : list</span>
-<span class="sd">        Lista de nombres de variables numéricas en el conjunto de datos.</span>
-
-<span class="sd">    categorical_features : list</span>
-<span class="sd">        Lista de nombres de variables categóricas en el conjunto de datos.</span>
-
-<span class="sd">    dict_column : dict</span>
-<span class="sd">        Diccionario con los resultados de la detección de outliers en variables numéricas.</span>
-
-<span class="sd">    dict_column_cat : dict</span>
-<span class="sd">        Diccionario con los resultados de la detección de outliers en variables categóricas.</span>
+<span class="sd">    :ivar numerical_features: Lista de nombres de variables numéricas en el conjunto de datos.</span>
+<span class="sd">    :vartype numerical_features: list</span>
+<span class="sd">    :ivar categorical_features: Lista de nombres de variables categóricas en el conjunto de datos.</span>
+<span class="sd">    :vartype categorical_features: list</span>
+<span class="sd">    :ivar dict_column: Diccionario con los resultados de la detección de outliers en variables numéricas.</span>
+<span class="sd">    :vartype dict_column: dict</span>
+<span class="sd">    :ivar dict_column_cat: Diccionario con los resultados de la detección de outliers en variables categóricas.</span>
+<span class="sd">    :vartype dict_column_cat: dict</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
@@ -258,10 +250,9 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Ejecuta el análisis de detección de valores atípicos.</span>
 
-<span class="sd">        Parámetros</span>
-<span class="sd">        ----------</span>
-<span class="sd">        data : pandas.DataFrame</span>
-<span class="sd">            Conjunto de datos sobre el que se detectarán valores atípicos.</span>
+<span class="sd">        :param data: Conjunto de datos sobre el que se detectarán valores atípicos.</span>
+<span class="sd">        :type data: pandas.DataFrame</span>
+<span class="sd">            </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;`data` debe ser un DataFrame de pandas.&quot;</span><span class="p">)</span>
@@ -277,15 +268,11 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Identifica variables numéricas y categóricas en el conjunto de datos.</span>
 
-<span class="sd">        Parámetros</span>
-<span class="sd">        ----------</span>
-<span class="sd">        data : pandas.DataFrame</span>
-<span class="sd">            Conjunto de datos.</span>
+<span class="sd">        :param data: Conjunto de datos sobre el que se detectarán valores atípicos.</span>
+<span class="sd">        :type data: pandas.DataFrame</span>
 
-<span class="sd">        Retorna</span>
-<span class="sd">        -------</span>
-<span class="sd">        tuple</span>
-<span class="sd">            Listas de variables numéricas y categóricas.</span>
+<span class="sd">        :return: Listas de variables numéricas y categóricas.</span>
+<span class="sd">        :rtype: tuple</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">numerical_vars</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;number&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
         <span class="n">categorical_vars</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;number&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
@@ -312,7 +299,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Detecta valores atípicos según el método seleccionado.</span>
 
-<span class="sd">        Parámetros</span>
+<span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        data : pandas.DataFrame</span>
 <span class="sd">            Conjunto de datos en el que se detectarán valores atípicos.</span>
@@ -327,7 +314,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Detecta valores atípicos en variables numéricas según el método.</span>
 
-<span class="sd">        Parámetros</span>
+<span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        data : pandas.DataFrame</span>
 <span class="sd">            Conjunto de datos en el que se detectarán valores atípicos.</span>
@@ -361,7 +348,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Detecta valores atípicos usando el método del rango intercuartílico (IQR).</span>
 
-<span class="sd">        Parámetros</span>
+<span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        data : pandas.DataFrame</span>
 <span class="sd">            Conjunto de datos en el que se detectarán valores atípicos.</span>
@@ -396,7 +383,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Detecta valores atípicos usando el método de desviación estándar.</span>
 
-<span class="sd">        Parámetros</span>
+<span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        data : pandas.DataFrame</span>
 <span class="sd">            Conjunto de datos en el que se detectarán valores atípicos.</span>
@@ -429,7 +416,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Detecta valores atípicos utilizando Isolation Forest o Local Outlier Factor.</span>
 
-<span class="sd">        Parámetros</span>
+<span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        data : pandas.DataFrame</span>
 <span class="sd">            Conjunto de datos en el que se detectarán valores atípicos.</span>
@@ -454,7 +441,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Detecta valores atípicos utilizando Gaussian Mixture Model.</span>
 
-<span class="sd">        Parámetros</span>
+<span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        data : pandas.DataFrame</span>
 <span class="sd">            Conjunto de datos en el que se detectarán valores atípicos.</span>
@@ -483,7 +470,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Identifica valores atípicos en variables categóricas basados en su frecuencia relativa.</span>
 
-<span class="sd">        Parámetros</span>
+<span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        data : pandas.DataFrame</span>
 <span class="sd">            Conjunto de datos en el que se detectarán valores atípicos.</span>
@@ -513,20 +500,13 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Obtiene la lista de índices de valores atípicos para una variable específica.</span>
 
-<span class="sd">        Parámetros</span>
-<span class="sd">        ----------</span>
-<span class="sd">        variable : str</span>
-<span class="sd">            Nombre de la variable de la cual se quieren obtener los índices de valores atípicos.</span>
+<span class="sd">        :param variable: Nombre de la variable de la cual se quieren obtener los índices de valores atípicos.</span>
+<span class="sd">        :type variable: str Parameters</span>
 
-<span class="sd">        Retorna</span>
-<span class="sd">        -------</span>
-<span class="sd">        list</span>
-<span class="sd">            Lista de índices de los valores atípicos.</span>
+<span class="sd">        :return: Lista de índices de los valores atípicos.</span>
+<span class="sd">        :rtype: list</span>
 
-<span class="sd">        Lanza</span>
-<span class="sd">        -----</span>
-<span class="sd">        ValueError</span>
-<span class="sd">            Si la variable no ha sido analizada previamente.</span>
+<span class="sd">        :raises ValueError: Si la variable no ha sido analizada previamente.                   </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Verifica si la variable fue analizada</span>
         <span class="k">if</span> <span class="n">variable</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">:</span>
@@ -542,16 +522,12 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Devuelve un resumen de los valores atípicos detectados para variables numéricas.</span>
 
-<span class="sd">        Parámetros</span>
-<span class="sd">        ----------</span>
-<span class="sd">        method : str, opcional</span>
-<span class="sd">            Método específico para el cual se quieren los resultados.</span>
+<span class="sd">        :param method: Método específico para el cual se quieren los resultados.</span>
 <span class="sd">            Si no se especifica, se devolverán resultados de todos los métodos.</span>
+<span class="sd">        :type method: str (default=None)</span>
 
-<span class="sd">        Retorna</span>
-<span class="sd">        -------</span>
-<span class="sd">        pandas.DataFrame</span>
-<span class="sd">            Resumen de los valores atípicos detectados por variable y método.</span>
+<span class="sd">        :return: Resumen de los valores atípicos detectados por variable y método.</span>
+<span class="sd">        :rtype: pd.DataFrame           </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">method</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">:</span>
@@ -583,10 +559,8 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Devuelve un resumen de los valores atípicos detectados en variables categóricas.</span>
 
-<span class="sd">        Retorna</span>
-<span class="sd">        -------</span>
-<span class="sd">        pandas.DataFrame</span>
-<span class="sd">            Resumen de los valores atípicos detectados para cada variable categórica.</span>
+<span class="sd">        :return: Resumen de los valores atípicos detectados para cada variable categórica.</span>
+<span class="sd">        :rtype: pd.DataFrame      </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Convierte el diccionario de resultados a un DataFrame</span>
         <span class="n">results_cat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dict_column_cat</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
@@ -599,23 +573,18 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sustituye los valores atípicos detectados con la mediana o la media.</span>
 
-<span class="sd">        Parámetros</span>
-<span class="sd">        ----------</span>
-<span class="sd">        data : pandas.DataFrame</span>
-<span class="sd">            Conjunto de datos original.</span>
+<span class="sd">        :param data: Conjunto de datos original.</span>
+<span class="sd">        :type data: pandas.DataFrame</span>
+<span class="sd">        :param method: Método utilizado para identificar los valores atípicos.</span>
+<span class="sd">        :type method: str</span>
+<span class="sd">        :param metric: Puede ser &quot;median&quot; o &quot;mean&quot; para aplicar el mismo valor a todas las variables, </span>
+<span class="sd">            o un diccionario para aplicar una métrica diferente a cada variable. Por defecto, &quot;median&quot;.</span>
+<span class="sd">        :type metric: str | dict, optional</span>
 
-<span class="sd">        method : str</span>
-<span class="sd">            Método utilizado para identificar los valores atípicos.</span>
-
-<span class="sd">        metric : str o dict, opcional</span>
-<span class="sd">            Puede ser &quot;median&quot; o &quot;mean&quot; para aplicar el mismo valor a todas las variables,</span>
-<span class="sd">            o un diccionario para aplicar una métrica diferente a cada variable.</span>
-
-<span class="sd">        Retorna</span>
-<span class="sd">        -------</span>
-<span class="sd">        pandas.DataFrame</span>
-<span class="sd">            Nuevo DataFrame con los valores atípicos sustituidos.</span>
+<span class="sd">        :return: Nuevo DataFrame con los valores atípicos sustituidos.</span>
+<span class="sd">        :rtype: pandas.DataFrame</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;El método </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2"> no ha sido aplicado. &quot;</span>
                              <span class="sa">f</span><span class="s2">&quot;Métodos disponibles: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dict_column</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -630,7 +599,7 @@
 <span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Calcula la mediana o media para la variable especificada.</span>
 
-<span class="sd">            Parámetros</span>
+<span class="sd">            Parameters</span>
 <span class="sd">            ----------</span>
 <span class="sd">            data_transformed : pandas.DataFrame</span>
 <span class="sd">                DataFrame transformado.</span>
@@ -641,7 +610,7 @@
 <span class="sd">            var : str</span>
 <span class="sd">                Nombre de la variable.</span>
 
-<span class="sd">            Retorna</span>
+<span class="sd">            Returns</span>
 <span class="sd">            -------</span>
 <span class="sd">            float</span>
 <span class="sd">                Valor de la métrica.</span>
@@ -687,25 +656,19 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Combina categorías poco frecuentes en una categoría existente o nueva.</span>
 
-<span class="sd">        Parámetros</span>
-<span class="sd">        ----------</span>
-<span class="sd">        data : pandas.DataFrame</span>
-<span class="sd">            Conjunto de datos original.</span>
+<span class="sd">        :param data: Conjunto de datos original.</span>
+<span class="sd">        :type data: pandas.DataFrame</span>
+<span class="sd">        :param var: Nombre de la variable categórica.</span>
+<span class="sd">        :type var: str</span>
+<span class="sd">        :param rare_categories: Lista de categorías que se combinarán.</span>
+<span class="sd">        :type rare_categories: list</span>
+<span class="sd">        :param new_category: Nombre de la nueva categoría que representará las categorías combinadas.</span>
+<span class="sd">        :type new_category: str</span>
 
-<span class="sd">        var : str</span>
-<span class="sd">            Nombre de la variable categórica.</span>
-
-<span class="sd">        rare_categories : list</span>
-<span class="sd">            Lista de categorías que se combinarán.</span>
-
-<span class="sd">        new_category : str</span>
-<span class="sd">            Nombre de la nueva categoría que representará las categorías combinadas.</span>
-
-<span class="sd">        Retorna</span>
-<span class="sd">        -------</span>
-<span class="sd">        pandas.DataFrame</span>
-<span class="sd">            DataFrame modificado con las categorías combinadas.</span>
+<span class="sd">        :return: DataFrame modificado con las categorías combinadas.</span>
+<span class="sd">        :rtype: pandas.DataFrame</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="c1"># Reemplaza las categorías poco frecuentes por la nueva categoría</span>
         <span class="n">data</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">new_category</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">rare_categories</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">data</span></div>

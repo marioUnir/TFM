@@ -56,6 +56,20 @@ a:hover {
     color: #f4f4f4; /* Gris claro */
 }
 
+/* Asegurar que el contenido no se desborde del contenedor */
+.wy-nav-content {
+    max-width: 90%;
+    padding: 20px;
+    overflow-wrap: break-word; /* Forzar el texto a romper en palabras */
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+/* Ajustar el ancho del texto dentro de los cuadros */
+.wy-nav-content p, .wy-nav-content li {
+    max-width: 95%; /* Asegurarse de que el texto no se salga */
+}
+
 /* Contenido principal */
 .document {
     background-color: #ffffff; /* Blanco */
@@ -68,11 +82,13 @@ a:hover {
 
 /* Tablas */
 table {
+    table-layout: auto; /* Ajustar el tamaño de las tablas dinámicamente */
     border: 1px solid #ddd;
     border-collapse: collapse;
     width: 100%;
     margin: 20px 0;
     background-color: #f9f9f9; /* Gris muy claro */
+    overflow: hidden;
 }
 
 th, td {
@@ -94,4 +110,15 @@ pre {
     font-family: "Courier New", monospace;
     border-radius: 5px;
     overflow-x: auto;
+}
+
+/* Formato para las tablas de parámetros */
+.docutils dt {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.docutils dd {
+    margin-left: 20px;
+    font-size: 14px;
 }
