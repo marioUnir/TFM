@@ -17,7 +17,6 @@ Contenido
 
 .. toctree::
    :maxdepth: 2
-   :caption: Navegación
 
    EDA
    Outliers
