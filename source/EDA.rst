@@ -1,5 +1,5 @@
-EDA module
-==========
+EDA
+===
 
 .. automodule:: EDA
    :members:

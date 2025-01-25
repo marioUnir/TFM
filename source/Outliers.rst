@@ -1,5 +1,5 @@
-Outliers module
-===============
+Outliers
+========
 
 .. automodule:: Outliers
    :members:

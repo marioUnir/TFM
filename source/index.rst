@@ -19,4 +19,7 @@ Contenido
    :maxdepth: 2
    :caption: Navegación
 
-   modules
+   EDA
+   Outliers
+   Preprocessing
+   Modelling

@@ -1,5 +1,5 @@
-Modelling module
-================
+Modelling
+=========
 
 .. automodule:: Modelling
    :members:
