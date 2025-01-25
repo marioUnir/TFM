@@ -19,6 +19,36 @@ from sklearn.metrics import confusion_matrix, roc_curve, auc, roc_auc_score, acc
 import joblib
 
 class ModelSelectionPipeline:
+    """
+    Clase para la selección de modelos y búsqueda de hiperparámetros en problemas de clasificación.
+
+    Esta clase facilita la división de datos, balanceo de clases, búsqueda de hiperparámetros
+    y evaluación de modelos mediante validación cruzada.
+
+    :param test_size: Proporción del conjunto de datos reservada para validación.
+    :type test_size: float (default=0.2)
+    :param random_state: Semilla para garantizar reproducibilidad.
+    :type random_state: int (default=42)
+    :param models: Diccionario con los modelos a evaluar. Si es `None`, se utilizan modelos por defecto.
+    :type models: dict[str, sklearn.base.BaseEstimator], optional (default=None)
+    :param param_grids: Diccionario con las cuadrículas de hiperparámetros para cada modelo. 
+        Si es `None`, se utilizan cuadrículas por defecto.
+    :type param_grids: dict[str, dict[str, list]], optional (default=None)
+    :param save_path: Ruta para guardar resultados, modelos y métricas.
+    :type save_path: str (default="outputs/")
+
+    :ivar models: Modelos seleccionados para evaluar.
+    :vartype models: dict[str, sklearn.base.BaseEstimator]
+    :ivar param_grids: Cuadrículas de hiperparámetros asociadas a cada modelo.
+    :vartype param_grids: dict[str, dict[str, list]]
+    :ivar best_models: Modelos con los mejores hiperparámetros tras la búsqueda.
+    :vartype best_models: dict[str, sklearn.base.BaseEstimator]
+    :ivar grid_results_df: DataFrame con los resultados de la búsqueda de hiperparámetros.
+    :vartype grid_results_df: pandas.DataFrame
+    :ivar evaluation_df: DataFrame con las métricas de evaluación de los modelos.
+    :vartype evaluation_df: pandas.DataFrame
+    """
+
     def __init__(
             self,
             test_size=0.2, 
@@ -41,6 +71,21 @@ class ModelSelectionPipeline:
         self._set_hyperparameters()
 
     def _split_data(self, X, y):
+        """
+        Divide los datos en conjuntos de entrenamiento y validación.
+
+        Este método utiliza `train_test_split` para dividir las características (`X`) y etiquetas (`y`) 
+        en conjuntos de entrenamiento y validación.
+
+        :param X: Conjunto de características.
+        :type X: pandas.DataFrame | numpy.ndarray
+        :param y: Etiquetas correspondientes al conjunto de características.
+        :type y: pandas.Series | numpy.ndarray
+
+        :return: Cuatro conjuntos: características y etiquetas de entrenamiento, 
+            características y etiquetas de validación.
+        :rtype: tuple[pandas.DataFrame, pandas.DataFrame, pandas.Series, pandas.Series]
+        """
 
         print("División en train y test ...")
 
@@ -51,7 +96,21 @@ class ModelSelectionPipeline:
         return X_train, X_val, y_train, y_val
     
     def _apply_smote(self, X_train, y_train):
-        
+        """
+        Aplica SMOTE para balancear el conjunto de entrenamiento.
+
+        SMOTE genera ejemplos sintéticos de la clase minoritaria para balancear las clases 
+        en el conjunto de entrenamiento.
+
+        :param X_train: Conjunto de características de entrenamiento.
+        :type X_train: pandas.DataFrame | numpy.ndarray
+        :param y_train: Etiquetas correspondientes al conjunto de características de entrenamiento.
+        :type y_train: pandas.Series | numpy.ndarray
+
+        :return: Conjuntos balanceados de características y etiquetas de entrenamiento.
+        :rtype: tuple[pandas.DataFrame, pandas.Series]
+        """
+
         print("Balanceando el dataset en train ...")
         
         smote = SMOTE(random_state=self.random_state)
@@ -60,6 +119,15 @@ class ModelSelectionPipeline:
         return X_train_smote, y_train_smote
 
     def _initialize_models(self):
+        """
+        Inicializa los modelos que se utilizarán en la evaluación.
+
+        Si no se proporciona un diccionario de modelos al inicializar la clase, este método 
+        define una lista de modelos predeterminados.
+
+        :return: Ninguno. Los modelos se almacenan en el atributo `models`.
+        :rtype: None
+        """
 
         if self.models is None:
             self.models = {
@@ -74,6 +142,16 @@ class ModelSelectionPipeline:
         print(f"Estimadores seleccionados : {list(self.models.keys())}")
 
     def _set_hyperparameters(self):
+        """
+        Configura las cuadrículas de hiperparámetros para cada modelo.
+
+        Si no se proporciona un diccionario de cuadrículas al inicializar la clase, 
+        este método define cuadrículas predeterminadas para los modelos seleccionados.
+
+        :raises ValueError: Si los nombres de los modelos en `models` y `param_grids` no coinciden.
+        :return: Ninguno. Las cuadrículas se almacenan en el atributo `param_grids`.
+        :rtype: None
+        """
 
         if self.param_grids is None:
             self.param_grids = {
@@ -111,6 +189,21 @@ class ModelSelectionPipeline:
                 raise ValueError("`models` y `param_grids` no son coherentes. Revísalos.")
 
     def _fit_grid_search(self, X_train_smote, y_train_smote):
+        """
+        Realiza la búsqueda de hiperparámetros utilizando Grid Search.
+
+        Este método entrena los modelos seleccionados utilizando las cuadrículas de hiperparámetros
+        y validación cruzada estratificada.
+
+        :param X_train_smote: Conjunto balanceado de características de entrenamiento.
+        :type X_train_smote: pandas.DataFrame | numpy.ndarray
+        :param y_train_smote: Etiquetas balanceadas correspondientes al conjunto de características de entrenamiento.
+        :type y_train_smote: pandas.Series | numpy.ndarray
+
+        :return: Ninguno. Los mejores modelos se almacenan en el atributo `best_models`, 
+            y los resultados de la búsqueda en `grid_results_df`.
+        :rtype: None
+        """
 
         print("Búsqueda de hiperparámetros ...")
 
@@ -151,6 +244,20 @@ class ModelSelectionPipeline:
             print(f"Tiempo total (s): {self.grid_search_time:.2f}")
 
     def _evaluate_models(self, X_train_smote, y_train_smote):
+        """
+        Evalúa los mejores modelos utilizando validación cruzada.
+
+        Este método calcula métricas de evaluación (Accuracy, Precision, Recall, F1-Score, y ROC-AUC)
+        para los modelos con los mejores hiperparámetros encontrados en la búsqueda de Grid Search.
+
+        :param X_train_smote: Conjunto balanceado de características de entrenamiento.
+        :type X_train_smote: pandas.DataFrame | numpy.ndarray
+        :param y_train_smote: Etiquetas balanceadas correspondientes al conjunto de características de entrenamiento.
+        :type y_train_smote: pandas.Series | numpy.ndarray
+
+        :return: Ninguno. Los resultados de la evaluación se almacenan en el atributo `evaluation_df`.
+        :rtype: None
+        """
 
         print("Evaluando mejor modelo ...")
 
@@ -189,6 +296,18 @@ class ModelSelectionPipeline:
             print(f"Tiempo total (s): {self.evaluation_time:.2f}")
 
     def save_results(self, save_path=None):
+        """
+        Guarda los resultados de la búsqueda y evaluación, junto con los mejores modelos entrenados.
+
+        Este método almacena los resultados de Grid Search y evaluación en archivos Excel, 
+        y guarda los modelos con los mejores hiperparámetros en archivos `.joblib`.
+
+        :param save_path: Ruta donde se guardarán los resultados. Si es `None`, se utilizará la ruta definida en `save_path`.
+        :type save_path: str, optional (default=None)
+
+        :return: Ninguno. Los resultados y modelos se guardan en el directorio especificado.
+        :rtype: None
+        """
 
         print("Guardando resultados ...")
 
@@ -206,6 +325,30 @@ class ModelSelectionPipeline:
             joblib.dump(best_model, filename)
 
     def run(self, X, y):
+        """
+        Ejecuta todo el pipeline de selección de modelos y búsqueda de hiperparámetros.
+
+        Este método realiza los siguientes pasos:
+        1. Divide los datos en conjuntos de entrenamiento y validación.
+        2. Aplica SMOTE para balancear las clases en el conjunto de entrenamiento.
+        3. Realiza la búsqueda de hiperparámetros utilizando Grid Search.
+        4. Evalúa los mejores modelos utilizando validación cruzada.
+        5. Guarda los resultados y modelos generados.
+
+        :param X: Conjunto de características.
+        :type X: pandas.DataFrame | numpy.ndarray
+        :param y: Etiquetas correspondientes al conjunto de características.
+        :type y: pandas.Series | numpy.ndarray
+
+        :return: Tupla con los siguientes conjuntos:
+            - `X_train`: Características de entrenamiento originales.
+            - `y_train`: Etiquetas de entrenamiento originales.
+            - `X_train_smote`: Características de entrenamiento balanceadas.
+            - `y_train_smote`: Etiquetas de entrenamiento balanceadas.
+            - `X_val`: Características de validación.
+            - `y_val`: Etiquetas de validación.
+        :rtype: tuple[pandas.DataFrame, pandas.Series, pandas.DataFrame, pandas.Series, pandas.DataFrame, pandas.Series]
+        """
 
         # Paso 1 : Dividir la muestra en train y test
         X_train, X_val, y_train, y_val = self._split_data(X, y)
@@ -226,6 +369,16 @@ class ModelSelectionPipeline:
     
     @property
     def grid_results_df(self):
+        """
+        DataFrame con los resultados de la búsqueda de hiperparámetros.
+
+        Si los resultados no están disponibles en memoria, se cargan desde un archivo Excel almacenado 
+        en la ruta especificada en `save_path`.
+
+        :return: DataFrame con los resultados de la búsqueda de hiperparámetros, incluyendo los mejores parámetros,
+            la precisión y el tiempo de ejecución para cada modelo.
+        :rtype: pandas.DataFrame
+        """
 
         if hasattr(self, "_grid_results_df") and isinstance(self._grid_results_df, pd.DataFrame):
             self._grid_results_df
@@ -234,6 +387,15 @@ class ModelSelectionPipeline:
     
     @property
     def evaluation_df(self):
+        """
+        DataFrame con las métricas de evaluación de los modelos.
+
+        Si las métricas no están disponibles en memoria, se cargan desde un archivo Excel almacenado 
+        en la ruta especificada en `save_path`.
+
+        :return: DataFrame con las métricas de evaluación, como Accuracy, Precision, Recall, F1-Score, y ROC-AUC.
+        :rtype: pandas.DataFrame
+        """
 
         if hasattr(self, "_evaluation_df") and isinstance(self._evaluation_df, pd.DataFrame):
             self._evaluation_df
@@ -242,6 +404,15 @@ class ModelSelectionPipeline:
     
     @property
     def best_models(self):
+        """
+        Diccionario con los modelos que tienen los mejores hiperparámetros tras la búsqueda de Grid Search.
+
+        Si los modelos no están disponibles en memoria, se cargan desde archivos `.joblib` almacenados 
+        en la ruta especificada en `save_path`.
+
+        :return: Diccionario con los nombres de los modelos como claves y las instancias entrenadas como valores.
+        :rtype: dict[str, sklearn.base.BaseEstimator]
+        """
 
         if hasattr(self, "_best_models") and isinstance(self._best_models, dict):
             return self._best_models
@@ -249,6 +420,17 @@ class ModelSelectionPipeline:
             return self._load_models(verbose=False)
     
     def _load_models(self, verbose=True):
+        """
+        Carga los modelos entrenados desde archivos `.joblib`.
+
+        Este método busca los modelos guardados en la ruta especificada en `save_path` y los carga en el atributo `_best_models`.
+
+        :param verbose: Indica si se imprimen mensajes durante la carga de los modelos. Por defecto, True.
+        :type verbose: bool, optional (default=True)
+
+        :return: Diccionario con los nombres de los modelos como claves y las instancias entrenadas como valores.
+        :rtype: dict[str, sklearn.base.BaseEstimator]
+        """
 
         # Cargar los modelos desde los archivos y almacenarlos en best_models con los mismos nombres
         best_models = {}
@@ -268,19 +450,44 @@ class ModelSelectionPipeline:
         return best_models
     
     def _load_evaluation_df_excel(self):
+        """
+        Carga el DataFrame con las métricas de evaluación desde un archivo Excel.
+
+        :return: DataFrame con las métricas de evaluación.
+        :rtype: pandas.DataFrame
+        """
 
         self._evaluation_df = pd.read_excel(f"{self.save_path}evaluation_df.xlsx").set_index("Model")
 
         return self._evaluation_df
     
     def _load_grid_results_df_excel(self):
+        """
+        Carga el DataFrame con los resultados de la búsqueda de hiperparámetros desde un archivo Excel.
+
+        :return: DataFrame con los resultados de la búsqueda de hiperparámetros.
+        :rtype: pandas.DataFrame
+        """
 
         self._grid_results_df = pd.read_excel(f"{self.save_path}grid_results_df.xlsx").set_index("Model")
 
         return self._grid_results_df
     
     def get_metrics_all_models(self, X, y):
-        
+        """
+        Calcula las métricas de evaluación para todos los modelos en el conjunto de datos proporcionado.
+
+        Este método evalúa cada modelo utilizando Accuracy, Precision, Recall, F1-Score, y ROC-AUC.
+
+        :param X: Conjunto de características.
+        :type X: pandas.DataFrame | numpy.ndarray
+        :param y: Etiquetas correspondientes al conjunto de características.
+        :type y: pandas.Series | numpy.ndarray
+
+        :return: DataFrame con las métricas calculadas para cada modelo.
+        :rtype: pandas.DataFrame
+        """
+
         evaluation_summary = {}
         for model_name, best_model in self.best_models.items():
             
@@ -305,6 +512,20 @@ class ModelSelectionPipeline:
         return metrics_df
     
     def get_metrics_by_class_all_models(self, X, y):
+        """
+        Calcula las métricas de evaluación por clase para todos los modelos en el conjunto de datos proporcionado.
+
+        Este método calcula métricas específicas para cada clase, como Precision, Recall, F1-Score, y 
+        muestra la matriz de confusión para cada modelo.
+
+        :param X: Conjunto de características.
+        :type X: pandas.DataFrame | numpy.ndarray
+        :param y: Etiquetas correspondientes al conjunto de características.
+        :type y: pandas.Series | numpy.ndarray
+
+        :return: DataFrame con las métricas por clase calculadas para cada modelo.
+        :rtype: pandas.DataFrame
+        """
 
         # Función para calcular métricas usando scikit-learn
         def calculate_metrics_by_class(y_test, y_pred):
@@ -355,18 +576,22 @@ class ModelSelectionPipeline:
     @staticmethod
     def eval_model_test(model, X_test, y_test, classes=None):
         """
-        Evalúa las métricas de un problema binario o multiclase dado un modelo y datos de prueba.
+        Evalúa las métricas de un modelo dado utilizando datos de prueba.
 
-        Parámetros
-        ----------
-            model: El modelo que se está evaluando.
-            X_test: Datos de características de prueba.
-            y_test: Etiquetas verdaderas de prueba.
-            classes (list, opcional): Lista de clases esperadas. Si es None, se asume [0, 1].
-        
-        Return
-        ------
-            dict: Diccionario con las métricas generales y por clase.
+        Este método calcula métricas generales y por clase, como Accuracy, Precision, Recall, Specificity, 
+        y F1-Score, además de la matriz de confusión. También calcula ROC-AUC para problemas binarios.
+
+        :param model: Modelo que se desea evaluar.
+        :type model: sklearn.base.BaseEstimator
+        :param X_test: Datos de características del conjunto de prueba.
+        :type X_test: pandas.DataFrame | numpy.ndarray
+        :param y_test: Etiquetas verdaderas del conjunto de prueba.
+        :type y_test: pandas.Series | numpy.ndarray
+        :param classes: Lista de clases esperadas en el problema. Si es `None`, se asume que las clases son `[0, 1]`.
+        :type classes: list[int] | None, optional (default=None)
+
+        :return: Diccionario con las métricas generales, ROC-AUC (si es aplicable) y las métricas por clase.
+        :rtype: dict[str, float | pandas.DataFrame]
         """
         
         if classes is None:
@@ -460,7 +685,15 @@ class ModelSelectionPipeline:
     
     def plot_evaluation_metrics(self):
         """
-        Genera gráficos para las métricas de evaluación: Precision, Recall, F1-Score, y Accuracy.
+        Genera gráficos para las métricas de evaluación de los modelos.
+
+        Este método crea gráficos de barras para Precision, Recall, F1-Score y Accuracy, 
+        mostrando el desempeño de los modelos en cada clase (0 - No Default y 1 - Default).
+
+        :raises ValueError: Si no se ha ejecutado previamente el método `get_metrics_by_class_all_models`.
+
+        :return: Ninguno. Los gráficos se generan y se muestran directamente.
+        :rtype: None
         """
 
         if hasattr(self, "metrics_df_by_class"):
@@ -526,9 +759,20 @@ class ModelSelectionPipeline:
         plt.show()
 
     def plot_roc_curve(self, X, y):
+        """
+        Genera curvas ROC para todos los modelos en el conjunto de datos proporcionado.
 
-        # Crear una paleta de colores azules
-        # colors = sns.color_palette("Blues", n_colors=len(self.best_models))
+        Este método evalúa cada modelo y genera la curva ROC junto con el valor AUC para 
+        comparar el desempeño de los modelos en términos de clasificación binaria.
+
+        :param X: Conjunto de características.
+        :type X: pandas.DataFrame | numpy.ndarray
+        :param y: Etiquetas correspondientes al conjunto de características.
+        :type y: pandas.Series | numpy.ndarray
+
+        :return: Ninguno. El gráfico se genera y se muestra directamente.
+        :rtype: None
+        """
 
         # Crear un gráfico de Curvas ROC
         plt.figure(figsize=(10, 8))
