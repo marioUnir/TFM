@@ -3,6 +3,45 @@ from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import OneHotEncoder, LabelEncoder, MinMaxScaler, StandardScaler, RobustScaler
 
 class Preprocessing:
+
+    """
+    Clase para preprocesar datos numéricos y categóricos.
+
+    Esta clase implementa estrategias para imputar valores faltantes, codificar variables categóricas 
+    y escalar variables numéricas.
+
+    :param target: Nombre de la variable objetivo que no será transformada.
+    :type target: str
+    :param missing_strategy_num: Estrategia de imputación para características numéricas. 
+        Puede ser "mean", "median", "most_frequent" o "constant".
+    :type missing_strategy_num: str (default="median")
+    :param missing_strategy_cat: Estrategia de imputación para características categóricas. 
+        Puede ser "most_frequent" o "constant".
+    :type missing_strategy_cat: str (default="most_frequent")
+    :param fill_value_num: Valor constante utilizado para imputar valores numéricos si 
+        `missing_strategy_num` es "constant".
+    :type fill_value_num: float | int, optional (default=None)
+    :param fill_value_cat: Valor constante utilizado para imputar valores categóricos si 
+        `missing_strategy_cat` es "constant".
+    :type fill_value_cat: str, optional (default=None)
+    :param categorical_encoding: Método de codificación para características categóricas. 
+        Puede ser "onehot", "label" o "dummies".
+    :type categorical_encoding: str (default="onehot")
+    :param scaler_method: Método para escalar variables numéricas. Puede ser "minmax", 
+        "standard" o "robust".
+    :type scaler_method: str (default="minmax")
+
+    :ivar num_imputer: Instancia de `SimpleImputer` utilizada para imputar valores numéricos.
+    :vartype num_imputer: sklearn.impute.SimpleImputer
+    :ivar cat_imputer: Instancia de `SimpleImputer` utilizada para imputar valores categóricos.
+    :vartype cat_imputer: sklearn.impute.SimpleImputer
+    :ivar encoder: Codificador utilizado para variables categóricas. 
+        Puede ser una instancia de `OneHotEncoder` o un diccionario de `LabelEncoder`.
+    :vartype encoder: sklearn.preprocessing.OneHotEncoder | dict
+    :ivar scaler: Escalador utilizado para normalizar variables numéricas.
+    :vartype scaler: sklearn.preprocessing.MinMaxScaler | sklearn.preprocessing.StandardScaler | sklearn.preprocessing.RobustScaler
+    """
+
     def __init__(
             self, 
             target,
@@ -13,26 +52,7 @@ class Preprocessing:
             categorical_encoding="onehot",
             scaler_method="minmax"
         ):
-        """
-        Inicializa la clase Preprocessing.
 
-        Parámetros
-        ----------
-        target : str
-            Variable objetivo que no se verá afectada
-        missing_strategy_num : str (default="median")
-            Estrategia de imputación para características numéricas ("mean", "median", "most_frequent", "constant").
-        missing_strategy_cat : str (default="most-frequent")
-            Estrategia de imputación para características numéricas ("most_frequent", "constant").
-        fill_value_num : numerical (default=None)
-            Cuando ``missing_strategy_num`` es constant, será usado para reemplazar los missings por este valor
-        fill_value_cat : str (default=None)
-            Cuando ``missing_strategy_cat`` es constant, será usado para reemplazar los missings por este valor
-        categorical_encoding : str (default="onehot")
-            Método de codificación para características categóricas ("onehot", "label" o "dummies").
-        scaler_method : str (default="minmax")
-            Método para escalar variables numéricas ("minmax", "standard", "robust")
-        """
         self.target = target
         self.missing_strategy_num = missing_strategy_num
         self.missing_strategy_cat = missing_strategy_cat
@@ -52,6 +72,16 @@ class Preprocessing:
         self._check_parameters()
 
     def _check_parameters(self):
+
+        """
+        Verifica que los parámetros iniciales de la clase sean válidos.
+
+        Este método valida los valores proporcionados para las estrategias de imputación, 
+        codificación categórica y escalado numérico. Si algún valor no es válido, 
+        se lanzará un error.
+
+        :raises ValueError: Si alguno de los parámetros no tiene un valor válido.
+        """
 
         # missing_strategy_num 
         possible = ["mean", "median", "most_frequent", "constant"]
@@ -109,18 +139,21 @@ class Preprocessing:
         """
         Ajusta y transforma los datos.
 
-        Parámetros
-        ----------
+        Este método realiza imputación de valores faltantes, codificación de variables categóricas
+        y escalado de variables numéricas en el conjunto de datos proporcionado.
 
-        data :  pd.DataFrame 
-            El DataFrame de entrada.
-        numerical_columns : list (default=None)
-            Lista de nombres de columnas numéricas. Si es None, se detectan automáticamente.
-        categorical_columns : list (default=None)
-            Lista de nombres de columnas categóricas. Si es None, se detectan automáticamente.
+        :param data: Conjunto de datos de entrada.
+        :type data: pandas.DataFrame
+        :param numerical_columns: Lista de nombres de columnas numéricas. Si es `None`, 
+            las columnas numéricas serán detectadas automáticamente.
+        :type numerical_columns: list[str], optional (default=None)
+        :param categorical_columns: Lista de nombres de columnas categóricas. Si es `None`, 
+            las columnas categóricas serán detectadas automáticamente.
+        :type categorical_columns: list[str], optional (default=None)
 
-        Retorna:
-        pd.DataFrame: DataFrame transformado.
+        :return: DataFrame transformado, con valores imputados, variables categóricas codificadas 
+            y variables numéricas escaladas.
+        :rtype: pandas.DataFrame
         """
 
         self._get_variable_types(data)
@@ -154,7 +187,23 @@ class Preprocessing:
         return data
     
     def _impute_missings(self, data, numerical_columns, categorical_columns):
-        
+        """
+        Imputa valores faltantes en columnas numéricas y categóricas.
+
+        Este método utiliza los imputadores definidos en la clase (`SimpleImputer`)
+        para rellenar valores faltantes en las columnas numéricas y categóricas.
+
+        :param data: Conjunto de datos de entrada.
+        :type data: pandas.DataFrame
+        :param numerical_columns: Lista de nombres de columnas numéricas a imputar.
+        :type numerical_columns: list[str]
+        :param categorical_columns: Lista de nombres de columnas categóricas a imputar.
+        :type categorical_columns: list[str]
+
+        :return: DataFrame con los valores faltantes imputados.
+        :rtype: pandas.DataFrame
+        """
+
         print("Imputando valores ...")
 
         # Imputar valores faltantes en columnas numéricas
@@ -166,7 +215,21 @@ class Preprocessing:
         return data
     
     def _encoding_cat_vars(self, data, categorical_columns):
-        
+        """
+        Codifica variables categóricas utilizando el método especificado.
+
+        Este método transforma las columnas categóricas según el método de codificación definido en 
+        `categorical_encoding`, que puede ser "onehot", "label", o "dummies".
+
+        :param data: Conjunto de datos de entrada.
+        :type data: pandas.DataFrame
+        :param categorical_columns: Lista de nombres de columnas categóricas a codificar.
+        :type categorical_columns: list[str]
+
+        :return: DataFrame con las variables categóricas codificadas.
+        :rtype: pandas.DataFrame
+        """
+
         print("Codificando variables categóricas ...")
 
         # Codificar columnas categóricas
@@ -193,6 +256,20 @@ class Preprocessing:
         return data
     
     def _scale_num_vars(self, data, numerical_columns):
+        """
+        Escala variables numéricas utilizando el método especificado.
+
+        Este método transforma las columnas numéricas según el método de escalado definido en 
+        `scaler_method`, que puede ser "minmax", "standard", o "robust".
+
+        :param data: Conjunto de datos de entrada.
+        :type data: pandas.DataFrame
+        :param numerical_columns: Lista de nombres de columnas numéricas a escalar.
+        :type numerical_columns: list[str]
+
+        :return: DataFrame con las variables numéricas escaladas.
+        :rtype: pandas.DataFrame
+        """
 
         print("Escalando variables numéricas ...")
         

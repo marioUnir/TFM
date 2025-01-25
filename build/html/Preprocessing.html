@@ -134,23 +134,61 @@
 <dt class="sig sig-object py" id="Preprocessing.Preprocessing">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Preprocessing.</span></span><span class="sig-name descname"><span class="pre">Preprocessing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_strategy_num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_strategy_cat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'most_frequent'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_value_num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_value_cat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'onehot'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaler_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'minmax'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Preprocessing.html#Preprocessing"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Preprocessing.Preprocessing" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase para preprocesar datos numéricos y categóricos.</p>
+<p>Esta clase implementa estrategias para imputar valores faltantes, codificar variables categóricas 
+y escalar variables numéricas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> (<em>str</em>) – Nombre de la variable objetivo que no será transformada.</p></li>
+<li><p><strong>missing_strategy_num</strong> (<em>str</em><em> (</em><em>default=&quot;median&quot;</em><em>)</em>) – Estrategia de imputación para características numéricas. 
+Puede ser «mean», «median», «most_frequent» o «constant».</p></li>
+<li><p><strong>missing_strategy_cat</strong> (<em>str</em><em> (</em><em>default=&quot;most_frequent&quot;</em><em>)</em>) – Estrategia de imputación para características categóricas. 
+Puede ser «most_frequent» o «constant».</p></li>
+<li><p><strong>fill_value_num</strong> (<em>float</em><em> | </em><em>int</em><em>, </em><em>optional</em><em> (</em><em>default=None</em><em>)</em>) – Valor constante utilizado para imputar valores numéricos si 
+<cite>missing_strategy_num</cite> es «constant».</p></li>
+<li><p><strong>fill_value_cat</strong> (<em>str</em><em>, </em><em>optional</em><em> (</em><em>default=None</em><em>)</em>) – Valor constante utilizado para imputar valores categóricos si 
+<cite>missing_strategy_cat</cite> es «constant».</p></li>
+<li><p><strong>categorical_encoding</strong> (<em>str</em><em> (</em><em>default=&quot;onehot&quot;</em><em>)</em>) – Método de codificación para características categóricas. 
+Puede ser «onehot», «label» o «dummies».</p></li>
+<li><p><strong>scaler_method</strong> (<em>str</em><em> (</em><em>default=&quot;minmax&quot;</em><em>)</em>) – Método para escalar variables numéricas. Puede ser «minmax», 
+«standard» o «robust».</p></li>
+</ul>
+</dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>num_imputer</strong> (<em>sklearn.impute.SimpleImputer</em>) – Instancia de <cite>SimpleImputer</cite> utilizada para imputar valores numéricos.</p></li>
+<li><p><strong>cat_imputer</strong> (<em>sklearn.impute.SimpleImputer</em>) – Instancia de <cite>SimpleImputer</cite> utilizada para imputar valores categóricos.</p></li>
+<li><p><strong>encoder</strong> (<em>sklearn.preprocessing.OneHotEncoder</em><em> | </em><em>dict</em>) – Codificador utilizado para variables categóricas. 
+Puede ser una instancia de <cite>OneHotEncoder</cite> o un diccionario de <cite>LabelEncoder</cite>.</p></li>
+<li><p><strong>scaler</strong> (<em>sklearn.preprocessing.MinMaxScaler</em><em> | </em><em>sklearn.preprocessing.StandardScaler</em><em> | </em><em>sklearn.preprocessing.RobustScaler</em>) – Escalador utilizado para normalizar variables numéricas.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="Preprocessing.Preprocessing.fit_transform">
 <span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numerical_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Preprocessing.html#Preprocessing.fit_transform"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Preprocessing.Preprocessing.fit_transform" title="Link to this definition"></a></dt>
 <dd><p>Ajusta y transforma los datos.</p>
-<section id="parametros">
-<h2>Parámetros<a class="headerlink" href="#parametros" title="Link to this heading"></a></h2>
-<dl class="simple">
-<dt>data<span class="classifier">pd.DataFrame </span></dt><dd><p>El DataFrame de entrada.</p>
+<p>Este método realiza imputación de valores faltantes, codificación de variables categóricas
+y escalado de variables numéricas en el conjunto de datos proporcionado.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pandas.DataFrame</em>) – Conjunto de datos de entrada.</p></li>
+<li><p><strong>numerical_columns</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em><em> (</em><em>default=None</em><em>)</em>) – Lista de nombres de columnas numéricas. Si es <cite>None</cite>, 
+las columnas numéricas serán detectadas automáticamente.</p></li>
+<li><p><strong>categorical_columns</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em><em> (</em><em>default=None</em><em>)</em>) – Lista de nombres de columnas categóricas. Si es <cite>None</cite>, 
+las columnas categóricas serán detectadas automáticamente.</p></li>
+</ul>
 </dd>
-<dt>numerical_columns<span class="classifier">list (default=None)</span></dt><dd><p>Lista de nombres de columnas numéricas. Si es None, se detectan automáticamente.</p>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame transformado, con valores imputados, variables categóricas codificadas 
+y variables numéricas escaladas.</p>
 </dd>
-<dt>categorical_columns<span class="classifier">list (default=None)</span></dt><dd><p>Lista de nombres de columnas categóricas. Si es None, se detectan automáticamente.</p>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
 </dd>
 </dl>
-<p>Retorna:
-pd.DataFrame: DataFrame transformado.</p>
-</section>
 </dd></dl>
 
 </dd></dl>

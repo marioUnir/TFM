@@ -132,6 +132,45 @@
 <div class="viewcode-block" id="Preprocessing">
 <a class="viewcode-back" href="../Preprocessing.html#Preprocessing.Preprocessing">[documentos]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Preprocessing</span><span class="p">:</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Clase para preprocesar datos numéricos y categóricos.</span>
+
+<span class="sd">    Esta clase implementa estrategias para imputar valores faltantes, codificar variables categóricas </span>
+<span class="sd">    y escalar variables numéricas.</span>
+
+<span class="sd">    :param target: Nombre de la variable objetivo que no será transformada.</span>
+<span class="sd">    :type target: str</span>
+<span class="sd">    :param missing_strategy_num: Estrategia de imputación para características numéricas. </span>
+<span class="sd">        Puede ser &quot;mean&quot;, &quot;median&quot;, &quot;most_frequent&quot; o &quot;constant&quot;.</span>
+<span class="sd">    :type missing_strategy_num: str (default=&quot;median&quot;)</span>
+<span class="sd">    :param missing_strategy_cat: Estrategia de imputación para características categóricas. </span>
+<span class="sd">        Puede ser &quot;most_frequent&quot; o &quot;constant&quot;.</span>
+<span class="sd">    :type missing_strategy_cat: str (default=&quot;most_frequent&quot;)</span>
+<span class="sd">    :param fill_value_num: Valor constante utilizado para imputar valores numéricos si </span>
+<span class="sd">        `missing_strategy_num` es &quot;constant&quot;.</span>
+<span class="sd">    :type fill_value_num: float | int, optional (default=None)</span>
+<span class="sd">    :param fill_value_cat: Valor constante utilizado para imputar valores categóricos si </span>
+<span class="sd">        `missing_strategy_cat` es &quot;constant&quot;.</span>
+<span class="sd">    :type fill_value_cat: str, optional (default=None)</span>
+<span class="sd">    :param categorical_encoding: Método de codificación para características categóricas. </span>
+<span class="sd">        Puede ser &quot;onehot&quot;, &quot;label&quot; o &quot;dummies&quot;.</span>
+<span class="sd">    :type categorical_encoding: str (default=&quot;onehot&quot;)</span>
+<span class="sd">    :param scaler_method: Método para escalar variables numéricas. Puede ser &quot;minmax&quot;, </span>
+<span class="sd">        &quot;standard&quot; o &quot;robust&quot;.</span>
+<span class="sd">    :type scaler_method: str (default=&quot;minmax&quot;)</span>
+
+<span class="sd">    :ivar num_imputer: Instancia de `SimpleImputer` utilizada para imputar valores numéricos.</span>
+<span class="sd">    :vartype num_imputer: sklearn.impute.SimpleImputer</span>
+<span class="sd">    :ivar cat_imputer: Instancia de `SimpleImputer` utilizada para imputar valores categóricos.</span>
+<span class="sd">    :vartype cat_imputer: sklearn.impute.SimpleImputer</span>
+<span class="sd">    :ivar encoder: Codificador utilizado para variables categóricas. </span>
+<span class="sd">        Puede ser una instancia de `OneHotEncoder` o un diccionario de `LabelEncoder`.</span>
+<span class="sd">    :vartype encoder: sklearn.preprocessing.OneHotEncoder | dict</span>
+<span class="sd">    :ivar scaler: Escalador utilizado para normalizar variables numéricas.</span>
+<span class="sd">    :vartype scaler: sklearn.preprocessing.MinMaxScaler | sklearn.preprocessing.StandardScaler | sklearn.preprocessing.RobustScaler</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> 
             <span class="n">target</span><span class="p">,</span>
@@ -142,26 +181,7 @@
             <span class="n">categorical_encoding</span><span class="o">=</span><span class="s2">&quot;onehot&quot;</span><span class="p">,</span>
             <span class="n">scaler_method</span><span class="o">=</span><span class="s2">&quot;minmax&quot;</span>
         <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Inicializa la clase Preprocessing.</span>
 
-<span class="sd">        Parámetros</span>
-<span class="sd">        ----------</span>
-<span class="sd">        target : str</span>
-<span class="sd">            Variable objetivo que no se verá afectada</span>
-<span class="sd">        missing_strategy_num : str (default=&quot;median&quot;)</span>
-<span class="sd">            Estrategia de imputación para características numéricas (&quot;mean&quot;, &quot;median&quot;, &quot;most_frequent&quot;, &quot;constant&quot;).</span>
-<span class="sd">        missing_strategy_cat : str (default=&quot;most-frequent&quot;)</span>
-<span class="sd">            Estrategia de imputación para características numéricas (&quot;most_frequent&quot;, &quot;constant&quot;).</span>
-<span class="sd">        fill_value_num : numerical (default=None)</span>
-<span class="sd">            Cuando ``missing_strategy_num`` es constant, será usado para reemplazar los missings por este valor</span>
-<span class="sd">        fill_value_cat : str (default=None)</span>
-<span class="sd">            Cuando ``missing_strategy_cat`` es constant, será usado para reemplazar los missings por este valor</span>
-<span class="sd">        categorical_encoding : str (default=&quot;onehot&quot;)</span>
-<span class="sd">            Método de codificación para características categóricas (&quot;onehot&quot;, &quot;label&quot; o &quot;dummies&quot;).</span>
-<span class="sd">        scaler_method : str (default=&quot;minmax&quot;)</span>
-<span class="sd">            Método para escalar variables numéricas (&quot;minmax&quot;, &quot;standard&quot;, &quot;robust&quot;)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="n">target</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">missing_strategy_num</span> <span class="o">=</span> <span class="n">missing_strategy_num</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">missing_strategy_cat</span> <span class="o">=</span> <span class="n">missing_strategy_cat</span>
@@ -181,6 +201,16 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_parameters</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_check_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Verifica que los parámetros iniciales de la clase sean válidos.</span>
+
+<span class="sd">        Este método valida los valores proporcionados para las estrategias de imputación, </span>
+<span class="sd">        codificación categórica y escalado numérico. Si algún valor no es válido, </span>
+<span class="sd">        se lanzará un error.</span>
+
+<span class="sd">        :raises ValueError: Si alguno de los parámetros no tiene un valor válido.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c1"># missing_strategy_num </span>
         <span class="n">possible</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;median&quot;</span><span class="p">,</span> <span class="s2">&quot;most_frequent&quot;</span><span class="p">,</span> <span class="s2">&quot;constant&quot;</span><span class="p">]</span>
@@ -240,18 +270,21 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Ajusta y transforma los datos.</span>
 
-<span class="sd">        Parámetros</span>
-<span class="sd">        ----------</span>
+<span class="sd">        Este método realiza imputación de valores faltantes, codificación de variables categóricas</span>
+<span class="sd">        y escalado de variables numéricas en el conjunto de datos proporcionado.</span>
 
-<span class="sd">        data :  pd.DataFrame </span>
-<span class="sd">            El DataFrame de entrada.</span>
-<span class="sd">        numerical_columns : list (default=None)</span>
-<span class="sd">            Lista de nombres de columnas numéricas. Si es None, se detectan automáticamente.</span>
-<span class="sd">        categorical_columns : list (default=None)</span>
-<span class="sd">            Lista de nombres de columnas categóricas. Si es None, se detectan automáticamente.</span>
+<span class="sd">        :param data: Conjunto de datos de entrada.</span>
+<span class="sd">        :type data: pandas.DataFrame</span>
+<span class="sd">        :param numerical_columns: Lista de nombres de columnas numéricas. Si es `None`, </span>
+<span class="sd">            las columnas numéricas serán detectadas automáticamente.</span>
+<span class="sd">        :type numerical_columns: list[str], optional (default=None)</span>
+<span class="sd">        :param categorical_columns: Lista de nombres de columnas categóricas. Si es `None`, </span>
+<span class="sd">            las columnas categóricas serán detectadas automáticamente.</span>
+<span class="sd">        :type categorical_columns: list[str], optional (default=None)</span>
 
-<span class="sd">        Retorna:</span>
-<span class="sd">        pd.DataFrame: DataFrame transformado.</span>
+<span class="sd">        :return: DataFrame transformado, con valores imputados, variables categóricas codificadas </span>
+<span class="sd">            y variables numéricas escaladas.</span>
+<span class="sd">        :rtype: pandas.DataFrame</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_get_variable_types</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -286,7 +319,23 @@
 
     
     <span class="k">def</span><span class="w"> </span><span class="nf">_impute_missings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">numerical_columns</span><span class="p">,</span> <span class="n">categorical_columns</span><span class="p">):</span>
-        
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Imputa valores faltantes en columnas numéricas y categóricas.</span>
+
+<span class="sd">        Este método utiliza los imputadores definidos en la clase (`SimpleImputer`)</span>
+<span class="sd">        para rellenar valores faltantes en las columnas numéricas y categóricas.</span>
+
+<span class="sd">        :param data: Conjunto de datos de entrada.</span>
+<span class="sd">        :type data: pandas.DataFrame</span>
+<span class="sd">        :param numerical_columns: Lista de nombres de columnas numéricas a imputar.</span>
+<span class="sd">        :type numerical_columns: list[str]</span>
+<span class="sd">        :param categorical_columns: Lista de nombres de columnas categóricas a imputar.</span>
+<span class="sd">        :type categorical_columns: list[str]</span>
+
+<span class="sd">        :return: DataFrame con los valores faltantes imputados.</span>
+<span class="sd">        :rtype: pandas.DataFrame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Imputando valores ...&quot;</span><span class="p">)</span>
 
         <span class="c1"># Imputar valores faltantes en columnas numéricas</span>
@@ -298,7 +347,21 @@
         <span class="k">return</span> <span class="n">data</span>
     
     <span class="k">def</span><span class="w"> </span><span class="nf">_encoding_cat_vars</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">categorical_columns</span><span class="p">):</span>
-        
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Codifica variables categóricas utilizando el método especificado.</span>
+
+<span class="sd">        Este método transforma las columnas categóricas según el método de codificación definido en </span>
+<span class="sd">        `categorical_encoding`, que puede ser &quot;onehot&quot;, &quot;label&quot;, o &quot;dummies&quot;.</span>
+
+<span class="sd">        :param data: Conjunto de datos de entrada.</span>
+<span class="sd">        :type data: pandas.DataFrame</span>
+<span class="sd">        :param categorical_columns: Lista de nombres de columnas categóricas a codificar.</span>
+<span class="sd">        :type categorical_columns: list[str]</span>
+
+<span class="sd">        :return: DataFrame con las variables categóricas codificadas.</span>
+<span class="sd">        :rtype: pandas.DataFrame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Codificando variables categóricas ...&quot;</span><span class="p">)</span>
 
         <span class="c1"># Codificar columnas categóricas</span>
@@ -325,6 +388,20 @@
         <span class="k">return</span> <span class="n">data</span>
     
     <span class="k">def</span><span class="w"> </span><span class="nf">_scale_num_vars</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">numerical_columns</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Escala variables numéricas utilizando el método especificado.</span>
+
+<span class="sd">        Este método transforma las columnas numéricas según el método de escalado definido en </span>
+<span class="sd">        `scaler_method`, que puede ser &quot;minmax&quot;, &quot;standard&quot;, o &quot;robust&quot;.</span>
+
+<span class="sd">        :param data: Conjunto de datos de entrada.</span>
+<span class="sd">        :type data: pandas.DataFrame</span>
+<span class="sd">        :param numerical_columns: Lista de nombres de columnas numéricas a escalar.</span>
+<span class="sd">        :type numerical_columns: list[str]</span>
+
+<span class="sd">        :return: DataFrame con las variables numéricas escaladas.</span>
+<span class="sd">        :rtype: pandas.DataFrame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Escalando variables numéricas ...&quot;</span><span class="p">)</span>
         
