@@ -14,17 +14,27 @@ sys.path.insert(0, os.path.abspath('..'))
 sys.path.insert(0, os.path.abspath('../..'))
 
 project = 'credit-card'
-copyright = '2025, Cristina Domínguez and Mario Río'
-author = 'Cristina Domínguez and Mario Río'
+copyright = '2025, Cristina Domínguez y Mario Río'
+author = 'Cristina Domínguez y Mario Río'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
+    'nbsphinx',
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',  # Para incluir enlaces al código fuente
     'sphinx.ext.mathjax',  # Necesario para fórmulas matemáticas
 ]
+
+nbsphinx_thumbnails = {
+    "notebooks/1-EDA": "_static/eda_thumbnail.jpg",
+    "notebooks/2-Outliers": "_static/outliers_thumbnail.jpg",
+    "notebooks/3-Preprocessing": "_static/preprocessing_thumbnail.jpg",
+    "notebooks/4-Modelling": "_static/modelling_thumbnail.jpg",
+
+}
+nbsphinx_execute = 'never'  # No ejecutar notebooks al construir la documentación
 
 templates_path = ['_templates']
 exclude_patterns = []
@@ -49,7 +59,7 @@ html_theme_options = {
 }
 
 # Estilo propio
-html_static_path = ['_static']
+html_static_path = ['_static', '../images', '../notebooks']
 
 # Incluye un archivo de CSS personalizado
 html_css_files = [

@@ -31,7 +31,7 @@ a:hover {
     background-color: #00558a; /* Azul oscuro */
     color: #ffffff; /* Blanco */
     padding: 15px;
-    border-bottom: 3px solid #003f6b; /* Un azul más oscuro */
+    border-bottom: 3px solid #003f6b; /* Azul más oscuro */
 }
 
 .wy-side-nav-search input {
@@ -67,7 +67,7 @@ a:hover {
 
 /* Ajustar el ancho del texto dentro de los cuadros */
 .wy-nav-content p, .wy-nav-content li {
-    max-width: 95%; /* Asegurarse de que el texto no se salga */
+    max-width: 95%; /* Asegurar que el texto no se salga */
 }
 
 /* Contenido principal */
@@ -88,15 +88,24 @@ table {
     width: 100%;
     margin: 20px 0;
     background-color: #f9f9f9; /* Gris muy claro */
-    overflow: hidden;
 }
 
+/* Contenedor para hacer scroll en tablas grandes */
+div.output_area table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+/* Bordes y formato de celdas */
 th, td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
 }
 
+/* Estilo para encabezados de tabla */
 th {
     background-color: #00558a; /* Azul oscuro */
     color: #ffffff; /* Blanco */
@@ -121,4 +130,22 @@ pre {
 .docutils dd {
     margin-left: 20px;
     font-size: 14px;
+}
+
+/* Mejorar la visualización de las celdas de los notebooks */
+div.output_area {
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+div.output_area pre {
+    white-space: pre-wrap; /* Permite que el código se ajuste dentro del contenedor */
+}
+
+/* Ajustar las celdas del notebook */
+div.output_area .dataframe {
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+    white-space: nowrap;
 }

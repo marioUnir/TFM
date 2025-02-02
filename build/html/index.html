@@ -9,7 +9,7 @@
   <title>Documentación del TFM - UNIR &mdash; TFM - UNIR | Documentación de la librería credit-card</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=fda1fe14" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=1eb32be5" />
 
   
     <link rel="shortcut icon" href="_static/unir_logo.png"/>
@@ -19,7 +19,9 @@
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/translations.js?v=d190bf04"></script>
-      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -60,6 +62,16 @@
 <li class="toctree-l3"><a class="reference internal" href="EDA.html#EDA.EDAProcessor.run"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.run()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="EDA.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EDA.html#notebook">Notebook</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/1-EDA.html">EDA Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/1-EDA.html#Imports">Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/1-EDA.html#Load-Data">Load Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/1-EDA.html#Preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/1-EDA.html#Parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/1-EDA.html#EDA">EDA</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Outliers.html">Outliers</a><ul>
@@ -72,11 +84,29 @@
 <li class="toctree-l3"><a class="reference internal" href="Outliers.html#Outliers.OutliersDetection.transform"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.transform()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="Outliers.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Outliers.html#notebook">Notebook</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/2-Outliers.html">Outliers Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/2-Outliers.html#Imports">Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/2-Outliers.html#Load-Data">Load Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/2-Outliers.html#Parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/2-Outliers.html#Outliers">Outliers</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Preprocessing.html">Preprocessing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Preprocessing.html#Preprocessing.Preprocessing"><code class="docutils literal notranslate"><span class="pre">Preprocessing</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="Preprocessing.html#Preprocessing.Preprocessing.fit_transform"><code class="docutils literal notranslate"><span class="pre">Preprocessing.fit_transform()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Preprocessing.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preprocessing.html#notebook">Notebook</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/3-Preprocessing.html">Preprocessing Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/3-Preprocessing.html#Imports">Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/3-Preprocessing.html#Load-Data">Load Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/3-Preprocessing.html#Parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/3-Preprocessing.html#Preprocessing">Preprocessing</a></li>
 </ul>
 </li>
 </ul>
@@ -93,6 +123,36 @@
 <li class="toctree-l3"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.plot_roc_curve"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.plot_roc_curve()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.run"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.run()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.save_results"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.save_results()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Modelling.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modelling.html#notebook">Notebook</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html">Modelling Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#Imports">Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#Parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#Load-Data">Load Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#Hiperparámetros">Hiperparámetros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#Resultados-de-Test">Resultados de Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#Regresión-Logística">Regresión Logística</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#Árbol-de-Decisión">Árbol de Decisión</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#Naive-Bayes">Naive Bayes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/4-Modelling.html#Medias-y-varianzas-para-la-clase-0">Medias y varianzas para la clase 0</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/4-Modelling.html#Medias-y-varianzas-para-la-clase-1">Medias y varianzas para la clase 1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/4-Modelling.html#Valores-de-las-probabilidades-a-priori">Valores de las probabilidades a priori</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#KNN">KNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#Random-Forest">Random Forest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#Gradient-Boosting">Gradient Boosting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#Evaluación-de-modelos">Evaluación de modelos</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/4-Modelling.html#Logistic-Regression">Logistic Regression</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/4-Modelling.html#Decision-Tree">Decision Tree</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/4-Modelling.html#id1">Naive Bayes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/4-Modelling.html#K-Nearest-Neighbors">K-Nearest Neighbors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/4-Modelling.html#id2">Random Forest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/4-Modelling.html#id3">Gradient Boosting</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -129,25 +189,63 @@
 </a>
 <p>Bienvenido a la documentación de la librería <strong>credit-card</strong>, desarrollada como parte
 del Trabajo de Fin de Máster (TFM) en la Universidad Internacional de La Rioja (UNIR).</p>
-<p>Esta librería tiene como objetivo …</p>
+<p>Esta librería ha sido creada por Cristina Domínguez y Mario Río, con el objetivo de proporcionar
+una  herramienta integral para la <strong>predicción del incumplimiento de pagos (default)</strong> en
+tarjetas de crédito. La implementación se basa en <strong>técnicas avanzadas de machine learning</strong>
+y análisis de datos, estructurada en módulos que cubren desde la exploración inicial
+de datos hasta la calibración y evaluación de modelos de clasificación.</p>
+<section id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Link to this heading"></a></h2>
+<p>La librería <strong>credit-card</strong> está diseñada para facilitar el análisis y modelado de
+riesgo crediticio, en particular la predicción del incumplimiento de pagos (default)
+de clientes de tarjetas de crédito. A través de diferentes módulos, esta librería
+proporciona herramientas para el análisis exploratorio de datos (EDA), detección de
+valores atípicos, preprocesamiento de datos y modelado predictivo.</p>
+<p>El objetivo principal es ofrecer una solución estructurada que permita a los
+profesionales del análisis de datos y del riesgo financiero optimizar sus procesos
+de calibración y evaluación de modelos de clasificación para predicción de default.</p>
+</section>
+<section id="modulos-principales">
+<h2>Módulos principales<a class="headerlink" href="#modulos-principales" title="Link to this heading"></a></h2>
+<p>La librería está dividida en los siguientes módulos:</p>
+<ul class="simple">
+<li><p><strong>EDA</strong>: Exploración de datos, identificación de patrones, estadísticas descriptivas
+y análisis de correlaciones.</p></li>
+<li><p><strong>Outliers</strong>: Detección de valores atípicos mediante métodos estadísticos y de
+machine learning (IQR, Isolation Forest, LOF, Gaussian Mixture Model).</p></li>
+<li><p><strong>Preprocessing</strong>: Preprocesamiento de datos con imputación de valores faltantes,
+codificación de variables categóricas y escalado de variables numéricas.</p></li>
+<li><p><strong>Modelling</strong>: Construcción y evaluación de modelos de clasificación utilizando
+algoritmos como regresión logística, árboles de decisión, random forest y gradient
+boosting, con búsqueda de hiperparámetros mediante validación cruzada.</p></li>
+</ul>
+</section>
 <section id="contenido">
 <h2>Contenido<a class="headerlink" href="#contenido" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="EDA.html">EDA</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="EDA.html#EDA.EDAProcessor"><code class="docutils literal notranslate"><span class="pre">EDAProcessor</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="EDA.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EDA.html#notebook">Notebook</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Outliers.html">Outliers</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Outliers.html#Outliers.OutliersDetection"><code class="docutils literal notranslate"><span class="pre">OutliersDetection</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Outliers.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Outliers.html#notebook">Notebook</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Preprocessing.html">Preprocessing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Preprocessing.html#Preprocessing.Preprocessing"><code class="docutils literal notranslate"><span class="pre">Preprocessing</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preprocessing.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preprocessing.html#notebook">Notebook</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Modelling.html">Modelling</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modelling.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modelling.html#notebook">Notebook</a></li>
 </ul>
 </li>
 </ul>
@@ -165,7 +263,7 @@ del Trabajo de Fin de Máster (TFM) en la Universidad Internacional de La Rioja 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Derechos de autor 2025, Cristina Domínguez and Mario Río.</p>
+    <p>&#169; Derechos de autor 2025, Cristina Domínguez y Mario Río.</p>
   </div>
 
   Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un

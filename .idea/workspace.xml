@@ -4,7 +4,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abcea867-9aae-47b7-8969-32a718c485d2" name="Changes" comment="" />
+    <list default="true" id="abcea867-9aae-47b7-8969-32a718c485d2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modelling.py" beforeDir="false" afterPath="$PROJECT_DIR$/Modelling.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/EDA.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/EDA.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Modelling.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Modelling.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Outliers.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Outliers.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/Preprocessing.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/Preprocessing.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/environment.pickle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/index.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/index.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/.buildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/.buildinfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/EDA.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/EDA.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Modelling.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Modelling.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Outliers.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Outliers.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/Preprocessing.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/Preprocessing.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/EDA.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/EDA.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/Modelling.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/Modelling.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/Outliers.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/Outliers.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/Preprocessing.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/Preprocessing.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_modules/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_modules/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/EDA.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/EDA.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Modelling.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Modelling.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Outliers.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Outliers.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/Preprocessing.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/Preprocessing.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_sources/index.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_sources/index.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/_static/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/_static/custom.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/genindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/genindex.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/objects.inv" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/objects.inv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/py-modindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/py-modindex.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/searchindex.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/searchindex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/EDA.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/EDA.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Modelling.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Modelling.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Outliers.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Outliers.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Preprocessing.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/Preprocessing.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_static/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/source/_static/custom.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/conf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/source/index.rst" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

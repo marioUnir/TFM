@@ -9,7 +9,8 @@
   <title>EDA &mdash; TFM - UNIR | Documentación de la librería credit-card</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=fda1fe14" />
+      <link rel="stylesheet" type="text/css" href="_static/nbsphinx-gallery.css?v=26227f6e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=1eb32be5" />
 
   
     <link rel="shortcut icon" href="_static/unir_logo.png"/>
@@ -19,10 +20,13 @@
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/translations.js?v=d190bf04"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="Outliers" href="Outliers.html" />
+    <link rel="next" title="EDA Module" href="notebooks/1-EDA.html" />
     <link rel="prev" title="Documentación del TFM - UNIR" href="index.html" /> 
 </head>
 
@@ -60,6 +64,16 @@
 <li class="toctree-l3"><a class="reference internal" href="#EDA.EDAProcessor.run"><code class="docutils literal notranslate"><span class="pre">EDAProcessor.run()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notebook">Notebook</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/1-EDA.html">EDA Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/1-EDA.html#Imports">Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/1-EDA.html#Load-Data">Load Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/1-EDA.html#Preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/1-EDA.html#Parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/1-EDA.html#EDA">EDA</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Outliers.html">Outliers</a><ul>
@@ -72,11 +86,29 @@
 <li class="toctree-l3"><a class="reference internal" href="Outliers.html#Outliers.OutliersDetection.transform"><code class="docutils literal notranslate"><span class="pre">OutliersDetection.transform()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="Outliers.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Outliers.html#notebook">Notebook</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/2-Outliers.html">Outliers Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/2-Outliers.html#Imports">Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/2-Outliers.html#Load-Data">Load Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/2-Outliers.html#Parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/2-Outliers.html#Outliers">Outliers</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Preprocessing.html">Preprocessing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Preprocessing.html#Preprocessing.Preprocessing"><code class="docutils literal notranslate"><span class="pre">Preprocessing</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="Preprocessing.html#Preprocessing.Preprocessing.fit_transform"><code class="docutils literal notranslate"><span class="pre">Preprocessing.fit_transform()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Preprocessing.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preprocessing.html#notebook">Notebook</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/3-Preprocessing.html">Preprocessing Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/3-Preprocessing.html#Imports">Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/3-Preprocessing.html#Load-Data">Load Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/3-Preprocessing.html#Parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/3-Preprocessing.html#Preprocessing">Preprocessing</a></li>
 </ul>
 </li>
 </ul>
@@ -93,6 +125,36 @@
 <li class="toctree-l3"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.plot_roc_curve"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.plot_roc_curve()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.run"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.run()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="Modelling.html#Modelling.ModelSelectionPipeline.save_results"><code class="docutils literal notranslate"><span class="pre">ModelSelectionPipeline.save_results()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Modelling.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modelling.html#notebook">Notebook</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html">Modelling Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#Imports">Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#Parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#Load-Data">Load Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#Hiperparámetros">Hiperparámetros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#Resultados-de-Test">Resultados de Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#Regresión-Logística">Regresión Logística</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#Árbol-de-Decisión">Árbol de Decisión</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#Naive-Bayes">Naive Bayes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/4-Modelling.html#Medias-y-varianzas-para-la-clase-0">Medias y varianzas para la clase 0</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/4-Modelling.html#Medias-y-varianzas-para-la-clase-1">Medias y varianzas para la clase 1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/4-Modelling.html#Valores-de-las-probabilidades-a-priori">Valores de las probabilidades a priori</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#KNN">KNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#Random-Forest">Random Forest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#Gradient-Boosting">Gradient Boosting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/4-Modelling.html#Evaluación-de-modelos">Evaluación de modelos</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/4-Modelling.html#Logistic-Regression">Logistic Regression</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/4-Modelling.html#Decision-Tree">Decision Tree</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/4-Modelling.html#id1">Naive Bayes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/4-Modelling.html#K-Nearest-Neighbors">K-Nearest Neighbors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/4-Modelling.html#id2">Random Forest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/4-Modelling.html#id3">Gradient Boosting</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -364,6 +426,264 @@ en la columna objetivo (<cite>target</cite>) del conjunto de datos.</p>
 
 </dd></dl>
 
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">EDA</span><span class="w"> </span><span class="kn">import</span> <span class="n">EDAProcessor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eda</span> <span class="o">=</span> <span class="n">EDAProcessor</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">ordinal_columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;EducationLevel&quot;</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="n">exclude_columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Id&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eda</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="go">Empezando EDA...</span>
+<span class="go">EDA completado ...</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eda</span><span class="o">.</span><span class="n">distribution_variable</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">Age</span>
+<span class="go">[21, 26)    3871</span>
+<span class="go">[26, 32)    8359</span>
+<span class="go">[32, 38)    6728</span>
+<span class="go">[38, 44)    5056</span>
+<span class="go">[44, 50)    3306</span>
+<span class="go">[50, 56)    1836</span>
+<span class="go">[56, 62)     628</span>
+<span class="go">[62, 68)     171</span>
+<span class="go">[68, 74)      40</span>
+<span class="go">[74, 80)       5</span>
+<span class="go">Name: count, dtype: int64</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eda</span><span class="o">.</span><span class="n">plot_numerical_variables</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">num_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;CreditLimit&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<img alt="_images/DistribucionCreditLimit.JPG" src="_images/DistribucionCreditLimit.JPG" />
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eda</span><span class="o">.</span><span class="n">plot_categorical_variables</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">cat_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Gender&quot;</span><span class="p">,</span> <span class="s2">&quot;Marriage&quot;</span><span class="p">,</span> <span class="s2">&quot;RepaymentStatusSep&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<img alt="_images/Distribucion3Categoricas.JPG" src="_images/Distribucion3Categoricas.JPG" />
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eda</span><span class="o">.</span><span class="n">plot_target</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/DistribucionDefault.JPG" src="_images/DistribucionDefault.JPG" />
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eda</span><span class="o">.</span><span class="n">plot_correlations</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/Correlacion.png" src="_images/Correlacion.png" />
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eda</span><span class="o">.</span><span class="n">plot_numerical_vs_target</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">num_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;CreditLimit&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<img alt="_images/CreditLimitVsDefault.JPG" src="_images/CreditLimitVsDefault.JPG" />
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eda</span><span class="o">.</span><span class="n">plot_histogram_vs_target</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">cat_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;RepaymentStatusSep&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<img alt="_images/RepaymentStatusSepVsTarget.JPG" src="_images/RepaymentStatusSepVsTarget.JPG" />
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">eda</span><span class="o">.</span><span class="n">get_results</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>dtype</p></th>
+<th class="head"><p>n_missing</p></th>
+<th class="head"><p>p_missing</p></th>
+<th class="head"><p>n_unique</p></th>
+<th class="head"><p>is_duplicate</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Id</p></td>
+<td><p>numerical</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>30000</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>CreditLimit</p></td>
+<td><p>numerical</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>81</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>Gender</p></td>
+<td><p>categorical</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>2</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>EducationLevel</p></td>
+<td><p>ordinal</p></td>
+<td><p>14</p></td>
+<td><p>0.0466667</p></td>
+<td><p>5</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>Marriage</p></td>
+<td><p>categorical</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>4</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Age</p></td>
+<td><p>numerical</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>56</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>RepaymentStatusSep</p></td>
+<td><p>categorical</p></td>
+<td><p>2759</p></td>
+<td><p>9.19667</p></td>
+<td><p>10</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>RepaymentStatusAug</p></td>
+<td><p>categorical</p></td>
+<td><p>3782</p></td>
+<td><p>12.6067</p></td>
+<td><p>10</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>RepaymentStatusJul</p></td>
+<td><p>categorical</p></td>
+<td><p>4085</p></td>
+<td><p>13.6167</p></td>
+<td><p>10</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>RepaymentStatusJun</p></td>
+<td><p>categorical</p></td>
+<td><p>4348</p></td>
+<td><p>14.4933</p></td>
+<td><p>10</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>RepaymentStatusMay</p></td>
+<td><p>categorical</p></td>
+<td><p>4546</p></td>
+<td><p>15.1533</p></td>
+<td><p>9</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>RepaymentStatusApr</p></td>
+<td><p>categorical</p></td>
+<td><p>4895</p></td>
+<td><p>16.3167</p></td>
+<td><p>9</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>BillAmountSep</p></td>
+<td><p>numerical</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>22723</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>BillAmountAug</p></td>
+<td><p>numerical</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>22346</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>BillAmountJul</p></td>
+<td><p>numerical</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>22026</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>BillAmountJun</p></td>
+<td><p>numerical</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>21548</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>BillAmountMay</p></td>
+<td><p>numerical</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>21010</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>BillAmountApr</p></td>
+<td><p>numerical</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>20604</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>PreviousPaymentSep</p></td>
+<td><p>numerical</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>7943</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>PreviousPaymentAug</p></td>
+<td><p>numerical</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>7899</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>PreviousPaymentJul</p></td>
+<td><p>numerical</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>7518</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>PreviousPaymentJun</p></td>
+<td><p>numerical</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>6937</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>PreviousPaymentMay</p></td>
+<td><p>numerical</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>6897</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>PreviousPaymentApr</p></td>
+<td><p>numerical</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>6939</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>Default</p></td>
+<td><p>target</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>2</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="notebook">
+<h2>Notebook<a class="headerlink" href="#notebook" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<div class="nbsphinx-gallery">
+<a class="reference internal" href="notebooks/1-EDA.html"None>
+  <div><img alt="" src="./_static/eda_thumbnail.jpg"></div>
+  <div>EDA Module</div>
+</a>
+</div>
+</div>
+</section>
 </section>
 
 
@@ -371,13 +691,13 @@ en la columna objetivo (<cite>target</cite>) del conjunto de datos.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
         <a href="index.html" class="btn btn-neutral float-left" title="Documentación del TFM - UNIR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
-        <a href="Outliers.html" class="btn btn-neutral float-right" title="Outliers" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="notebooks/1-EDA.html" class="btn btn-neutral float-right" title="EDA Module" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Derechos de autor 2025, Cristina Domínguez and Mario Río.</p>
+    <p>&#169; Derechos de autor 2025, Cristina Domínguez y Mario Río.</p>
   </div>
 
   Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un

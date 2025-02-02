@@ -341,6 +341,7 @@ class ModelSelectionPipeline:
         :type y: pandas.Series | numpy.ndarray
 
         :return: Tupla con los siguientes conjuntos:
+            
             - `X_train`: Características de entrenamiento originales.
             - `y_train`: Etiquetas de entrenamiento originales.
             - `X_train_smote`: Características de entrenamiento balanceadas.
